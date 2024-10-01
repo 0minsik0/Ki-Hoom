@@ -1,24 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Badges | ThemeKit - Admin Template</title>
+        <title>Rating | ThemeKit - Admin Template</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
-        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="../../node_modules/ionicons/dist/css/ionicons.min.css">
-        <link rel="stylesheet" href="../../node_modules/icon-kit/dist/css/iconkit.min.css">
-        <link rel="stylesheet" href="../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="../../dist/css/theme.min.css">
-        <script src="../../src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="node_modules/ionicons/dist/css/ionicons.min.css">
+        <link rel="stylesheet" href="node_modules/icon-kit/dist/css/iconkit.min.css">
+        <link rel="stylesheet" href="node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/bars-1to10.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/bars-horizontal.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/bars-movie.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/bars-pill.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/bars-reversed.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/bars-square.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/css-stars.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+        <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/fontawesome-stars-o.css">
+        <link rel="stylesheet" href="dist/css/theme.min.css">
+        <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
 
     <body>
@@ -58,7 +69,7 @@
                                         </a>
                                         <a href="#" class="media">
                                             <span class="d-flex">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </span>
                                             <span class="media-body">
                                                 <span class="heading-font-family media-heading">Steve Smith</span> 
@@ -98,13 +109,13 @@
                             </div>
                             <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button>
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="../../img/user.jpg" alt=""></a>
+                                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="img/user.jpg" alt=""></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="../profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
+                                    <a class="dropdown-item" href="profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
                                     <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
                                     <a class="dropdown-item" href="#"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="ik ik-mail dropdown-icon"></i> Inbox</a>
                                     <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> Message</a>
-                                    <a class="dropdown-item" href="../login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+                                    <a class="dropdown-item" href="login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
                                 </div>
                             </div>
 
@@ -116,13 +127,9 @@
             <div class="page-wrap">
                 <div class="app-sidebar colored">
                     <div class="sidebar-header">
-<<<<<<< HEAD
-                        <a class="header-brand" href="index.jsp">
-=======
                         <a class="header-brand" href="index.html">
->>>>>>> main
                             <div class="logo-img">
-                               <img src="../../src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
+                               <img src="src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
                             </div>
                             <span class="text">ThemeKit</span>
                         </a>
@@ -135,14 +142,10 @@
                             <nav id="main-menu-navigation" class="navigation-main">
                                 <div class="nav-lavel">Navigation</div>
                                 <div class="nav-item">
-<<<<<<< HEAD
-                                    <a href="../../index.jsp"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
-=======
-                                    <a href="../../index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
->>>>>>> main
+                                    <a href="index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../../navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
+                                    <a href="navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Widgets</span> <span class="badge badge-danger">150+</span></a>
@@ -154,23 +157,23 @@
                                     </div>
                                 </div>
                                 <div class="nav-lavel">UI Element</div>
-                                <div class="nav-item has-sub active open">
+                                <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>
                                     <div class="submenu-content">
                                         <a href="alerts.html" class="menu-item">Alerts</a>
-                                        <a href="badges.html" class="menu-item active">Badges</a>
+                                        <a href="badges.html" class="menu-item">Badges</a>
                                         <a href="buttons.html" class="menu-item">Buttons</a>
                                         <a href="navigation.html" class="menu-item">Navigation</a>
                                     </div>
                                 </div>
-                                <div class="nav-item has-sub">
+                                <div class="nav-item has-sub active open">
                                     <a href="#"><i class="ik ik-gitlab"></i><span>Advance</span> <span class="badge badge-success">New</span></a>
                                     <div class="submenu-content">
                                         <a href="modals.html" class="menu-item">Modals</a>
                                         <a href="notifications.html" class="menu-item">Notifications</a>
                                         <a href="carousel.html" class="menu-item">Slider</a>
                                         <a href="range-slider.html" class="menu-item">Range Slider</a>
-                                        <a href="rating.html" class="menu-item">Rating</a>
+                                        <a href="rating.html" class="menu-item active">Rating</a>
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
@@ -186,40 +189,40 @@
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-edit"></i><span>Forms</span></a>
                                     <div class="submenu-content">
-                                        <a href="../form-components.html" class="menu-item">Components</a>
-                                        <a href="../form-addon.html" class="menu-item">Add-On</a>
-                                        <a href="../form-advance.html" class="menu-item">Advance</a>
+                                        <a href="form-components.html" class="menu-item">Components</a>
+                                        <a href="form-addon.html" class="menu-item">Add-On</a>
+                                        <a href="form-advance.html" class="menu-item">Advance</a>
                                     </div>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../form-picker.html"><i class="ik ik-terminal"></i><span>Form Picker</span> <span class="badge badge-success">New</span></a>
+                                    <a href="form-picker.html"><i class="ik ik-terminal"></i><span>Form Picker</span> <span class="badge badge-success">New</span></a>
                                 </div>
 
                                 <div class="nav-lavel">Tables</div>
                                 <div class="nav-item">
-                                    <a href="../table-bootstrap.html"><i class="ik ik-credit-card"></i><span>Bootstrap Table</span></a>
+                                    <a href="table-bootstrap.html"><i class="ik ik-credit-card"></i><span>Bootstrap Table</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../table-datatable.html"><i class="ik ik-inbox"></i><span>Data Table</span></a>
+                                    <a href="table-datatable.html"><i class="ik ik-inbox"></i><span>Data Table</span></a>
                                 </div>
 
                                 <div class="nav-lavel">Charts</div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-pie-chart"></i><span>Charts</span> <span class="badge badge-success">New</span></a>
                                     <div class="submenu-content">
-                                        <a href="../charts-chartist.html" class="menu-item">Chartist</a>
-                                        <a href="../charts-flot.html" class="menu-item">Flot</a>
-                                        <a href="../charts-knob.html" class="menu-item">Knob</a>
-                                        <a href="../charts-amcharts.html" class="menu-item">Amcharts</a>
+                                        <a href="charts-chartist.html" class="menu-item">Chartist</a>
+                                        <a href="charts-flot.html" class="menu-item">Flot</a>
+                                        <a href="charts-knob.html" class="menu-item">Knob</a>
+                                        <a href="charts-amcharts.html" class="menu-item">Amcharts</a>
                                     </div>
                                 </div>
 
                                 <div class="nav-lavel">Apps</div>
                                 <div class="nav-item">
-                                    <a href="../calendar.html"><i class="ik ik-calendar"></i><span>Calendar</span></a>
+                                    <a href="calendar.html"><i class="ik ik-calendar"></i><span>Calendar</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../taskboard.html"><i class="ik ik-server"></i><span>Taskboard</span></a>
+                                    <a href="taskboard.html"><i class="ik ik-server"></i><span>Taskboard</span></a>
                                 </div>
 
                                 <div class="nav-lavel">Pages</div>
@@ -227,20 +230,20 @@
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-lock"></i><span>Authentication</span></a>
                                     <div class="submenu-content">
-                                        <a href="../login.html" class="menu-item">Login</a>
-                                        <a href="../register.html" class="menu-item">Register</a>
-                                        <a href="../forgot-password.html" class="menu-item">Forgot Password</a>
+                                        <a href="login.html" class="menu-item">Login</a>
+                                        <a href="register.html" class="menu-item">Register</a>
+                                        <a href="forgot-password.html" class="menu-item">Forgot Password</a>
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-file-text"></i><span>Other</span></a>
                                     <div class="submenu-content">
-                                        <a href="../profile.html" class="menu-item">Profile</a>
-                                        <a href="../invoice.html" class="menu-item">Invoice</a>
+                                        <a href="profile.html" class="menu-item">Profile</a>
+                                        <a href="invoice.html" class="menu-item">Invoice</a>
                                     </div>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../layouts.html"><i class="ik ik-layout"></i><span>Layouts</span><span class="badge badge-success">New</span></a>
+                                    <a href="layouts.html"><i class="ik ik-layout"></i><span>Layouts</span><span class="badge badge-success">New</span></a>
                                 </div>
                                 <div class="nav-lavel">Other</div>
                                 <div class="nav-item has-sub">
@@ -279,9 +282,9 @@
                             <div class="row align-items-end">
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
-                                        <i class="ik ik-box bg-blue"></i>
+                                        <i class="ik ik-gitlab bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Badges</h5>
+                                            <h5>Rating</h5>
                                             <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                                         </div>
                                     </div>
@@ -290,59 +293,176 @@
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <a href="../../index.html"><i class="ik ik-home"></i></a>
+                                                <a href="index.html"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
                                                 <a href="#">UI</a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="#">Basic</a>
+                                                <a href="#">Advanced</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Badges</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Rating</li>
                                         </ol>
                                     </nav>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header"><h3>Colors</h3></div>
+                                    <div class="card-header"><h3>Rating</h3></div>
                                     <div class="card-body">
-                                        <span class="badge badge-pill badge-primary mb-1">Primary</span>
-                                        <span class="badge badge-pill badge-secondary mb-1">Secondary</span>
-                                        <span class="badge badge-pill badge-success mb-1">Success</span>
-                                        <span class="badge badge-pill badge-danger mb-1">Danger</span>
-                                        <span class="badge badge-pill badge-warning mb-1">Warning</span>
-                                        <span class="badge badge-pill badge-info mb-1">Info</span>
-                                        <span class="badge badge-pill badge-light mb-1">Light</span>
-                                        <span class="badge badge-pill badge-dark mb-1">Dark</span>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header"><h3>Links</h3></div>
-                                    <div class="card-body">
-                                        <a href="#" class="badge badge-primary mb-1">Primary</a>
-                                        <a href="#" class="badge badge-secondary mb-1">Secondary</a>
-                                        <a href="#" class="badge badge-success mb-1">Success</a>
-                                        <a href="#" class="badge badge-danger mb-1">Danger</a>
-                                        <a href="#" class="badge badge-warning mb-1">Warning</a>
-                                        <a href="#" class="badge badge-info mb-1">Info</a>
-                                        <a href="#" class="badge badge-light mb-1">Light</a>
-                                        <a href="#" class="badge badge-dark mb-1">Dark</a>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header"><h3>Counter Badges</h3></div>
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-primary">
-                                            Notifications&nbsp;
-                                            <span class="badge badge-light">4</span>
-                                        </button>
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">1/10 Rating</h6>
+                                                <p>Use <code>id="example-1to10"</code> to see default rating</p>
+                                                <div class="box-body">
+                                                    <select id="example-1to10" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7" selected="selected">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <span class="current-rating"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Movie Rating</h6>
+                                                <p>Use <code>id="example-movie"</code> to see movie rating</p>
+                                                <div class="box-body">
+                                                    <select id="example-movie" name="rating" autocomplete="off">
+                                                        <option value="Bad">Bad</option>
+                                                        <option value="Mediocre">Mediocre</option>
+                                                        <option value="Good" selected="selected">Good</option>
+                                                        <option value="Awesome">Awesome</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Square Rating</h6>
+                                                <p>Use <code>id="example-square"</code> to see square rating</p>
+                                                <div class="box-body">
+                                                    <select id="example-square" name="rating" autocomplete="off">
+                                                        <option value="" label="0"></option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Pill Rating</h6>
+                                                <p>Use <code>id="example-pill"</code> to see pill rating</p>
+                                                <div class="box-body">
+                                                    <select id="example-pill" name="rating" autocomplete="off">
+                                                        <option value="A">A</option>
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                        <option value="D">D</option>
+                                                        <option value="E">E</option>
+                                                        <option value="F">F</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Reverse Rating</h6>
+                                                <p>Use <code>id="example-reversed"</code> to see reverse rating</p>
+                                                <div class="box-body">
+                                                    <select id="example-reversed" name="rating" autocomplete="off">
+                                                        <option value="Strongly Agree">Strongly Agree</option>
+                                                        <option value="Agree">Agree</option>
+                                                        <option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>
+                                                        <option value="Disagree">Disagree</option>
+                                                        <option value="Strongly Disagree">Strongly Disagree</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Horizontal Rating</h6>
+                                                <p>Use <code>id="example-horizontal"</code> to see horizontal rating</p>
+                                                <div class="box-body">
+                                                    <select id="example-horizontal" name="rating" autocomplete="off">
+                                                        <option value="10">10</option>
+                                                        <option value="9">9</option>
+                                                        <option value="8">8</option>
+                                                        <option value="7">7</option>
+                                                        <option value="6">6</option>
+                                                        <option value="5">5</option>
+                                                        <option value="4">4</option>
+                                                        <option value="3">3</option>
+                                                        <option value="2">2</option>
+                                                        <option value="1" selected="selected">1</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Font Awesome Rating</h6>
+                                                <p>Use <code>id="example-fontawesome"</code> to see font awesome rating</p>
+                                                <div class="stars stars-example-fontawesome">
+                                                    <select id="example-fontawesome" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">CSS Stars Rating</h6>
+                                                <p>Use <code>id="example-css"</code> to see css stars rating</p>
+                                                <div class="stars stars-example-css">
+                                                    <select id="example-css" class="rating-star" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <h6 class="sub-title">Fractional Star Rating</h6>
+                                                <p>Use <code>id="example-fontawesome-o"</code> to see fractional star rating</p>
+                                                <div class="stars stars-example-fontawesome-o">
+                                                    <select id="example-fontawesome-o" name="rating" data-current-rating="5.6" autocomplete="off">
+                                                        <option value="" label="0"></option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <span class="title current-rating">
+                                                        Current rating: <span class="value"></span>
+                                                    </span>
+                                                    <span class="title your-rating hidden">
+                                                        Your rating: <span class="value"></span>&nbsp;
+                                                        <a href="#" class="clear-rating"><i class="icofont icofont-close-circled"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                 <aside class="right-sidebar">
@@ -360,37 +480,37 @@
                             <div class="list-group row">
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Gene Newman">
                                     <figure class="user--online">
-                                        <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Gene Newman</span>  <span class="username">@gene_newman</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Billy Black">
                                     <figure class="user--online">
-                                        <img src="../../img/users/2.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/2.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Billy Black</span>  <span class="username">@billyblack</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Herbert Diaz">
                                     <figure class="user--online">
-                                        <img src="../../img/users/3.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/3.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Herbert Diaz</span>  <span class="username">@herbert</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Sylvia Harvey">
                                     <figure class="user--busy">
-                                        <img src="../../img/users/4.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/4.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Sylvia Harvey</span>  <span class="username">@sylvia</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item active" data-chat-user="Marsha Hoffman">
                                     <figure class="user--busy">
-                                        <img src="../../img/users/5.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/5.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Marsha Hoffman</span>  <span class="username">@m_hoffman</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
                                     <figure class="user--offline">
-                                        <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
                                     <figure class="user--offline">
-                                        <img src="../../img/users/2.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/2.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Shelly Sullivan</span>  <span class="username">@shelly</span></span>
                                 </a>
                             </div>
@@ -403,7 +523,7 @@
                         <div class="card-header d-flex justify-content-between">
                             <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>  
                             <span class="user-name">John Doe</span> 
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">Ã</span></button>
                         </div>
                         <div class="card-body">
                             <div class="widget-chat-activity flex-1">
@@ -411,7 +531,7 @@
                                     <div class="message media reply">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/3.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/3.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -421,7 +541,7 @@
                                     <div class="message media">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -431,7 +551,7 @@
                                     <div class="message media reply">
                                         <figure class="user--offline">
                                             <a href="#">
-                                                <img src="../../img/users/5.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/5.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -442,7 +562,7 @@
                                     <div class="message media">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -452,7 +572,7 @@
                                     <div class="message media reply">
                                         <figure class="user--busy">
                                             <a href="#">
-                                                <img src="../../img/users/5.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/5.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -462,7 +582,7 @@
                                     <div class="message media">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -482,7 +602,7 @@
                 </div>
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2018 ThemeKit v2.0. All Rights Reserved.</span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright Â© 2018 ThemeKit v2.0. All Rights Reserved.</span>
                         <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">Lavalite</a></span>
                     </div>
                 </footer>
@@ -569,13 +689,15 @@
             </div>
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-        <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
-        <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../../node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-        <script src="../../node_modules/screenfull/dist/screenfull.js"></script>
-        <script src="../../dist/js/theme.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        <script src="node_modules/screenfull/dist/screenfull.js"></script>
+        <script src="node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+        <script src="dist/js/theme.min.js"></script>
+        <script src="js/rating.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

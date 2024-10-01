@@ -1,24 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Badges | ThemeKit - Admin Template</title>
+        <title>Table Bootstrap | ThemeKit - Admin Template</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
-        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="../../node_modules/ionicons/dist/css/ionicons.min.css">
-        <link rel="stylesheet" href="../../node_modules/icon-kit/dist/css/iconkit.min.css">
-        <link rel="stylesheet" href="../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="../../dist/css/theme.min.css">
-        <script src="../../src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="node_modules/ionicons/dist/css/ionicons.min.css">
+        <link rel="stylesheet" href="node_modules/icon-kit/dist/css/iconkit.min.css">
+        <link rel="stylesheet" href="node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
+        <link rel="stylesheet" href="node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="dist/css/theme.min.css">
+        <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
 
     <body>
@@ -58,7 +61,7 @@
                                         </a>
                                         <a href="#" class="media">
                                             <span class="d-flex">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </span>
                                             <span class="media-body">
                                                 <span class="heading-font-family media-heading">Steve Smith</span> 
@@ -98,13 +101,13 @@
                             </div>
                             <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button>
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="../../img/user.jpg" alt=""></a>
+                                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="img/user.jpg" alt=""></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="../profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
+                                    <a class="dropdown-item" href="profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
                                     <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
                                     <a class="dropdown-item" href="#"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="ik ik-mail dropdown-icon"></i> Inbox</a>
                                     <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> Message</a>
-                                    <a class="dropdown-item" href="../login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+                                    <a class="dropdown-item" href="login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
                                 </div>
                             </div>
 
@@ -116,13 +119,9 @@
             <div class="page-wrap">
                 <div class="app-sidebar colored">
                     <div class="sidebar-header">
-<<<<<<< HEAD
-                        <a class="header-brand" href="index.jsp">
-=======
                         <a class="header-brand" href="index.html">
->>>>>>> main
                             <div class="logo-img">
-                               <img src="../../src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
+                               <img src="src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
                             </div>
                             <span class="text">ThemeKit</span>
                         </a>
@@ -135,14 +134,10 @@
                             <nav id="main-menu-navigation" class="navigation-main">
                                 <div class="nav-lavel">Navigation</div>
                                 <div class="nav-item">
-<<<<<<< HEAD
-                                    <a href="../../index.jsp"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
-=======
-                                    <a href="../../index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
->>>>>>> main
+                                    <a href="index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../../navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
+                                    <a href="navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Widgets</span> <span class="badge badge-danger">150+</span></a>
@@ -154,72 +149,72 @@
                                     </div>
                                 </div>
                                 <div class="nav-lavel">UI Element</div>
-                                <div class="nav-item has-sub active open">
+                                <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>
                                     <div class="submenu-content">
-                                        <a href="alerts.html" class="menu-item">Alerts</a>
-                                        <a href="badges.html" class="menu-item active">Badges</a>
-                                        <a href="buttons.html" class="menu-item">Buttons</a>
-                                        <a href="navigation.html" class="menu-item">Navigation</a>
+                                        <a href="ui/alerts.html" class="menu-item">Alerts</a>
+                                        <a href="ui/badges.html" class="menu-item">Badges</a>
+                                        <a href="ui/buttons.html" class="menu-item">Buttons</a>
+                                        <a href="ui/navigation.html" class="menu-item">Navigation</a>
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-gitlab"></i><span>Advance</span> <span class="badge badge-success">New</span></a>
                                     <div class="submenu-content">
-                                        <a href="modals.html" class="menu-item">Modals</a>
-                                        <a href="notifications.html" class="menu-item">Notifications</a>
-                                        <a href="carousel.html" class="menu-item">Slider</a>
-                                        <a href="range-slider.html" class="menu-item">Range Slider</a>
-                                        <a href="rating.html" class="menu-item">Rating</a>
+                                        <a href="ui/modals.html" class="menu-item">Modals</a>
+                                        <a href="ui/notifications.html" class="menu-item">Notifications</a>
+                                        <a href="ui/carousel.html" class="menu-item">Slider</a>
+                                        <a href="ui/range-slider.html" class="menu-item">Range Slider</a>
+                                        <a href="ui/rating.html" class="menu-item">Rating</a>
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-package"></i><span>Extra</span></a>
                                     <div class="submenu-content">
-                                        <a href="session-timeout.html" class="menu-item">Session Timeout</a>
+                                        <a href="ui/session-timeout.html" class="menu-item">Session Timeout</a>
                                     </div>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="icons.html"><i class="ik ik-command"></i><span>Icons</span></a>
+                                    <a href="ui/icons.html"><i class="ik ik-command"></i><span>Icons</span></a>
                                 </div>
                                 <div class="nav-lavel">Forms</div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-edit"></i><span>Forms</span></a>
                                     <div class="submenu-content">
-                                        <a href="../form-components.html" class="menu-item">Components</a>
-                                        <a href="../form-addon.html" class="menu-item">Add-On</a>
-                                        <a href="../form-advance.html" class="menu-item">Advance</a>
+                                        <a href="form-components.html" class="menu-item">Components</a>
+                                        <a href="form-addon.html" class="menu-item">Add-On</a>
+                                        <a href="form-advance.html" class="menu-item">Advance</a>
                                     </div>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../form-picker.html"><i class="ik ik-terminal"></i><span>Form Picker</span> <span class="badge badge-success">New</span></a>
+                                    <a href="form-picker.html"><i class="ik ik-terminal"></i><span>Form Picker</span> <span class="badge badge-success">New</span></a>
                                 </div>
 
                                 <div class="nav-lavel">Tables</div>
-                                <div class="nav-item">
-                                    <a href="../table-bootstrap.html"><i class="ik ik-credit-card"></i><span>Bootstrap Table</span></a>
+                                <div class="nav-item active">
+                                    <a href="table-bootstrap.html"><i class="ik ik-credit-card"></i><span>Bootstrap Table</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../table-datatable.html"><i class="ik ik-inbox"></i><span>Data Table</span></a>
+                                    <a href="table-datatable.html"><i class="ik ik-inbox"></i><span>Data Table</span></a>
                                 </div>
 
                                 <div class="nav-lavel">Charts</div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-pie-chart"></i><span>Charts</span> <span class="badge badge-success">New</span></a>
                                     <div class="submenu-content">
-                                        <a href="../charts-chartist.html" class="menu-item">Chartist</a>
-                                        <a href="../charts-flot.html" class="menu-item">Flot</a>
-                                        <a href="../charts-knob.html" class="menu-item">Knob</a>
-                                        <a href="../charts-amcharts.html" class="menu-item">Amcharts</a>
+                                        <a href="charts-chartist.html" class="menu-item">Chartist</a>
+                                        <a href="charts-flot.html" class="menu-item">Flot</a>
+                                        <a href="charts-knob.html" class="menu-item">Knob</a>
+                                        <a href="charts-amcharts.html" class="menu-item">Amcharts</a>
                                     </div>
                                 </div>
 
                                 <div class="nav-lavel">Apps</div>
                                 <div class="nav-item">
-                                    <a href="../calendar.html"><i class="ik ik-calendar"></i><span>Calendar</span></a>
+                                    <a href="calendar.html"><i class="ik ik-calendar"></i><span>Calendar</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../taskboard.html"><i class="ik ik-server"></i><span>Taskboard</span></a>
+                                    <a href="taskboard.html"><i class="ik ik-server"></i><span>Taskboard</span></a>
                                 </div>
 
                                 <div class="nav-lavel">Pages</div>
@@ -227,20 +222,20 @@
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-lock"></i><span>Authentication</span></a>
                                     <div class="submenu-content">
-                                        <a href="../login.html" class="menu-item">Login</a>
-                                        <a href="../register.html" class="menu-item">Register</a>
-                                        <a href="../forgot-password.html" class="menu-item">Forgot Password</a>
+                                        <a href="login.html" class="menu-item">Login</a>
+                                        <a href="register.html" class="menu-item">Register</a>
+                                        <a href="forgot-password.html" class="menu-item">Forgot Password</a>
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-file-text"></i><span>Other</span></a>
                                     <div class="submenu-content">
-                                        <a href="../profile.html" class="menu-item">Profile</a>
-                                        <a href="../invoice.html" class="menu-item">Invoice</a>
+                                        <a href="profile.html" class="menu-item">Profile</a>
+                                        <a href="invoice.html" class="menu-item">Invoice</a>
                                     </div>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="../layouts.html"><i class="ik ik-layout"></i><span>Layouts</span><span class="badge badge-success">New</span></a>
+                                    <a href="layouts.html"><i class="ik ik-layout"></i><span>Layouts</span><span class="badge badge-success">New</span></a>
                                 </div>
                                 <div class="nav-lavel">Other</div>
                                 <div class="nav-item has-sub">
@@ -279,9 +274,9 @@
                             <div class="row align-items-end">
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
-                                        <i class="ik ik-box bg-blue"></i>
+                                        <i class="ik ik-credit-card bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Badges</h5>
+                                            <h5>Bootstrap Tables</h5>
                                             <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                                         </div>
                                     </div>
@@ -290,57 +285,295 @@
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <a href="../../index.html"><i class="ik ik-home"></i></a>
+                                                <a href="index.html"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="#">UI</a>
+                                                <a href="#">Tables</a>
                                             </li>
-                                            <li class="breadcrumb-item">
-                                                <a href="#">Basic</a>
-                                            </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Badges</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Bootstrap Tables</li>
                                         </ol>
                                     </nav>
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header"><h3>Colors</h3></div>
-                                    <div class="card-body">
-                                        <span class="badge badge-pill badge-primary mb-1">Primary</span>
-                                        <span class="badge badge-pill badge-secondary mb-1">Secondary</span>
-                                        <span class="badge badge-pill badge-success mb-1">Success</span>
-                                        <span class="badge badge-pill badge-danger mb-1">Danger</span>
-                                        <span class="badge badge-pill badge-warning mb-1">Warning</span>
-                                        <span class="badge badge-pill badge-info mb-1">Info</span>
-                                        <span class="badge badge-pill badge-light mb-1">Light</span>
-                                        <span class="badge badge-pill badge-dark mb-1">Dark</span>
+                                    <div class="card-header d-block">
+                                        <h3>Basic Table</h3>
+                                        <span>use class <code>table</code> inside table element</span>
+                                    </div>
+                                    <div class="card-body p-0 table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Username</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>@mdo</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Jacob</td>
+                                                        <td>Thornton</td>
+                                                        <td>@fat</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">3</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header"><h3>Links</h3></div>
-                                    <div class="card-body">
-                                        <a href="#" class="badge badge-primary mb-1">Primary</a>
-                                        <a href="#" class="badge badge-secondary mb-1">Secondary</a>
-                                        <a href="#" class="badge badge-success mb-1">Success</a>
-                                        <a href="#" class="badge badge-danger mb-1">Danger</a>
-                                        <a href="#" class="badge badge-warning mb-1">Warning</a>
-                                        <a href="#" class="badge badge-info mb-1">Info</a>
-                                        <a href="#" class="badge badge-light mb-1">Light</a>
-                                        <a href="#" class="badge badge-dark mb-1">Dark</a>
+                                    <div class="card-header d-block">
+                                        <h3>Inverse Table</h3>
+                                        <span>use class <code>table-inverse</code> inside table element</span>
+                                    </div>
+                                    <div class="card-body p-0 table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table table-inverse">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Username</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>@mdo</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Jacob</td>
+                                                        <td>Thornton</td>
+                                                        <td>@fat</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">3</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header"><h3>Counter Badges</h3></div>
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-primary">
-                                            Notifications&nbsp;
-                                            <span class="badge badge-light">4</span>
-                                        </button>
+                                    <div class="card-header d-block">
+                                        <h3>Hover Table</h3>
+                                        <span>use class <code>table-hover</code> inside table element</span>
+                                    </div>
+                                    <div class="card-body p-0 table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Username</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>@mdo</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Jacob</td>
+                                                        <td>Thornton</td>
+                                                        <td>@fat</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">3</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-header d-block">
+                                        <h3>Contextual Classes</h3>
+                                        <span>For Make row Contextual add Contextual class like <code>.table-success</code> in <code> tr tag</code> and For cell add Contextual class in <code> td or th tag</code> . </span>
+                                    </div>
+                                    <div class="card-body p-0 table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Username</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="table-active">
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>@mdo</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Jacob</td>
+                                                        <td>Thornton</td>
+                                                        <td>@fat</td>
+                                                    </tr>
+                                                    <tr class="table-success">
+                                                        <th scope="row">3</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">4</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr class="table-warning">
+                                                        <th scope="row">5</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">6</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr class="table-danger">
+                                                        <th scope="row">7</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">8</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr class="table-info">
+                                                        <th scope="row">9</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header d-block">
+                                        <h3>Background Utilities</h3>
+                                        <span>Regular table background variants are not available with the inverse table, however, you may use <code>text or background utilities</code> to achieve similar styles.</span>
+
+                                    </div>
+                                    <div class="card-block p-0 table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table table-inverse">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Username</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="bg-primary">
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>@mdo</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Jacob</td>
+                                                        <td>Thornton</td>
+                                                        <td>@fat</td>
+                                                    </tr>
+                                                    <tr class="bg-success">
+                                                        <th scope="row">3</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">4</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr class="bg-warning">
+                                                        <th scope="row">5</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">6</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr class="bg-danger">
+                                                        <th scope="row">7</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">8</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                    <tr class="bg-info">
+                                                        <th scope="row">9</th>
+                                                        <td>Larry</td>
+                                                        <td>the Bird</td>
+                                                        <td>@twitter</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -360,37 +593,37 @@
                             <div class="list-group row">
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Gene Newman">
                                     <figure class="user--online">
-                                        <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Gene Newman</span>  <span class="username">@gene_newman</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Billy Black">
                                     <figure class="user--online">
-                                        <img src="../../img/users/2.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/2.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Billy Black</span>  <span class="username">@billyblack</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Herbert Diaz">
                                     <figure class="user--online">
-                                        <img src="../../img/users/3.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/3.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Herbert Diaz</span>  <span class="username">@herbert</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Sylvia Harvey">
                                     <figure class="user--busy">
-                                        <img src="../../img/users/4.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/4.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Sylvia Harvey</span>  <span class="username">@sylvia</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item active" data-chat-user="Marsha Hoffman">
                                     <figure class="user--busy">
-                                        <img src="../../img/users/5.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/5.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Marsha Hoffman</span>  <span class="username">@m_hoffman</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
                                     <figure class="user--offline">
-                                        <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
                                     <figure class="user--offline">
-                                        <img src="../../img/users/2.jpg" class="rounded-circle" alt="">
+                                        <img src="img/users/2.jpg" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Shelly Sullivan</span>  <span class="username">@shelly</span></span>
                                 </a>
                             </div>
@@ -411,7 +644,7 @@
                                     <div class="message media reply">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/3.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/3.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -421,7 +654,7 @@
                                     <div class="message media">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -431,7 +664,7 @@
                                     <div class="message media reply">
                                         <figure class="user--offline">
                                             <a href="#">
-                                                <img src="../../img/users/5.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/5.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -442,7 +675,7 @@
                                     <div class="message media">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -452,7 +685,7 @@
                                     <div class="message media reply">
                                         <figure class="user--busy">
                                             <a href="#">
-                                                <img src="../../img/users/5.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/5.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -462,7 +695,7 @@
                                     <div class="message media">
                                         <figure class="user--online">
                                             <a href="#">
-                                                <img src="../../img/users/1.jpg" class="rounded-circle" alt="">
+                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
                                             </a>
                                         </figure>
                                         <div class="message-body media-body">
@@ -570,12 +803,15 @@
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-        <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
-        <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../../node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-        <script src="../../node_modules/screenfull/dist/screenfull.js"></script>
-        <script src="../../dist/js/theme.min.js"></script>
+        <script>window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        <script src="node_modules/screenfull/dist/screenfull.js"></script>
+        <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="dist/js/theme.min.js"></script>
+        <script src="js/tables.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
