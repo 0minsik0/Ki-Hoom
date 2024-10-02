@@ -2,6 +2,7 @@
  * ThemeKit v1 (https://lavalite.org/)
  * Copyright 2018 The Lavalite Authors
  */
+ 
 html {
   font-family: sans-serif;
   /* 1 */
@@ -5222,6 +5223,7 @@ body {
         .wrapper .page-wrap .app-sidebar .sidebar-header .header-brand .logo-img {
           display: inline-block;
           width: 30px; }
+          
       .wrapper .page-wrap .app-sidebar .sidebar-header .nav-toggle {
         border: none;
         background-color: transparent;
