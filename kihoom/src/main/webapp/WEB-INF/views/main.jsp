@@ -128,7 +128,7 @@
                     <div class="sidebar-header">
                         <a class="header-brand" href="./index.jsp">
                             <div class="logo-img">
-                               <img src="resources/src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
+                               <img src="resources/src/img/kLogo.png" class="header-brand-img" alt="lavalite" width="30px"> 
                             </div>
                             <span class="text">ThemeKit</span>
                         </a>
@@ -141,7 +141,7 @@
                             <nav id="main-menu-navigation" class="navigation-main">
                                 <div class="nav-lavel">Navigation</div>
                                 <div class="nav-item active">
-                                    <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
+                                    <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="resources/pages/navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
