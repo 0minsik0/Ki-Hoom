@@ -31,7 +31,7 @@
                     <div class="sidebar-header">
                         <a class="header-brand" href="./index.jsp">
                             <div class="logo-img">
-                               <img src="resources/src/img/kihoom.png" class="header-brand-img" alt="lavalite" width="60px"> 
+                               <img src="./resources/src/img/kihoom.png" class="header-brand-img" alt="lavalite" width="60px"> 
                             </div>
                             <span class="text" style="margin-left: 20px;">Ki-Hoom</span>
                         </a>
