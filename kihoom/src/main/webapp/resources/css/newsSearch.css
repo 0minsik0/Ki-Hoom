@@ -1,0 +1,68 @@
+form {
+  display: flex;
+  justify-items: flex-start;
+}
+
+/* search input css */
+.coolinput {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: 240px;
+}
+
+.coolinput label.text {
+  font-size: 0.75rem;
+  color: #0e4ead;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #f6f7fb;
+  width: fit-content;
+}
+
+.coolinput input[type="text"].newsInput {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #0e4ead solid;
+  border-radius: 5px;
+  background: transparent;
+}
+
+.coolinput input[type="text"].newsInput:focus {
+  outline: none;
+}
+
+/* search button css */
+.nSearchBtn {
+  background: transparent;
+  display: flex;
+  height: 41px;
+  margin: 19px 5px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #0e4ead;
+  border-radius: 5px;
+  outline: none;
+  overflow: hidden;
+  color: #0e4ead;
+  transition: color 0.3s 0.1s ease-out;
+  text-align: center;
+}
+
+.nSearchBtn span {
+  margin: 10px;
+}
+
+.nSearchBtn:hover {
+  color: #fff;
+  border: 1px solid #0e4ead;
+  background-color: #0e4ead;
+  transition: 1s;
+  border-radius: 5px;
+}

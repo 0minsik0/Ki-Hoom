@@ -24,6 +24,8 @@
         <link rel="stylesheet" href="resources/node_modules/owl.carousel/dist/assets/owl.theme.default.css">
         <link rel="stylesheet" href="resources/dist/css/theme.min.css">
         <script src="resources/src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <!-- jQuery 라이브러리 -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	
@@ -45,8 +47,12 @@
                                 <div class="nav-item active">
                                     <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
                                 </div>
-                                <div class="nav-item">
-                                    <a href="resources/pages/navbar.html"><i class="ik ik-menu"></i><span>뉴스</span> </a>
+                                <div class="nav-item has-sub">
+                                    <a href="javascript:void(0)"><i class="ik ik-menu"></i><span>뉴스</span> </a>
+                                    <div class="submenu-content">
+                                        <a href="view.ne" class="menu-item">📰 시장 포켓뉴스</a>
+                                        <a href="searchView.ne" class="menu-item">🔎 찾기</a>
+                                    </div>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>스케줄</span> </a>
