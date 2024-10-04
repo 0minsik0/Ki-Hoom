@@ -6,7 +6,9 @@
         <meta charset="UTF-8">
         <title>Insert title here</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="resources/stockCss/stockMain.css">
     </head>
 
     <body>
@@ -16,15 +18,353 @@
                 <jsp:include page="../menubar.jsp" />
                 <div class="main-content">
 
-                    asdfasdf
+                    <div class="table_session main_box">
+                        <h2 style="font-weight: 900;">차트</h2>
+                        <br>
+                        <div class="table_choose">
+                            <div class="choose">거래량</div>
+                            <div class="after"></div>
+                            <div class="choose">급상승</div>
+                            <div class="after"></div>
+                            <div class="choose">급하락</div>
+                            <div class="after"></div>
+                            <div class="choose">배당률</div>
+                        </div>
+                        <br>
+                        <table class="table_area">
+                            <thead>
 
-                </div>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <th>종목</th>
+                                    <th>현재가</th>
+                                    <th>등락률</th>
+                                    <th>거래대금</th>
+                                    <th>거래량</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래대금</td>
+                                    <td>거래량</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+
+                        <div class="pageinfo_area">
+                            <button class="btn btn-outline-secondary">이전</button>
+                            <button class="btn btn-outline-secondary">1</button>
+                            <button class="btn btn-outline-secondary">다음</button>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="choose_stock_session main_box">
+                        <h2 style="font-weight: 900;">관심 주식</h2>
+                        <br>
+                        <table class="table_area">
+                            <thead>
+                                <tr>
+                                    <th>종목명</th>
+                                    <th>현재가</th>
+                                    <th>등락률</th>
+                                    <th>거래량</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>현재가</td>
+                                    <td>등락률</td>
+                                    <td>거래량</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="buy_stock_session main_box">
+                        <div class="flex">
+                            <h2 style="font-weight: 900;">실현손익합</h2>
+                            <h2 style="font-weight: 900;">-458,854</h2>
+
+                        </div>
+                        <br>
+                        <table class="table_area">
+                            <thead>
+                                <tr>
+                                    <th>종목명</th>
+                                    <th>매매일자</th>
+                                    <th>실현손익</th>
+                                    <th>손익률</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                                <tr>
+                                    <input type="hidden" name="stock_No" value="">
+                                    <td>종목명</td>
+                                    <td>매매일자</td>
+                                    <td>실현손익</td>
+                                    <td>손익률</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+
+                    <div class="main_box tag_session">
+                        <h2 style="font-weight: 900;">지금 뜨는 카테고리</h2>
+                        <hr>
+                        <div class="tag_area">
+                            <div>1*</div>
+                            <div>2*</div>
+                            <div>3*</div>
+                            <div>4*</div>
+                            <div>5*</div>
+                            <div>6*</div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div><!--  메인 content 끝  -->
             </div>
 
 
-
-
+            <!--  
             <script>
+                
 
 
 
@@ -189,13 +529,13 @@
                     })
                     */
 
-                    $.ajax({
-                        url: "volumeRank.st",
-                        success: function (data) {
-                            console.log(data)
-                        },
-                        error: function () { },
-                    })
+                $.ajax({
+                    url: "volumeRank.st",
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function () { },
+                })
 
 
 
@@ -205,11 +545,11 @@
 
 
 
-
+             
 
 
             </script>
-
+-->
 
 
         </div>
