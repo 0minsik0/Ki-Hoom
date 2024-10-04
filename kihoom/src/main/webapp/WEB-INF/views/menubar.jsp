@@ -45,9 +45,6 @@
                                 <div class="nav-item active">
                                     <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
                                 </div>
-                                <div class="nav-item active">
-                                    <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>게시판</span></a>
-                                </div>
                                 <div class="nav-item">
                                     <a href="resources/pages/navbar.html"><i class="ik ik-menu"></i><span>뉴스</span> </a>
                                 </div>
@@ -82,11 +79,11 @@
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-package"></i><span>포인트</span></a>
                                     <div class="submenu-content">
-                                        <a href="" class="menu-item">Session Timeout</a>
+                                        <a href="resources/pages/ui/session-timeout.html" class="menu-item">Session Timeout</a>
                                     </div>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>
+                                    <a href="resources/pages/ui/icons.html"><i class="ik ik-command"></i><span>환율</span></a>
                                 </div>
                             </nav>
                         </div>
