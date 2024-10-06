@@ -23,6 +23,7 @@ public class StockContoller {
 	private static final String appkey ="PSIfx1pdjQlgcjk1c7lNhaBHWnB15rr7T5JS";
 	private static final String appsecret ="lIs9yZIdbWjft8pCctH/fh8MfXsRvZqnqAjowhY+OCnOPFjNLO3MxYOhCLg0rOZubmLqJPQlaYw7lO6vp1N89l+xL9bfrzvh3+3OZET6WoeT83jRfaVXqEyzz8N6W/LMGJOTiyl+AQCfy3F4o9aJMTUYGsXI+zIPY5yxjpGtTYSyfoS8vAM=";
 	
+	private static String token ="";
 	
 	
 	/**

@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>Insert title here</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="resources/stockCss/stockMain.css">
@@ -341,12 +342,165 @@
                         <h2 style="font-weight: 900;">지금 뜨는 카테고리</h2>
                         <hr>
                         <div class="tag_area">
-                            <div>1*</div>
-                            <div>2*</div>
-                            <div>3*</div>
-                            <div>4*</div>
-                            <div>5*</div>
-                            <div>6*</div>
+                            <div class="tag_item">
+                                <div class="top_area">
+                                    <div class="top_left">
+                                        <div class="material-icons">looks_one</div>
+                                        <div>전자제품</div>
+                                    </div>
+                                    <div class="total">5.2%</div>
+                                </div>
+                                <div class="bottom_area">
+                                    
+                                        <div class="item">
+                                            <div class="title">1. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">2. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">3. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="tag_item">
+                                <div class="top_area">
+                                    <div class="top_left">
+                                        <div class="material-icons">looks_two</div>
+                                        <div>전자제품</div>
+                                    </div>
+                                    <div class="total">5.2%</div>
+                                </div>
+                                <div class="bottom_area">
+                                    
+                                        <div class="item">
+                                            <div class="title">1. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">2. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">3. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+
+                            <div class="tag_item">
+                                <div class="top_area">
+                                    <div class="top_left">
+                                        <div class="material-icons">looks_3</div>
+                                        <div>전자제품</div>
+                                    </div>
+                                    <div class="total">5.2%</div>
+                                </div>
+                                <div class="bottom_area">
+                                    
+                                        <div class="item">
+                                            <div class="title">1. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">2. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">3. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+
+                            <div class="tag_item">
+                                <div class="top_area">
+                                    <div class="top_left">
+                                        <div class="material-icons">looks_4</div>
+                                        <div>전자제품</div>
+                                    </div>
+                                    <div class="total">5.2%</div>
+                                </div>
+                                <div class="bottom_area">
+                                    
+                                        <div class="item">
+                                            <div class="title">1. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">2. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">3. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+
+                            <div class="tag_item">
+                                <div class="top_area">
+                                    <div class="top_left">
+                                        <div class="material-icons">looks_5</div>
+                                        <div>전자제품</div>
+                                    </div>
+                                    <div class="total">5.2%</div>
+                                </div>
+                                <div class="bottom_area">
+                                    
+                                        <div class="item">
+                                            <div class="title">1. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">2. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">3. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="tag_item">
+                                <div class="top_area">
+                                    <div class="top_left">
+                                        <div class="material-icons">looks_6</div>
+                                        <div>전자제품</div>
+                                    </div>
+                                    <div class="total">5.2%</div>
+                                </div>
+                                <div class="bottom_area">
+                                    
+                                        <div class="item">
+                                            <div class="title">1. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">2. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="title">3. 삼성</div>
+                                            <div class="rate">5.3%</div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+                        
                         </div>
 
 
