@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -24,6 +24,12 @@
                 <jsp:include page="menubar.jsp"/>
                 <div class="main-content">
                 	<button class="btn1">계좌 인증</button>
+                	
+                	<a href="account.me">계좌 조회</a>
+                	
+                	<p>계좌 번호: <span th:text="${account.accNumMask}"></span></p>
+  					<p>핀테크 번호: <span th:text="${account.finNum}"></span></p>
+  					<p>은행 이름: <span th:text="${account.bankName}"></span></p>
                 
                 </div>
                 
