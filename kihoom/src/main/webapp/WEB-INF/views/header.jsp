@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,11 +62,11 @@
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="resources/img/user.jpg" alt=""></a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="resources/pages/profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
-                                    <a class="dropdown-item" href="#"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="ik ik-mail dropdown-icon"></i> Inbox</a>
-                                    <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> Message</a>
+                                    <a class="dropdown-item" href="resources/pages/profile.html"><i class="ik ik-user dropdown-icon"></i> 마이페이지</a>
                                     <a class="dropdown-item" href="resources/pages/login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+                                   	<c:if test="${ loginUser.memberId eq admin }">
+                                    	<a class="dropdown-item" href="admin.ad"><i class="ik ik-settings dropdown-icon"></i> 관리자페이지</a>
+                                    </c:if>
                                 </div>
                             </div>
 
