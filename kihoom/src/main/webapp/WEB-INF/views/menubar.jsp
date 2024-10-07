@@ -44,14 +44,19 @@
                     <div class="sidebar-content">
                         <div class="nav-container">
                             <nav id="main-menu-navigation" class="navigation-main">
-                                <div class="nav-item active">
-                                    <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
+                                <div class="nav-item has-sub">
+                                    <a href="javascript:void(0)"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
+                                    <div class="submenu-content">
+                                    	<a href="acountBook.ac" class="menu-item">🧾 가계부</a>
+                                    	<a href="target.ta" class="menu-item">💰 자산 모으기</a>
+                                    	
+                                    </div>
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-menu"></i><span>뉴스</span> </a>
                                     <div class="submenu-content">
                                         <a href="view.ne" class="menu-item">📰 시장 포켓뉴스</a>
-                                        <a href="searchView.ne" class="menu-item">🔎 찾기</a>
+                                        <a href="searchView.ne" class="menu-item">🔎 뉴스 검색</a>
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">

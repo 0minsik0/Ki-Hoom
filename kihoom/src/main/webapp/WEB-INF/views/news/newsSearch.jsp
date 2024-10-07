@@ -6,6 +6,8 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8" />
     <title>news search</title>
     <link rel="stylesheet" href="resources/css/newsSearch.css" />
+    <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="wrapper">
