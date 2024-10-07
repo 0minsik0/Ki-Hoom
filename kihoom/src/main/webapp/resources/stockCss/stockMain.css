@@ -9,7 +9,8 @@
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 1px 3px 0px #444
+    box-shadow: 0px 1px 3px 0px #444;
+    min-height: 550px;
 }
 
 .table_area tbody>tr td {
@@ -29,6 +30,35 @@
 
 }
 
+.main-content .table_session .top_area {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.main-content .table_session .top_area .stock_search_area>form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px
+}
+
+.main-content .table_session .top_area .stock_search_area>form>input {
+    padding: 5px;
+
+}
+
+.main-content .table_session .top_area .stock_search_area>form>button {
+    border-radius: 5px;
+    background-color: transparent;
+    transition: .3s;
+}
+
+.main-content .table_session .top_area .stock_search_area>form>button:hover {
+    border-radius: 5px;
+    background-color: #dae7ff;
+}
+
 .main-content .table_session .table_choose {
     display: flex;
     gap: 10px;
@@ -39,6 +69,10 @@
     font-weight: 600;
     color: #808080;
     cursor: pointer;
+}
+
+.main-content .table_session .table_choose .choose.active {
+    color: #333;
 }
 
 .main-content .table_session .table_choose .after {
@@ -58,6 +92,15 @@
     text-align: center;
 
 }
+
+.main-content .table_session .table_area tbody .red {
+    color: red;
+}
+
+.main-content .table_session .table_area tbody .blue {
+    color: blue;
+}
+
 
 
 
@@ -141,48 +184,49 @@
     padding: 10px;
 }
 
-.main-content .tag_session .tag_area .tag_item .top_area{
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 600;
+.main-content .tag_session .tag_area .tag_item .top_area {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 600;
 }
 
-.main-content .tag_session .tag_area .tag_item .top_area .top_left{
+.main-content .tag_session .tag_area .tag_item .top_area .top_left {
     display: flex;
     font-size: 18px;
     font-weight: 600;
     gap: 10px;
-  }
-  .main-content .tag_session .tag_area .tag_item .top_area .total{
+}
+
+.main-content .tag_session .tag_area .tag_item .top_area .total {
     font-size: 18px;
     font-weight: 900;
     color: red;
     margin-right: 20px;
-  }
+}
 
 
 
-  .main-content .tag_session .tag_area .tag_item .bottom_area{
+.main-content .tag_session .tag_area .tag_item .bottom_area {
     display: flex;
     gap: 10px;
     font-weight: 600;
     font-size: 12px;
     margin-top: 10px;
- 
-  }
+
+}
 
 
-  
-  .main-content .tag_session .tag_area .tag_item .bottom_area .item{
+
+.main-content .tag_session .tag_area .tag_item .bottom_area .item {
     margin-top: 10px;
     display: flex;
     gap: 5px;
     font-weight: 600;
     font-size: 15px;
- 
-  }
 
-  .main-content .tag_session .tag_area .tag_item .bottom_area .item .rate{ 
+}
+
+.main-content .tag_session .tag_area .tag_item .bottom_area .item .rate {
     color: red;
-  }
+}
