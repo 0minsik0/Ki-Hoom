@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,8 @@
                                     <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
                                     <a class="dropdown-item" href="#"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="ik ik-mail dropdown-icon"></i> Inbox</a>
                                     <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> Message</a>
-                                    <a class="dropdown-item" href="resources/pages/login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+                                    <!--<a class="dropdown-item" href="resources/pages/login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>  -->
+                                    <a class="dropdown-item" href="loginView.lo"><i class="ik ik-power dropdown-icon"></i> Logout</a>
                                 </div>
                             </div>
 
