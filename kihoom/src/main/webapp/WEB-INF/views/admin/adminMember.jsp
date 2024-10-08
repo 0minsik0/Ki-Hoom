@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="resources/node_modules/owl.carousel/dist/assets/owl.theme.default.css">
         <link rel="stylesheet" href="resources/dist/css/theme.min.css">
         <script src="resources/src/js/vendor/modernizr-2.8.3.min.js"></script>
+        
 </head>
 <body>
 
@@ -88,6 +89,48 @@
         </script>
                 <jsp:include page="../header.jsp"/>
                 <div class="main-content">
+                	<div class="col-xl-8 col-md-6" style="margin: auto; max-width: 85%;">
+                                <div class="card table-card">
+                                    <div class="card-header">
+                                        <h3>회원관리</h3>
+                                        <div class="card-header-right">
+                                            <ul class="list-unstyled card-option">
+                                                <li><i class="ik ik-chevron-left action-toggle"></i></li>
+                                                <li><i class="ik ik-minus minimize-card"></i></li>
+                                                <li><i class="ik ik-x close-card"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>회원명</th>
+                                                        <th>상태</th>
+                                                        <th>신고누적횟수</th>
+                                                        <th>수정/삭제</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>회원명</td>
+                                                        <td>
+                                                            <div class="p-status bg-green"></div>
+                                                        </td>
+                                                        <td>신고받은횟수</td>
+                                                        <td>
+                                                            <a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                                            <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                 </div>
             </div>
     </div>

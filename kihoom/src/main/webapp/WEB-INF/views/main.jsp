@@ -39,7 +39,7 @@
                             <div class="list-group row">
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Gene Newman">
                                     <figure class="user--online">
-                                        <img src="resources/img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src=" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Gene Newman</span>  <span class="username">@gene_newman</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Billy Black">
@@ -64,7 +64,7 @@
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
                                     <figure class="user--offline">
-                                        <img src="resources/img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
