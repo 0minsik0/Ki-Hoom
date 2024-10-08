@@ -31,6 +31,7 @@ public class StockContoller {
 	
 	private static String token ="";
 	
+	private static String approvalKey="";
 	
 	/**
 	 * @return 
@@ -51,14 +52,7 @@ public class StockContoller {
 	
 	
 	
-	@ResponseBody
-	@RequestMapping(value="stockKey.st" ,produces="aplication/json; charset=utf-8")
-	public String stockTKey() {
-		JSONObject key = new JSONObject();
-		key.put("appkey", tAppkey);
-		key.put("appsecret", tAppsecret);
-		return key.toJSONString();
-	}
+	
 	
 	
 	
@@ -127,11 +121,11 @@ public class StockContoller {
 	 */
 	@ResponseBody
 	@RequestMapping(value="nowquotes.st", produces ="apllication/json; charset=utf-8")
-	public String inquirePrice(String authorization) throws IOException, IOException {
+	public String inquirePrice(String code) throws IOException, IOException {
 		
 		String url = "https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price";
-		url +="?fid_cond_mrkt_div_code=J" + //FID 조건 시장 분류 코드
-                "&fid_input_iscd=000660"; //FID 입력 종목코드
+		url +="?fid_cond_mrkt_div_code=J" ; //FID 조건 시장 분류 코드
+		url +=   "&fid_input_iscd="+code; //FID 입력 종목코드
 		
 		/*
 		url += "?authorization="+ authorization;
@@ -144,9 +138,9 @@ public class StockContoller {
 		//System.out.println(authorization);
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("content-type", "application/json");
-		conn.setRequestProperty("authorization","Bearer "+ authorization);
-		conn.setRequestProperty("appkey", tAppkey);
-		conn.setRequestProperty("appsecret", tAppsecret);
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
 		conn.setRequestProperty("tr_id", "FHKST01010100 ");
 		
 		conn.connect();
@@ -346,12 +340,79 @@ public class StockContoller {
 	
 	
 	@RequestMapping("detail.st")
-	public ModelAndView detailForm(String code,ModelAndView mv) {
+	public ModelAndView detailForm(String code,ModelAndView mv) throws IOException {
 		
-		mv.addObject("code", code).setViewName("stock/stockDeteil");
+		
+		if(approvalKey.equals("")) {
+			approvalKey();
+		}
+		
+		mv.addObject("code", code).addObject("approvalKey", approvalKey).setViewName("stock/stockDeteil");
 		
 		return mv;
 	}
+	
+	
+	
+	
+	/**
+	 * @throws 실시간 웹소켓 키
+	 */
+	public void approvalKey() throws  IOException {
+		
+		String url = "https://openapi.koreainvestment.com:9443/oauth2/Approval";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		//String data ="grant_type=client_credentials&appkey="+appkey+"&appsecret="+appsecret;
+		
+		JSONObject data  = new JSONObject();
+		data.put("grant_type", "client_credentials");
+		data.put("appkey", appkey);
+		data.put("secretkey", appsecret);
+		
+		
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("content-type", "application/json");
+		//conn.setRequestProperty(key, value);
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(data.toJSONString().getBytes("UTF-8"));
+		//os.flush();
+		os.close();
+		
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText ="";
+		
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		
+		conn.disconnect();
+		//System.out.println(responseText);
+		JsonObject jo = JsonParser.parseString(responseText).getAsJsonObject();
+		
+		//System.out.println(responseText);
+		
+		approvalKey =jo.get("approval_key").getAsString();
+		
+		
+		
+		
+		
+	}
+	
+	
 	
 	
 	

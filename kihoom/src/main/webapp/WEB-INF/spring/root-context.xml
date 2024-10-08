@@ -5,7 +5,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-
 	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
@@ -21,7 +20,6 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
-	
 
 		
 		
