@@ -612,8 +612,11 @@
 
                 $(".table_session .table_area").on("click", "tbody>tr", function () {
                     const stock_no = $(this).children('input').val();
-                    //console.log(stock_no)
-                    location.href = "detail.st?code=" + stock_no
+                    const arr =$(this).children("td").eq(0).text().split(" ");
+                    arr.shift()
+                    const stock_name =arr.join();
+                    // console.log(stock_name)
+                    location.href = "detail.st?code=" + stock_no +"&codeName="+stock_name
                 })
 
 

@@ -340,14 +340,14 @@ public class StockContoller {
 	
 	
 	@RequestMapping("detail.st")
-	public ModelAndView detailForm(String code,ModelAndView mv) throws IOException {
+	public ModelAndView detailForm(String code,String codeName,ModelAndView mv) throws IOException {
 		
 		
 		if(approvalKey.equals("")) {
 			approvalKey();
 		}
 		
-		mv.addObject("code", code).addObject("approvalKey", approvalKey).setViewName("stock/stockDeteil");
+		mv.addObject("code", code).addObject("codeName", codeName).addObject("approvalKey", approvalKey).setViewName("stock/stockDeteil");
 		
 		return mv;
 	}

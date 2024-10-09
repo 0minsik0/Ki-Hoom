@@ -27,7 +27,7 @@
                         <div class="header ">
                             <div class="header_stock">
                                 <div class="header_title">
-                                    <div class="stock_name">삼성전자</div>
+                                    <div class="stock_name">${codeName}</div>
                                     <div class="stock_price">60,000원</div>
                                 </div>
                                 <div class="prev_price">어제보다 <span class="red">600원(16%)</span></div>
@@ -49,35 +49,31 @@
                         <br>
                         <div class="stock_items">
 
-                            <div class="stock_item">
-                                <div class="item_name">시가총액</div>
-                                <div class="item_price">51561원</div>
-                            </div>
-
-                            <div class="split"></div>
+                
 
                             <div class="stock_item">
                                 <div class="item_name">1일 최저</div>
-                                <div class="item_price">51561원</div>
+                                <div class="item_price now_low"><span></span>원</div>
                             </div>
 
                             <div class="split"></div>
                             <div class="stock_item">
                                 <div class="item_name">1일 최고</div>
-                                <div class="item_price">51561원</div>
+                                <div class="item_price now_higt"><span></span>원</div>
+
                             </div>
 
                             <div class="split"></div>
                             <div class="stock_item">
                                 <div class="item_name">1년 최저</div>
-                                <div class="item_price">51561원</div>
+                                <div class="item_price stck_dryy_lwpr">51561원</div>
                             </div>
 
                             <div class="split"></div>
 
                             <div class="stock_item">
                                 <div class="item_name">1년 최고</div>
-                                <div class="item_price">51561원</div>
+                                <div class="item_price stck_dryy_hgpr">51561원</div>
                             </div>
 
                         </div>
@@ -105,52 +101,54 @@
                                 <br><br>
                                 <div class="deteil_item">
                                     <div class="item">
-                                        <div class="name">주식 현재가</div>
-                                        <div>ㄹ</div>
-                                        <div class="name">전일 대비</div>
-                                        <div>ㄹ</div>
+                                        <div class="name">주식 상한가</div>
+                                        <div class="stck_mxpr">ㄹ</div>
+                                        <div class="name">주식 하한가</div>
+                                        <div class="stck_llam">ㄹ</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="name">주식 최고가</div>
+                                        <div class="stck_mxpr">ㄹ</div>
+                                        <div class="name">주식 최저가</div>
+                                        <div class="stck_mxpr">ㄹ</div>
                                     </div>
                                     <div class="item">
                                         <div class="name">누적 거래 대금</div>
-                                        <div>ㄹ</div>
+                                        <div class="acml_tr_pbmn">ㄹ</div>
                                         <div class="name">누적 거래량</div>
-                                        <div>ㄹ</div>
+                                        <div class="acml_vol">ㄹ</div>
                                     </div>
                                     <div class="item">
                                         <div class="name">주식 시가</div>
-                                        <div>ㄹ</div>
+                                        <div class="stck_oprc">ㄹ</div>
                                         <div class="name">전일 대비 거래량 비율</div>
-                                        <div>ㄹ</div>
+                                        <div class="prdy_vrss_vol_rate">ㄹ</div>
                                     </div>
-                                    <div class="item">
-                                        <div class="name">주식 상한가</div>
-                                        <div>ㄹ</div>
-                                        <div class="name">주식 하한가</div>
-                                        <div>ㄹ</div>
-                                    </div>
+                             
                                     <div class="item">
                                         <div class="name">주식 기준가</div>
-                                        <div>ㄹ</div>
+                                        <div class="stck_sdpr">ㄹ</div>
                                         <div class="name">가중 평균 주식 가격</div>
-                                        <div>ㄹ</div>
+                                        <div class="wghn_avrg_stck_prc">ㄹ</div>
                                     </div>
                                     <div class="item">
                                         <div class="name">자본금</div>
-                                        <div>ㄹ</div>
+                                        <div class="cpfn">ㄹ</div>
                                         <div class="name">액면가</div>
-                                        <div>ㄹ</div>
+                                        <div class="stck_fcam">ㄹ</div>
                                     </div>
                                     <div class="item">
                                         <div class="name">52주일 최고가</div>
-                                        <div>ㄹ</div>
+                                        <div class="w52_hgpr">ㄹ</div>
                                         <div class="name">52주일 최저가</div>
-                                        <div>ㄹ</div>
+                                        <div class="w52_lwpr">ㄹ</div>
+
                                     </div>
                                     <div class="item">
-                                        <div class="name">호가단위</div>
-                                        <div>ㄹ</div>
+                                        <div class="name">결산 월</div>
+                                        <div class="stac_month">ㄹ</div>
                                         <div class="name">외국인 보유 수량</div>
-                                        <div>ㄹ</div>
+                                        <div class="frgn_hldn_qty">ㄹ</div>
                                     </div>
 
                                 </div>
@@ -256,11 +254,11 @@
         <script>
             $(function () {
 
+                nowStock()
 
 
 
-
-                websokect()
+                //websokect()
             })
             const ctx = document.getElementById('stock_chart');
 
@@ -334,8 +332,61 @@
                         code: "${code}"
                     },
                     success: function (data) {
-                        console.log(data.output)
+                         console.log(data.output)
+                        const stock = data.output
+                        console.log(stock.rprs_mrkt_kor_name)
+                        $(".header_stock .stock_price").text(stock.stck_prpr+"원")
+                        $(".prev_price span").text(stock.prdy_vrss+"원("+stock.prdy_ctrt+"%)")
+               
+                        if(stock.prdy_vrss<0){
+                            // console.log("0보다 작다")
+                            $(".prev_price span").removeClass()
+                            $(".prev_price span").addClass("blue")
 
+                        }else{
+                            $(".prev_price span").removeClass()
+                            $(".prev_price span").addClass("red")
+                        }
+                        
+                        const now_low= $(".stock_items .item_price.now_low span") // 금일 최저
+                        const now_higt =$(".stock_items .item_price.now_higt span") // 금일 최고
+
+
+                        if(stock.stck_prpr>now_higt.text()){
+                            now_higt.text(stock.stck_prpr)
+                        }
+
+
+                        if(now_low.text()==0){
+                            now_low.text(stock.stck_prpr)
+                        }
+
+                        if(stock.stck_prpr<now_higt.text()){
+                            now_low.text(stock.stck_prpr)
+                        }
+
+
+                        $(".stock_items .item_price.stck_dryy_hgpr").text(stock.stck_dryy_hgpr  + "원") //연중 최고가
+                        $(".stock_items .item_price.stck_dryy_lwpr").text(stock.stck_dryy_lwpr  + "원") //연중 최저가
+                  
+                        $(".stock_detail .deteil_item .item .stck_mxpr").text(stock.stck_mxpr  + "원") //상한가
+                        $(".stock_detail .deteil_item .item .stck_llam").text(stock.stck_llam  + "원") //하한가
+                        $(".stock_detail .deteil_item .item .acml_tr_pbmn").text(stock.acml_tr_pbmn  + "원") //누적거래대금
+                        $(".stock_detail .deteil_item .item .acml_vol").text(stock.acml_vol  + "건") //누적거래량
+                        $(".stock_detail .deteil_item .item .prdy_vrss_vol_rate").text(stock.prdy_vrss_vol_rate  + "%") //전일대배 거래량 비율
+                        $(".stock_detail .deteil_item .item .stck_oprc").text(stock.stck_oprc  + "원") //시가
+                        $(".stock_detail .deteil_item .item .stck_sdpr").text(stock.stck_sdpr  + "원") //기준가
+                        $(".stock_detail .deteil_item .item .wghn_avrg_stck_prc").text(stock.wghn_avrg_stck_prc  + "원") //가중평균 주식 가격
+                        $(".stock_detail .deteil_item .item .cpfn").text(stock.cpfn  + stock.cpfn_cnnm) //자본금
+                        $(".stock_detail .deteil_item .item .stck_fcam").text(stock.stck_fcam  + stock.fcam_cnnm) //액면가
+                        $(".stock_detail .deteil_item .item .w52_hgpr").text(stock.w52_hgpr  + "원") //52주 최고가
+                        $(".stock_detail .deteil_item .item .w52_lwpr").text(stock.w52_lwpr  + "원") ///52주 최저가
+                        $(".stock_detail .deteil_item .item .stac_month").text(stock.stac_month  + "월") //결산월
+                        $(".stock_detail .deteil_item .item .frgn_hldn_qty").text(stock.frgn_hldn_qty  + "원") //외국인보유
+
+
+
+                        
                     }
 
                 })
@@ -344,39 +395,39 @@
 
 
 
-            function websokect() {
-                const ws = new WebSocket("ws://ops.koreainvestment.com:21000/tryitout/H0IFCNT0");
+            // function websokect() {
+            //     const ws = new WebSocket("ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0");
 
-                ws.onopen = function () {
-                    ws.send(JSON.stringify(sendMssage))
-                    ws.onmessage = function (event) {
-                        console.log(event)
-                        console.log(event.data)
-                        let msg = filterUnicode(event.data)
-                        // console.log(msg[1])
-                        if (msg[0] === 0 || msg[0] === 1) {
-                            console.log('dd')
-                        } else {
-                            const json = event.data;
-                            // console.log(json)
-                            let obj = JSON.parse(json);
-                            let trid = obj.header.tr_id
-                            let encyn = obj.header.encyn
-                            // console.log(trid)
+            //     ws.onopen = function () {
+            //         ws.send(JSON.stringify(sendMssage))
+            //         ws.onmessage = function (event) {
+            //             //console.log(event)
+            //             console.log(event.data)
+            //             let msg = filterUnicode(event.data)
+            //             // console.log(msg[1])
+            //             if (msg[0] === 0 || msg[0] === 1) {
+            //                 //console.log('dd')
+            //             } else {
+            //                 const json = event.data;
+            //                 // console.log(json)
+            //                 let obj = JSON.parse(json);
+            //                 let trid = obj.header.tr_id
+            //                 let encyn = obj.header.encyn
+            //                 // console.log(trid)
 
-                            if (trid === "PINGPONG") {
-                                nowStock();
-                            }
-
-
+            //                 if (trid === "PINGPONG") {
+            //                    // nowStock();
+            //                 }
 
 
 
 
-                        }
-                    }
-                }
-            }
+
+
+            //             }
+            //         }
+            //     }
+            // }
 
 
 
