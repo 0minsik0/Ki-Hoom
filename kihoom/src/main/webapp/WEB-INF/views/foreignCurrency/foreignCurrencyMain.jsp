@@ -178,7 +178,7 @@ b {
 							</div>
 						</div>
 					</div>
-					<div class="row" style="justify-content: center;">
+					<div class="row">
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-body">
@@ -201,6 +201,44 @@ b {
 								</div>
 							</div>
 						</div>
+						
+						<!-- 환율계산기 -->
+						<div class="col-lg-4 col-md-12">
+                                <div class="card" style="height:473.59px;">
+                                    <div class="card-header">
+                                        <h3>환율계산기</h3>
+                                    </div>
+                                    <div class="card-body calculator" style="margin-top: 60px;">
+                                    	<label for="krw-amount"><b>한국 원화 (KRW):</b></label>
+							            <input type="number" id="krw-amount" class="form-control" placeholder="원화 금액을 입력하세요"><br>
+							
+							            <label for="currency-select"><b>환산할 국가를 선택하세요:</b></label>
+							            <select id="currency-select" class="form-control">
+							                <option value="" selected disabled hidden>국가를 선택하세요.</option>
+							                <option value="JPY(100)">일본(JPY)</option>
+											<option value="USD">미국(USD)</option>
+											<option value="EUR">유럽(EUR)</option>
+											<option value="THB">태국(THB)</option>
+											<option value="AUD">호주(AUD)</option>
+											<option value="CAD">캐나다(CAD)</option>
+											<option value="CHF">스위스(CHF)</option>
+											<option value="CNH">중국(CNY)</option>
+											<option value="DKK">덴마크(DKK)</option>
+											<option value="GBP">영국(GBP)</option>
+											<option value="HKD">홍콩(HKD)</option>
+											<option value="KWD">쿠웨이트(KWD)</option>
+											<option value="NOK">노르웨이(NOK)</option>
+											<option value="NZD">뉴질랜드(NZD)</option>
+											<option value="SAR">사우디(SAR)</option>
+											<option value="SGD">싱가포르(SGD)</option>
+											<option value="SEK">스웨덴(SEK)</option>
+							            </select><br>
+							
+							            <!-- 환산된 금액을 보여줄 곳 -->
+							            <p><b>환산된 금액:</b> <span id="converted-amount">-</span></p>
+                                    </div>
+                                </div>
+                            </div>
 					</div>
 				</div>
 
@@ -404,6 +442,91 @@ b {
 	        markers[i].setMap(null);
 	    }
 	    markers = [];
+	}
+	
+	// 환율계산기
+	var exchangeRates = {
+    'JPY(100)': null,
+    'USD': null,
+    'EUR': null,
+    'THB': null,
+    'AUD': null,
+	'CAD': null,
+	'CHF': null,
+	'CNH': null,
+	'DKK': null,
+	'GBP': null,
+	'HKD': null,
+	'KWD': null,
+	'NOK': null,
+	'NZD': null,
+	'SAR': null,
+	'SGD': null,
+	'SEK': null
+	};
+	
+	// 초기 데이터 로드 및 선택한 국가 데이터 표시
+	$(document).ready(function() {
+	    // 국가 선택 시 환율 정보 업데이트
+	    $('#currency-select').change(function() {
+	        var selectedCurrency = $(this).val();
+	        if (exchangeRates[selectedCurrency]) {
+	            updateConvertedAmount($('#krw-amount').val(), selectedCurrency);
+	        } else {
+	            fetchExchangeRateForCalculator(selectedCurrency); // 선택한 국가 환율 정보 가져오기
+	        }
+	    });
+
+	    // 원화 금액 입력 시 환율 계산
+	    $('#krw-amount').on('input', function() {
+	        var krwAmount = $(this).val();
+	        var selectedCurrency = $('#currency-select').val();
+	        updateConvertedAmount(krwAmount, selectedCurrency);
+	    });
+	});
+
+	// 선택된 국가의 환율을 사용해 환산된 금액을 업데이트하는 함수
+	function updateConvertedAmount(krwAmount, selectedCurrency) {
+	    if (krwAmount && !isNaN(krwAmount) && exchangeRates[selectedCurrency]) {
+	        var convertedAmount = (krwAmount / exchangeRates[selectedCurrency]).toFixed(2); // 환산된 금액 계산
+	        $('#converted-amount').text(convertedAmount + " " + selectedCurrency.split('(')[0]); // 통화 단위와 함께 표시
+	    } else {
+	        $('#converted-amount').text('-'); // 유효한 입력이 없을 경우
+	    }
+	}
+
+	// 특정 국가의 환율 정보를 가져오는 함수 (환율 계산기용)
+	function fetchExchangeRateForCalculator(countryCode) {
+	    $.ajax({
+	        url: 'foreign.fo', // 서버 API 요청
+	        type: 'POST',
+	        dataType: 'json',
+	        success: function(data) {
+	            var selectedData = data.find(function(item) {
+	                return item.cur_unit === countryCode;
+	            });
+
+	            if (selectedData) {
+	                // 선택된 국가의 환율을 저장
+	                if (countryCode === 'JPY(100)') {
+	                    exchangeRates['JPY(100)'] = selectedData.deal_bas_r / 100; // 100엔 기준 환율 처리
+	                } else {
+	                    exchangeRates[countryCode] = selectedData.deal_bas_r; // 환율 저장
+	                }
+
+	                // 원화 입력값이 있으면 즉시 환산
+	                var krwAmount = $('#krw-amount').val();
+	                if (krwAmount) {
+	                    updateConvertedAmount(krwAmount, countryCode);
+	                }
+	            } else {
+	                console.error('환율 데이터를 찾을 수 없습니다.');
+	            }
+	        },
+	        error: function() {
+	            console.error('환율 데이터를 가져오는데 실패했습니다.');
+	        }
+	    });
 	}
 	
 	</script>

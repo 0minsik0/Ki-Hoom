@@ -19,7 +19,7 @@ public class foreignController {
 	
 	@ResponseBody
 	@RequestMapping(value="foreign.fo", produces="application/json")
-	public String foreignController() throws IOException{
+	public String foreignCurrency() throws IOException{
 		
 		
 		LocalDate now = LocalDate.now();
@@ -54,7 +54,7 @@ public class foreignController {
 	}
 	
 	@RequestMapping("foreign.fo")
-	public String foreignCurrency() {
+	public String foreignCurrencyMain() {
 		return "foreignCurrency/foreignCurrencyMain";
 	}
 

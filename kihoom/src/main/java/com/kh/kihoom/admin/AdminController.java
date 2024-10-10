@@ -20,5 +20,7 @@ public class AdminController {
 	public String adminBoard() {
 		return "admin/adminBoard";
 	}
+	
+	
 
 }
