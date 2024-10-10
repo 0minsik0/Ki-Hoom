@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,6 +30,12 @@ public class StockContoller {
 	
 	private static final String appkey ="PSIfx1pdjQlgcjk1c7lNhaBHWnB15rr7T5JS";
 	private static final String appsecret ="lIs9yZIdbWjft8pCctH/fh8MfXsRvZqnqAjowhY+OCnOPFjNLO3MxYOhCLg0rOZubmLqJPQlaYw7lO6vp1N89l+xL9bfrzvh3+3OZET6WoeT83jRfaVXqEyzz8N6W/LMGJOTiyl+AQCfy3F4o9aJMTUYGsXI+zIPY5yxjpGtTYSyfoS8vAM=";
+	
+	
+	private static final String naverId ="ZPsZLlyR0_kD8ni2BjxA";
+	private static final String naverSecret ="C6VrkqKczu";
+	
+	
 	
 	private static String token ="";
 	
@@ -412,6 +420,87 @@ public class StockContoller {
 		
 	}
 	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="dailyPrice.st", produces="aplication/json; charset=utf-8")
+	public String dailyPrice(String code, String daliy) throws IOException {
+		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-daily-price";
+		
+
+		url += "?FID_COND_MRKT_DIV_CODE=J";
+		url += "&FID_INPUT_ISCD="+code;
+		url += "&FID_PERIOD_DIV_CODE="+daliy;
+		url += "&FID_ORG_ADJ_PRC=0";
+
+
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization", "Bearer " +  token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHKST01010400");
+
+		
+		conn.connect();
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		br.close();
+		
+		conn.disconnect();
+		
+		//System.out.println(responseText);
+		return responseText;
+	}
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="naverNew.st", produces="aplication/json; charset=utf-8")
+	public String naverNewsStock(String codeName) throws IOException {
+		String url = "https://openapi.naver.com/v1/search/news.json";
+		
+		url+= "?query="+URLEncoder.encode(codeName,"UTF-8");
+		url+="&display=50";
+		url+="&sort=date";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Naver-Client-Id", naverId);
+		conn.setRequestProperty("X-Naver-Client-Secret", naverSecret);
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		br.close();
+		
+		conn.disconnect();
+		
+		//System.out.println(responseText);
+		return responseText;
+		
+	}
 	
 	
 	

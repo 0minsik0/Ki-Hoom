@@ -1,8 +1,8 @@
 .main-content {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 30px;
 }
 
 
@@ -129,7 +129,46 @@
 .main-content .content_session .body .chart_area>div:first-child {
     font-weight: 600;
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.main-content .content_session .body .chart_area>.chart.hide {
+    display: none;
+}
+
+.main-content .content_session .body .chart_area>div:first-child>div:nth-child(2) {
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    gap: 10px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.main-content .content_session .body .chart_area>div:first-child>div:nth-child(2) button {
+    background-color: #ebebeb;
+    border: none;
+    border-radius: 5px;
+    transition: .4s;
+
+}
+
+.main-content .content_session .body .chart_area>div:first-child>div:nth-child(2) button.click {
+    background-color: #dae7ff;
+    border: none;
+    border-radius: 5px;
+    transition: .4s;
+
+}
+
+
+.main-content .content_session .body .chart_area>div:first-child>div:nth-child(2) button:hover {
+    background-color: #dae7ff;
+
+}
+
 
 .main-content .content_session .body .stock_detail {
     border-radius: 10px;
@@ -187,7 +226,10 @@
     font-weight: 600;
     font-size: 20px;
     margin-left: 10px;
+
 }
+
+
 
 .main-content .content_session .footer_session .news_area .content_area {
     background-color: #f3f7fd;
@@ -231,7 +273,14 @@
 .main-content .content_session .footer_session .news_area .content_area>.content>.news_title {
     font-weight: 600;
     font-size: 18px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.main-content .content_session .footer_session .news_area .content_area>.content>.news_title>div:nth-child(2) {
+    font-size: 13px;
+}
+
 
 .main-content .content_session .footer_session .news_area .content_area>.content>.news_content {
     font-weight: 600;
