@@ -1,0 +1,26 @@
+.wrap {
+  border-radius: 30px;
+}
+
+input {
+  outline-style: none;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+input:focus {
+  border-bottom: 1px solid #0e4ead;
+}
+
+#submit {
+  background-color: transparent;
+  color: #0e4ead;
+  border: 2px solid #0e4ead;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+#submit:hover {
+  background-color: #0e4ead;
+  color: white;
+}

@@ -22,7 +22,8 @@ public class AcountBookController {
 		return "acountBook/acountBookMain";
 	}
 	
-	@RequestMapping(value = "Certification.ac", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	@RequestMapping(value = "certification.ac", produces = "application/json; charset=utf-8")
 	public String certificationAcount() throws IOException {
 		
 		String url = "https://testapi.openbanking.or.kr/oauth/2.0/authorize";
@@ -33,8 +34,16 @@ public class AcountBookController {
 		url += "&state=123456789012345678901234567890" + (int)((Math.random()*99)+10);
 		url += "&auth_type=0";
 		
-		System.out.println(url);
-		
-		return "rediect:" + url ;
+		return "{\"url\":\"" + url + "\"}";
+	}
+	
+	@RequestMapping("inputView.ac")
+	public String acountBookInputView() {
+		return "inputAcountBook";
+	}
+	
+	@RequestMapping("input.ac")
+	public String inputAcountBook() {
+		return "redirect:inputAcountBook";
 	}
 }
