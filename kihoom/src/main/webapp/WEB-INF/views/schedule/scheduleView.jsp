@@ -98,7 +98,7 @@ pageEncoding="UTF-8"%>
       </header>
 
       <div class="page-wrap">
-        <jsp:include page="../menubar.jsp" />
+        <jsp:include page="../common/menubar.jsp"/>
         <div class="main-content">
         
         
