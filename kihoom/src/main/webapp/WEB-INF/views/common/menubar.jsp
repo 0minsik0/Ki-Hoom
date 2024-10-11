@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="resources/node_modules/owl.carousel/dist/assets/owl.theme.default.css">
         <link rel="stylesheet" href="resources/dist/css/theme.min.css">
         <script src="resources/src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	
@@ -42,8 +43,11 @@
                     <div class="sidebar-content">
                         <div class="nav-container">
                             <nav id="main-menu-navigation" class="navigation-main">
-                                <div class="nav-item active">
+                                <div class="nav-item">
                                     <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="list.bo"><i class="ik ik-users"></i><span>게시판</span></a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="resources/pages/navbar.html"><i class="ik ik-menu"></i><span>뉴스</span> </a>
