@@ -54,32 +54,32 @@ pageEncoding="UTF-8"%>
         
         			<div class="card-header"><h3>회원가입</h3></div>
                                     <div class="card-body">
-                                        <form class="forms-sample">
+                                        <form action="insert.me" method="post">
                                             <div class="form-group">
-                                                <label for="exampleInputUsername1">아이디</label>
-                                                <input type="text" class="form-control" id="name" placeholder="아이디를 입력해 주세요.">
+                                                <label for="exampleInputUsername">아이디</label>
+                                                <input type="text" class="form-control" id="name" name="memId" placeholder="아이디를 입력해 주세요.">
                                             </div>
                                         
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">비밀번호</label>
-                                                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해 주세요.">
+                                                <input type="password" class="form-control" id="password" name="memPwd" placeholder="비밀번호를 입력해 주세요.">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputConfirmPassword1">비밀번호 확인</label>
-                                                <input type="password" class="form-control" id="checkPassword" placeholder="비밀번호를 입력해 주세요.">
+                                                <label for="exampleInputPassword2">비밀번호 확인</label>
+                                                <input type="password" class="form-control" id="checkPassword"  placeholder="비밀번호를 입력해 주세요.">
                                             </div>
                                                 <div class="form-group">
-                                                <label for="exampleInputEmail1">이름</label>
-                                                <input type="text" class="form-control" id="name" placeholder="이름을 입력해 주세요.">
+                                                <label for="exampleInputName">이름</label>
+                                                <input type="text" class="form-control" id="name" name="memName" placeholder="이름을 입력해 주세요.">
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">이메일</label>
-                                                <input type="email" class="form-control" id="email" placeholder="이메일을 입력해 주세요.">
+                                                <label for="exampleInputEmail">이메일</label>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해 주세요.">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">이메일</label>
-                                                <input type="phone" class="form-control" id="phone" placeholder="전화번호를 입력해 주세요.">
+                                                <label for="exampleInputPhone">전화번호</label>
+                                                <input type="phone" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력해 주세요.">
                                             </div>
                                           
                                             <button type="submit" class="btn btn-primary mr-2">확인<button>

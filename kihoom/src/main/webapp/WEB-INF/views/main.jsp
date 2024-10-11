@@ -71,7 +71,7 @@
                             <div class="dropdown">
                                 <c:choose>
                                 	<c:when test="${ empty loginUser }">
-                                		 <a href="enrollForm.me">회원가입</a> |
+                                		 <a href="memberEnrollForm.me">회원가입</a> |
 		               					 <a href="loginView.lo">로그인</a>
                                 	</c:when>
                                 	<c:otherwise>

@@ -46,11 +46,11 @@
 		      ) VALUES 
 		      ( 
 			          SEQ_MEMBER.NEXTVAL
-			       , '#{memId}'
-			       , '#{memPwd}'
-			       , '#{memName}'
-			       , '#{email}'
-			       , '#{phone}'
+			       , #{memId}
+			       , #{memPwd}
+			       , #{memName}
+			       , #{email}
+			       , #{phone}
 		       )
 	</insert>
 	 
