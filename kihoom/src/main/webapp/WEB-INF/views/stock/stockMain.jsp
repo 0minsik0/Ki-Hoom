@@ -560,6 +560,8 @@
 
 
                 $('.pageinfo_area .page').on("click", function () {
+                    $('.pageinfo_area .page').removeClass("click")
+                    $(this).addClass(" click")
                     const num = $(this).text()
                     pageNum = num;
                     pageinfo(num)
@@ -604,7 +606,36 @@
 
 
 
+                $('.pageinfo_area .next').on("click", function () {
+                    let page = $('.pageinfo_area .page.click').text()
+                    let page1 = Number(page) + 1
 
+                    $('.pageinfo_area .page').each(function (index, item) {
+                        if (Number($(item).text()) === page1) {
+                            $(item).click()
+                        }
+
+                    })
+
+
+
+                })
+
+
+                $('.pageinfo_area .prev').on("click", function () {
+                    let page = $('.pageinfo_area .page.click').text()
+                    let page1 = Number(page) - 1
+
+                    $('.pageinfo_area .page').each(function (index, item) {
+                        if (Number($(item).text()) === page1) {
+                            $(item).click()
+                        }
+
+                    })
+
+
+
+                })
 
 
 
@@ -612,11 +643,11 @@
 
                 $(".table_session .table_area").on("click", "tbody>tr", function () {
                     const stock_no = $(this).children('input').val();
-                    const arr =$(this).children("td").eq(0).text().split(" ");
+                    const arr = $(this).children("td").eq(0).text().split(" ");
                     arr.shift()
-                    const stock_name =arr.join();
+                    const stock_name = arr.join();
                     // console.log(stock_name)
-                    location.href = "detail.st?code=" + stock_no +"&codeName="+stock_name
+                    location.href = "detail.st?code=" + stock_no + "&codeName=" + stock_name
                 })
 
 

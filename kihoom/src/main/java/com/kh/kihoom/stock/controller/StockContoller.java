@@ -505,5 +505,49 @@ public class StockContoller {
 	
 	
 	
+//	@ResponseBody
+//	@RequestMapping(value="", produces="")
+//	public String category() throws IOException {
+//		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-category-price";
+//		url += "?FID_COND_MRKT_DIV_CODE=U";
+//		url += "&FID_INPUT_ISCD=0001";
+//		url += "&FID_COND_SCR_DIV_CODE=20214";
+//		url += "&FID_MRKT_CLS_CODE=K";
+//		url += "&FID_BLNG_CLS_CODE=0";
+//		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+//		
+//		conn.setRequestMethod("GET");
+//		conn.setRequestProperty("content-type", "application/json");
+//		conn.setRequestProperty("authorization","Bearer "+token);
+//		conn.setRequestProperty("appkey", appkey	);
+//		conn.setRequestProperty("appsecret", appsecret);
+//		conn.setRequestProperty("tr_id", "FHPUP02140000");
+//		conn.setRequestProperty("custtype", "P");
+//		
+//		conn.connect();
+//		
+//		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//		
+//		String responseText ="";
+//		
+//		String line ="";
+//		
+//		while((line=br.readLine())!=null) {
+////			responseText += line;
+//			System.out.println(line);
+//		}
+//		
+//		br.close();
+//		
+//		conn.disconnect();
+//		
+//		return "";
+//	}
+	
+	
+	
+	
+	
+	
 	
 }
