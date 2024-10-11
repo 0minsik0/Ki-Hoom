@@ -19,9 +19,9 @@
 
 
         <div class="wrapper">
-            <jsp:include page="../header.jsp" />
+            <jsp:include page="../common/header.jsp" />
             <div class="page-wrap">
-                <jsp:include page="../menubar.jsp" />
+                <jsp:include page="../common/menubar.jsp" />
                 <div class="main-content">
                     <div class="deteil_session main_box">
                         <div class="header ">
@@ -370,6 +370,8 @@
                 const str = $(this).text()
                 if (str === "bookmark_border") {
                     $(this).text("bookmark")
+
+
                 } else {
                     $(this).text("bookmark_border")
                 }
