@@ -370,12 +370,35 @@
                 const str = $(this).text()
                 if (str === "bookmark_border") {
                     $(this).text("bookmark")
-
+                    stock_choose()
 
                 } else {
                     $(this).text("bookmark_border")
                 }
             })
+
+
+            function stock_choose() {
+                $.ajax({
+                    url: "choose.st",
+                    data: {
+                        code: "${code}",
+                        userNo: "${loginUser.memNo}"
+                    },
+                    success: function (result) {
+
+                    },
+                    error: function () {
+                        console.log("통신 실패")
+                    },
+
+                })
+            }
+
+
+
+
+
 
 
 

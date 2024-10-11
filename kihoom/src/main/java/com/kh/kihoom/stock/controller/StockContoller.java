@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+
 @Controller
 public class StockContoller {
 
@@ -502,6 +503,31 @@ public class StockContoller {
 		
 	}
 	
+	
+	
+//	
+//	@RequestMapping("choose.st")
+//	public String chooseStock(String code, String userNo) {
+//		
+//		System.out.println(code);
+//		System.out.println(userNo);
+//		
+//
+//		return "";
+//	}
+//	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="choose.st")
+	public String chooseStock(String code, String userNo) {
+		
+		System.out.println(code);
+		System.out.println(userNo);
+		
+		
+		return "stock/stockMain";
+	}
 	
 	
 	
