@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,17 +66,28 @@ public class NewsController {
 		return "news/newsSearch";
 	}
 	
-	// 뉴스찾기 API
+	// 딥서치 뉴스찾기 API
 	@ResponseBody
-	@RequestMapping("search.ne")
-	public String searchNews(String keyword) {
+	@RequestMapping(value = "search.ne", produces = "application/json; utf-8")
+	public String searchNews(String articles, String keyword) throws IOException {
 		
-		String url = "https://api-v2.deepsearch.com/v1/articles";
-		url += "?keyword=" + keyword;
+		String url = "https://api-v2.deepsearch.com/v1/" + articles;
+		url += "?keyword=title:(" + URLEncoder.encode(keyword, "utf-8") + ")";
 		url += "&api_key=" + apiKey;
 		
-		String responseText = "";
+		URL requetUrl = new URL(url);
 		
+		HttpURLConnection urlConnection = (HttpURLConnection)requetUrl.openConnection();
+		urlConnection.setRequestMethod("GET");
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+		
+		String responseText = "";
+		String line;
+		
+		while((line=br.readLine()) != null) {
+			responseText += line;
+		}
 		return responseText;
 	}
 	

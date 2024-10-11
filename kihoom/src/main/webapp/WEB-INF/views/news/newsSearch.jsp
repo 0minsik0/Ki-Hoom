@@ -15,24 +15,102 @@ pageEncoding="UTF-8"%>
       <div class="page-wrap">
         <jsp:include page="../menubar.jsp" />
         <div class="main-content">
-          <form action="search.ne">
-            <div class="coolinput">
-              <label for="input" class="text">keyword : </label>
-              <input
-                type="text"
-                placeholder="키워드를 입력해주세요 :)"
-                name="keyword"
-                class="newsInput"
-              />
-            </div>
-            <button type="submit" class="nSearchBtn">
-              <span>Search</span>
-            </button>
-          </form>
+          <select id="articles">
+            <option value="articles">국내 뉴스</option>
+            <option value="global-articles">해외 뉴스</option>
+          </select>
+          <div class="coolinput">
+            <label for="input" class="textlabel">keyword : </label>
+            <input
+              type="text"
+              placeholder="키워드를 입력해주세요 :)"
+              name="keyword"
+              class="newsInput"
+            />
+          </div>
+          <button type="submit" class="nSearchBtn" onclick="searchNews()">
+            <span>Search</span>
+          </button>
         </div>
       </div>
     </div>
 
-    <script></script>
+    <script>
+      let keywordInput = $(".newsInput");
+
+      $(".newsInput").on("keypress", (e) => {
+        if (e.keyCode == "13") {
+          if (keywordInput.val() != "") {
+            searchNews();
+          } else {
+            alert("키워드를 입력해주세요!");
+          }
+        }
+      });
+
+      function searchNews() {
+        if (keywordInput.val() != "") {
+          $.ajax({
+            url: "search.ne",
+            data: {
+              articles: $("#articles").val(),
+              keyword: keywordInput.val(),
+            },
+            success: function (data) {
+              console.log(data.data);
+
+              let items = data.data;
+
+              let value = "";
+              for (let i in items) {
+                let item = items[i];
+
+                if (articles == "articles") {
+                  value += <div class='card'>
+		       			 	+ <div class='image'><img src='${item.image_url}' alt='titleImage'></div>
+			   			 		+ <div class='content'>
+			   			 		  + <a href='${item.content_url}'>
+			   			 		    + <span class='title'> + ${item.title} + </span>
+			   					  + </a>
+			   					  + <p class='desc'> + ${item.summary} + </p>
+			   					  + <a class='action' href='${item.content_url}'>Detail View
+			   					    + <span aria-hidden='true'> → </span>
+			   					  + </a> </div> </div>
+                	}else{
+                		value += `<div class="card">
+	       					 <div class="image"><img src="${item.image_url}" alt="titleImage"></div>
+		   					  <div class="content">
+		   					    <a href="${item.content_url}">
+		   					      <span class="title">
+		   					        ${item.title_ko}
+		   					      </span>
+		   					    </a>
+		
+		   					    <p class="desc">
+		   					      ${item.summary_ko}
+		   					    </p>
+		
+		   					    <a class="action" href="${item.content_url}">
+		   					      Detail View
+		   					      <span aria-hidden="true">
+		   					        →
+		   					      </span>
+		   					    </a>
+		   					  </div>
+	   					  </div>`;
+                	}
+              }
+              $(".main-content").html(value);
+              keywordInput.val("");
+            },
+            error: function () {
+              console.log("search ajax 실패");
+            },
+          });
+        } else {
+          alert("키워드를 입력해주세요!");
+        }
+      }
+    </script>
   </body>
 </html>

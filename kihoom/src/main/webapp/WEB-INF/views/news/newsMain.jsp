@@ -15,15 +15,29 @@ pageEncoding="UTF-8"%>
       <jsp:include page="../header.jsp" />
       <div class="page-wrap">
         <jsp:include page="../menubar.jsp" />
-        <div class="main-content"></div>
+        <div class="main-content">
+        	<!-- 로딩될때..! -->
+        	<div class="typewriter" align="center">
+			    <div class="slide"><i></i></div>
+			    <div class="paper"></div>
+			    <div class="keyboard"></div>
+			    <div>뉴스 가져오는중입니다</div>
+       		</div>
+        </div>
       </div>
     </div>
 
     <script>
-      $(() => {
+    	$(window).load(()=>{
+    		$(".typewriter").hide();
+    	})	
+    </script>
+    
+    <script>
+       $(() => {
         news();
       });
-
+ 
       function news() {
         const newsValue = "<h1>세계 시장 포켓 뉴스</h1>";
         $.ajax({
