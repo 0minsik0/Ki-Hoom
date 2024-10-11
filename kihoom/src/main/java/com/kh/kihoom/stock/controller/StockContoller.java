@@ -10,9 +10,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.kihoom.stock.model.service.StockServiceImpl;
+import com.kh.kihoom.stock.model.vo.Stock;
 
 
 @Controller
@@ -42,6 +46,14 @@ public class StockContoller {
 	
 	private static String approvalKey="";
 	
+	
+	
+	@Autowired
+	private StockServiceImpl sService;
+	
+	
+	
+	
 	/**
 	 * @return 
 	 * 주식 투자 메인 화면
@@ -61,7 +73,66 @@ public class StockContoller {
 	
 	
 	
+	@ResponseBody
+	@RequestMapping(value="chooseStock.st")
+	public String chooseStock(String code, String userNo) {
+		
 	
+		
+		Stock s = new Stock();
+		s.setStockNo(code);
+		s.setMemNo(Integer.parseInt(userNo));
+		
+//		System.out.println(s);
+		
+		
+		
+		int result = sService.selectStockChoose(s);
+		
+//		System.out.println(result);
+		
+		String resultStr = "";
+		
+		if(result==0) {
+			int insert= sService.insertStockChoose(s);
+			
+			if(insert>0) {
+				resultStr="iyyy";
+			}else {
+				resultStr = "innn";
+			}
+		}else {
+			int delete = sService.deleteStockChosse(s);
+			if(delete>0) {
+				resultStr="dyyy";
+			}else {
+				resultStr = "dnnn";
+			}
+		}
+		
+		
+		return resultStr;
+		
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("selectChoose.st")
+	public String selectChooseStock(String code, String userNo) {
+		Stock s = new Stock();
+		s.setStockNo(code);
+		s.setMemNo(Integer.parseInt(userNo));
+		
+//		System.out.println(s);
+		
+		
+		int result = sService.selectStockChoose(s);
+		
+		
+		
+		return result+"";
+	}
 	
 	
 	
@@ -504,30 +575,73 @@ public class StockContoller {
 	}
 	
 	
-	
-//	
-//	@RequestMapping("choose.st")
-//	public String chooseStock(String code, String userNo) {
-//		
-//		System.out.println(code);
-//		System.out.println(userNo);
-//		
-//
-//		return "";
-//	}
-//	
-	
-	
+
 	@ResponseBody
-	@RequestMapping(value="choose.st")
-	public String chooseStock(String code, String userNo) {
+	@RequestMapping(value="selectStockAccount.st",produces="aplication/json; charset=utf-8")
+	public String selectStockAccount(String userNo) {
 		
-		System.out.println(code);
-		System.out.println(userNo);
+		ArrayList<Stock> list = sService.selectStockAccount(Integer.parseInt(userNo));
 		
 		
-		return "stock/stockMain";
+		
+		return new Gson().toJson(list);
 	}
+	
+	
+	
+	
+	@RequestMapping(value="selectChooseList.st")
+	public void selectChooseList(String userNo) throws IOException {
+		
+		ArrayList<Stock> list = sService.selectChooseList(Integer.parseInt(userNo));
+		
+		
+		
+		for(Stock s : list) {
+			selectListStock(s.getStockNo());
+		}
+		
+	}
+	
+	
+	
+	
+	public void selectListStock(String code) throws IOException {
+		
+		String url ="https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-price";
+		
+		url += "?FID_COND_MRKT_DIV_CODE=J";
+		url += "&FID_INPUT_ISCD="+code;
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		//System.out.println(authorization);
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHKST01010100 ");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		Stock s = new Stock();
+		String resoponseText = "";
+		String line = "";
+		
+		while((line=br.readLine())!= null) {
+			resoponseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		
+		
+		
+	}
+
 	
 	
 	

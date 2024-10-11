@@ -376,3 +376,41 @@
     resize: none;
     flex-grow: 1;
 }
+
+
+#buyModal .modal-content .modal-body {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#buyModal .modal-content .modal-body>div {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+#buyModal .modal-content .modal-body>div .name {
+    width: 40%;
+
+}
+
+#buyModal .modal-content .modal-body>div .result {
+    width: 40%;
+}
+
+#buyModal .modal-content .modal-body>div .result select {
+    width: 80%;
+}
+
+#buyModal .modal-content .modal-body>div .result .week {
+    width: 80%;
+}
+
+#buyModal .modal-content .modal-body>div .result #marketPrice {
+    margin-left: 20px;
+}
+
+#buyModal .modal-content .modal-body>div .result.price {}

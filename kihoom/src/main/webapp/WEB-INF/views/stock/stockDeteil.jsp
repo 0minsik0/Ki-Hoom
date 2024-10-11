@@ -289,7 +289,39 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div>
+                            <div class="name">구매할 종목명</div>
+                            <div class="result">${codeName}</div>
+                        </div>
 
+                        <div>
+                            <div class="name">내계좌</div>
+                            <div class="result">
+                                <select name="" id="">
+                                    <option value="">dd</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="name">구매 금액</div>
+                            <div class="result">
+                                <input type="radio" name="checkPrice" id="currentPrice">
+                                <label for="currentPrice">지정가</label>
+
+
+
+                                <input type="radio" name="checkPrice" id="marketPrice">
+                                <label for="marketPrice">시장가</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="name">수량</div>
+                            <div class="result"><input type="number" min="0" class="week" value="0">주</div>
+                        </div>
+                        <div>
+                            <div class="name">예상 가격</div>
+                            <div class="result price">원</div>
                         </div>
                     </div>
 
@@ -332,7 +364,7 @@
                 naverNew()
                 dailyPrice("D")
                 dailyPrice("M")
-
+                select_stock_choose()
 
 
                 websokect()
@@ -367,25 +399,56 @@
 
             //찜하기 db 연결 필요
             $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").on("click", function () {
-                const str = $(this).text()
-                if (str === "bookmark_border") {
-                    $(this).text("bookmark")
-                    stock_choose()
+                stock_choose()
 
-                } else {
-                    $(this).text("bookmark_border")
-                }
             })
 
 
             function stock_choose() {
                 $.ajax({
-                    url: "choose.st",
+                    url: "chooseStock.st",
                     data: {
                         code: "${code}",
                         userNo: "${loginUser.memNo}"
                     },
                     success: function (result) {
+                        // console.log(result)
+
+                        if (result === "iyyy") {
+                            alert("관심주식에 등록되었습니다.")
+                        } else if (result === "innn") {
+                            alert("관심주식에 등록 실패했습니다..")
+                        } else if (result === "dyyy") {
+                            alert("관심주식에 삭제되었습니다.")
+                        } else if (result === "dnnn") {
+                            alert("관심주식에 삭제 실패했습니다..")
+                        }
+                        select_stock_choose()
+                    },
+                    error: function () {
+                        console.log("통신 실패")
+                    },
+
+                })
+            }
+
+            function select_stock_choose() {
+                $.ajax({
+                    url: "selectChoose.st",
+                    data: {
+                        code: "${code}",
+                        userNo: "${loginUser.memNo}"
+                    },
+                    success: function (result) {
+                        // console.log(result)
+
+                        if (result === "0") {
+                            $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").text("bookmark_border")
+                        } else {
+
+                            $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").text("bookmark")
+                        }
+
 
                     },
                     error: function () {
@@ -397,9 +460,48 @@
 
 
 
+            $("#buyModal").on("shown.bs.modal", function () {
+                // console.log(500000)
+                selectAccount().then((list) => {
+                    if (list.length === 0) {
+                        if (confirm("등록된 한국투자 계좌가 없습니다. 등록하시겠습니까?")) {
+
+                        } else {
+
+                        }
+                    } else {
+                        let value = "";
+                        for (let i in list) {
+                            value += "<option value='" + list[i].stockAccount + "'>" + list[i].stockAccount + "</option>"
+                        }
+                        return value
+                    }
+
+                }).then((value) => {
+                    $("#buyModal .modal-content .modal-body>div .result select").html(value)
+                })
 
 
+            })
 
+            function selectAccount() {
+                return new Promise((reject, resolve) => {
+                    $.ajax({
+                        url: "selectStockAccount.st",
+                        data: {
+                            userNo: "${loginUser.memNo}"
+                        },
+                        success: function (list) {
+                            console.log(list.length)
+                            resolve(list)
+
+                        },
+                        error: function () {
+                            console.log("실패")
+                        }
+                    })
+                })
+            }
 
 
 

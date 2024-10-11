@@ -869,6 +869,17 @@
 
 
 
+                function selectChooseList() {
+                    $.ajax({
+                        url: "selectChooseList.st",
+                        data: {
+                            userNo: "${loginUser.memNo}"
+                        },
+                        success: function (list) {
+
+                        }
+                    })
+                }
 
 
 
