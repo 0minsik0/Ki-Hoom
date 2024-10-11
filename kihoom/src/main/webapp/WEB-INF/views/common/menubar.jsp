@@ -53,13 +53,8 @@
                                     <a href="resources/pages/navbar.html"><i class="ik ik-menu"></i><span>뉴스</span> </a>
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>스케줄</span> </a>
-                                    <div class="submenu-content">
-                                        <a href="resources/pages/widgets.html" class="menu-item">Basic</a>
-                                        <a href="resources/pages/widget-statistic.html" class="menu-item">Statistic</a>
-                                        <a href="resources/pages/widget-data.html" class="menu-item">Data</a>
-                                        <a href="resources/pages/widget-chart.html" class="menu-item">Chart Widget</a>
-                                    </div>
+                                    <a href="schedule.sc"><i class="ik ik-layers"></i><span>스케줄</span> </a>
+                                  
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-box"></i><span>증명서 발급</span></a>
@@ -88,6 +83,9 @@
                                 </div>
                                 <div class="nav-item">
                                     <a href="resources/pages/ui/icons.html"><i class="ik ik-command"></i><span>환율</span></a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="aichat.ac"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
                                 </div>
                             </nav>
                         </div>

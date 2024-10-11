@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+
+  <configuration>
+  		
+  		<settings>
+  		
+  			<!-- 만약에 NULL로 데이터가 전달되었다면 빈 칸이 아닌 NULL로 인식하라는 뜻,참고로 무조건 대문자 NULL로 설정해야함 -->
+  			<setting name="jdbcTypeForNull" value="NULL"/>
+  		</settings>
+  		
+  		<!-- typeAlias : VO/DTO 클래스들의 풀 클래스 명을 단순한 클래스명으로 사용하기 위해서 별칭을 등록할 수 있는 영역 -->
+  		<typeAliases>
+  			<typeAlias type="com.kh.kihoom.member.model.vo.Member" alias="Member"/>
+  		</typeAliases>
+  		
+  		
+  		
+  		
+  		<!-- mapper : 실행할 sql문들을 기록 해둔 mapper 파일들을 등록하는 영역. 여러개 가능한듯 -->
+  		<mappers>
+  			<mapper resource="/mappers/member-mapper.xml" />
+  			<!-- <mapper resource="/mappers/board-mapper.xml"/> -->
+  			
+
+			<mapper resource="/mappers/stock-mapper.xml"/>
+
+  		</mappers>
+  		<!-- 미리 등록해두려면 해당 mapper파일이 진짜 존재해야 등록 가능,
+  		또한 namespace도 지정되있는 상태여야함 -->
+  	
+
+
+
+
+
+</configuration>

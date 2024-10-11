@@ -3,16 +3,24 @@ package com.kh.kihoom.stock.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 @Controller
 public class StockContoller {
@@ -24,26 +32,95 @@ public class StockContoller {
 	private static final String appsecret ="lIs9yZIdbWjft8pCctH/fh8MfXsRvZqnqAjowhY+OCnOPFjNLO3MxYOhCLg0rOZubmLqJPQlaYw7lO6vp1N89l+xL9bfrzvh3+3OZET6WoeT83jRfaVXqEyzz8N6W/LMGJOTiyl+AQCfy3F4o9aJMTUYGsXI+zIPY5yxjpGtTYSyfoS8vAM=";
 	
 	
+	private static final String naverId ="ZPsZLlyR0_kD8ni2BjxA";
+	private static final String naverSecret ="C6VrkqKczu";
+	
+	
+	
+	private static String token ="";
+	
+	private static String approvalKey="";
 	
 	/**
 	 * @return 
 	 * 주식 투자 메인 화면
+	 * @throws 
 	 */
 	@RequestMapping("stock.st")
-	public String stockMain() {
+	public String stockMain() throws IOException {
+		
+		if(token.equals("")) {
+			token();
+			
+		}
+		
+		
 		return "stock/stockMain";
 	}
 	
 	
 	
-	@ResponseBody
-	@RequestMapping(value="stockKey.st" ,produces="aplication/json; charset=utf-8")
-	public String stockTKey() {
-		JSONObject key = new JSONObject();
-		key.put("appkey", tAppkey);
-		key.put("appsecret", tAppsecret);
-		return key.toJSONString();
+	
+	
+	
+	
+	
+	public void token() throws IOException {
+		
+		String url = "https://openapi.koreainvestment.com:9443/oauth2/tokenP";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		//String data ="grant_type=client_credentials&appkey="+appkey+"&appsecret="+appsecret;
+		
+		JSONObject data  = new JSONObject();
+		data.put("grant_type", "client_credentials");
+		data.put("appkey", appkey);
+		data.put("appsecret", appsecret);
+		
+		
+		conn.setRequestMethod("POST");
+		//conn.setRequestProperty(key, value);
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(data.toJSONString().getBytes("UTF-8"));
+		//os.flush();
+		os.close();
+		
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText ="";
+		
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		
+		conn.disconnect();
+		//System.out.println(responseText);
+		JsonObject jo = JsonParser.parseString(responseText).getAsJsonObject();
+		
+		//System.out.println();
+		
+		token =jo.get("access_token").getAsString();
+		
+		
+		
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -52,11 +129,11 @@ public class StockContoller {
 	 */
 	@ResponseBody
 	@RequestMapping(value="nowquotes.st", produces ="apllication/json; charset=utf-8")
-	public String inquirePrice(String authorization) throws IOException, IOException {
+	public String inquirePrice(String code) throws IOException, IOException {
 		
 		String url = "https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price";
-		url +="?fid_cond_mrkt_div_code=J" + //FID 조건 시장 분류 코드
-                "&fid_input_iscd=000660"; //FID 입력 종목코드
+		url +="?fid_cond_mrkt_div_code=J" ; //FID 조건 시장 분류 코드
+		url +=   "&fid_input_iscd="+code; //FID 입력 종목코드
 		
 		/*
 		url += "?authorization="+ authorization;
@@ -69,9 +146,9 @@ public class StockContoller {
 		//System.out.println(authorization);
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("content-type", "application/json");
-		conn.setRequestProperty("authorization","Bearer "+ authorization);
-		conn.setRequestProperty("appkey", tAppkey);
-		conn.setRequestProperty("appsecret", tAppsecret);
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
 		conn.setRequestProperty("tr_id", "FHKST01010100 ");
 		
 		conn.connect();
@@ -118,11 +195,12 @@ public class StockContoller {
 		
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("content-type", "application/json");
-		conn.setRequestProperty("authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6ImYwNDVjOTZjLWUzNzctNDRjZC1hZjFmLTJhMjg0YmJlMjcwZiIsInByZHRfY2QiOiIiLCJpc3MiOiJ1bm9ndyIsImV4cCI6MTcyNzk0NDE0MywiaWF0IjoxNzI3ODU3NzQzLCJqdGkiOiJQU0lmeDFwZGpRbGdjamsxYzdsTmhhQkhXbkIxNXJyN1Q1SlMifQ.9-HtPkRBwzERKYiO5mke0uuU3vwFIjYkaIm8FnoGgtGvFb4YlBSoshR5SgnIJffri3Lk1hB_HpG-SvnOEEaOwQ");
+		conn.setRequestProperty("authorization","Bearer "+token);
 		conn.setRequestProperty("appkey", appkey);
 		conn.setRequestProperty("appsecret", appsecret);
 		conn.setRequestProperty("tr_id", "FHPST01710000");
 		conn.setRequestProperty("custtype", "P");
+		//conn.setRequestProperty("tr_cont", "1");
 		
 		conn.connect();
 		
@@ -145,6 +223,330 @@ public class StockContoller {
 		
 
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="fluctuation.st", produces="aplication/json; charset=utf-8")
+	public  String fluctuation(int no) throws IOException {
+		// 등락률 순위
+		
+		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/ranking/fluctuation";
+		/*
+		 * /uapi/domestic-stock/v1/ranking/fluctuation?fid_cond_mrkt_div_code=J&fid_cond_scr_div_code=20170&fid_input_iscd=0000&fid_rank_sort_cls_code=0&fid_input_cnt_1=0&fid_prc_cls_code=0&fid_input_price_1=&fid_input_price_2=&fid_vol_cnt=&fid_trgt_cls_code=0&fid_trgt_exls_cls_code=0&fid_div_cls_code=0&fid_rsfl_rate1=&fid_rsfl_rate2=
+		
+		System.out.println("https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/ranking/fluctuation?fid_cond_mrkt_div_code=J&fid_cond_scr_div_code=20170&fid_input_iscd=0000&fid_rank_sort_cls_code=0&fid_input_cnt_1=0&fid_prc_cls_code=0&fid_input_price_1=&fid_input_price_2=&fid_vol_cnt=&fid_trgt_cls_code=0&fid_trgt_exls_cls_code=0&fid_div_cls_code=0&fid_rsfl_rate1=&fid_rsfl_rate2=");
+		*/
+		
+		url += "?fid_rsfl_rate2=";
+		url += "&fid_cond_mrkt_div_code=J";
+		url += "&fid_cond_scr_div_code=20170";
+		url += "&fid_input_iscd=0000";
+		//0000(전체) 코스피(0001), 코스닥(1001), 코스피200(2001)
+		url += "&fid_rank_sort_cls_code="+no;
+		//0:상승율순 1:하락율순 2:시가대비상승율 3:시가대비하락율 4:변동율
+		url += "&fid_input_cnt_1=0";
+		url += "&fid_prc_cls_code=0";
+		url += "&fid_input_price_1=";
+		url += "&fid_input_price_2=";
+		url += "&fid_vol_cnt=";
+		url += "&fid_trgt_cls_code=0";
+		url += "&fid_trgt_exls_cls_code=0";
+		url += "&fid_div_cls_code=0";
+		url += "&fid_rsfl_rate1=";
+		//System.out.println(url);
+		
+		
+		
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey	);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHPST01700000");
+		conn.setRequestProperty("custtype", "P");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText ="";
+		
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		
+		conn.disconnect();
+
+		
+		return responseText;
+	
+		
+		
+		
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="market.st", produces="aplication/json; charset=utf-8")
+	public String market() throws IOException {
+		// 시장가치
+		String year = new SimpleDateFormat("yyyy").format(new Date());
+		
+		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/ranking/market-value";
+		
+		url += "?fid_trgt_cls_code=0";
+		url += "&fid_cond_mrkt_div_code=J";
+		url += "&fid_cond_scr_div_code=20179";
+		url += "&fid_input_iscd=0000";
+		url += "&fid_div_cls_code=0";
+		url += "&fid_input_price_1=";
+		url += "&fid_input_price_2=";
+		url += "&fid_vol_cnt=";
+		url += "&fid_input_option_1="+year;
+		url += "&fid_input_option_2=3";
+		url += "&fid_rank_sort_cls_code=23";
+		url += "&fid_blng_cls_code=0";
+		url += "&fid_trgt_exls_cls_code=0";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization", "Bearer " +  token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHPST01790000");
+		conn.setRequestProperty("custtype", "P");
+		
+		conn.connect();
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		br.close();
+		
+		conn.disconnect();
+		
+		//System.out.println(responseText);
+		return responseText;
+		
+	}
+	
+	
+	
+	@RequestMapping("detail.st")
+	public ModelAndView detailForm(String code,String codeName,ModelAndView mv) throws IOException {
+		
+		
+		if(approvalKey.equals("")) {
+			approvalKey();
+		}
+		
+		mv.addObject("code", code).addObject("codeName", codeName).addObject("approvalKey", approvalKey).setViewName("stock/stockDeteil");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	/**
+	 * @throws 실시간 웹소켓 키
+	 */
+	public void approvalKey() throws  IOException {
+		
+		String url = "https://openapi.koreainvestment.com:9443/oauth2/Approval";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		//String data ="grant_type=client_credentials&appkey="+appkey+"&appsecret="+appsecret;
+		
+		JSONObject data  = new JSONObject();
+		data.put("grant_type", "client_credentials");
+		data.put("appkey", appkey);
+		data.put("secretkey", appsecret);
+		
+		
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("content-type", "application/json");
+		//conn.setRequestProperty(key, value);
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(data.toJSONString().getBytes("UTF-8"));
+		//os.flush();
+		os.close();
+		
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText ="";
+		
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		
+		conn.disconnect();
+		//System.out.println(responseText);
+		JsonObject jo = JsonParser.parseString(responseText).getAsJsonObject();
+		
+		//System.out.println(responseText);
+		
+		approvalKey =jo.get("approval_key").getAsString();
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="dailyPrice.st", produces="aplication/json; charset=utf-8")
+	public String dailyPrice(String code, String daliy) throws IOException {
+		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-daily-price";
+		
+
+		url += "?FID_COND_MRKT_DIV_CODE=J";
+		url += "&FID_INPUT_ISCD="+code;
+		url += "&FID_PERIOD_DIV_CODE="+daliy;
+		url += "&FID_ORG_ADJ_PRC=0";
+
+
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization", "Bearer " +  token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHKST01010400");
+
+		
+		conn.connect();
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		br.close();
+		
+		conn.disconnect();
+		
+		//System.out.println(responseText);
+		return responseText;
+	}
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="naverNew.st", produces="aplication/json; charset=utf-8")
+	public String naverNewsStock(String codeName) throws IOException {
+		String url = "https://openapi.naver.com/v1/search/news.json";
+		
+		url+= "?query="+URLEncoder.encode(codeName,"UTF-8");
+		url+="&display=50";
+		url+="&sort=date";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("X-Naver-Client-Id", naverId);
+		conn.setRequestProperty("X-Naver-Client-Secret", naverSecret);
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		br.close();
+		
+		conn.disconnect();
+		
+		//System.out.println(responseText);
+		return responseText;
+		
+	}
+	
+	
+	
+	
+//	@ResponseBody
+//	@RequestMapping(value="", produces="")
+//	public String category() throws IOException {
+//		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-category-price";
+//		url += "?FID_COND_MRKT_DIV_CODE=U";
+//		url += "&FID_INPUT_ISCD=0001";
+//		url += "&FID_COND_SCR_DIV_CODE=20214";
+//		url += "&FID_MRKT_CLS_CODE=K";
+//		url += "&FID_BLNG_CLS_CODE=0";
+//		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+//		
+//		conn.setRequestMethod("GET");
+//		conn.setRequestProperty("content-type", "application/json");
+//		conn.setRequestProperty("authorization","Bearer "+token);
+//		conn.setRequestProperty("appkey", appkey	);
+//		conn.setRequestProperty("appsecret", appsecret);
+//		conn.setRequestProperty("tr_id", "FHPUP02140000");
+//		conn.setRequestProperty("custtype", "P");
+//		
+//		conn.connect();
+//		
+//		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//		
+//		String responseText ="";
+//		
+//		String line ="";
+//		
+//		while((line=br.readLine())!=null) {
+////			responseText += line;
+//			System.out.println(line);
+//		}
+//		
+//		br.close();
+//		
+//		conn.disconnect();
+//		
+//		return "";
+//	}
+	
+	
+	
+	
 	
 	
 	
