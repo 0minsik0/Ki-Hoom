@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,6 +10,7 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
     </head>
 
     <body>
@@ -22,7 +24,47 @@
                 <jsp:include page="menubar.jsp"/>
                 <jsp:include page="header.jsp"/>
                 <div class="main-content">
+                	<button class="btn1">계좌 인증</button>
+                	
+                	<a href="account.me">계좌 조회</a>
+                	
+                	<table>
+					    <thead>
+					        <tr>
+					            <th>핀테크 번호</th>
+					            <th>계좌 번호</th>
+					            <th>은행 이름</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <c:forEach var="i" begin="0" end="${ fintechUseNums.size() }">
+					            <tr>
+					                <td>${fintechUseNums[i]}</td>
+					                <td>${accountNumMaskeds[i]}</td>
+					                <td>${bankNames[i]}</td>
+					            </tr>
+					        </c:forEach>
+					    </tbody>
+					</table>
+                
                 </div>
+                
+                <script>
+
+                	$(function(){
+                		$(".btn1").click(function(){
+                            $.ajax({
+                                url:"acc.do",
+                                success:function(result){
+                                    location.href = result;
+                                },error:function(){
+                                    console.log("실패");
+                                }
+                            })
+                        })
+                	})
+                	
+                </script>
 
                 <aside class="right-sidebar">
                     <div class="sidebar-chat" data-plugin="chat-sidebar">
