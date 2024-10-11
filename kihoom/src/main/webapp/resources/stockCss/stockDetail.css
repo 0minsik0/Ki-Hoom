@@ -82,6 +82,22 @@
 }
 
 
+.main-content .deteil_session .header .header_title .chooseAndBuy {
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+}
+
+.main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock {
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.main-content .deteil_session .header .header_title .chooseAndBuy #buy_stock {
+    cursor: pointer;
+}
+
+
 .main-content .deteil_session .header .header_stock .prev_price {
     font-weight: 600;
     font-size: 14px;

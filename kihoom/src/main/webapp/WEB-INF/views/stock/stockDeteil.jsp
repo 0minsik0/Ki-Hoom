@@ -29,6 +29,12 @@
                                 <div class="header_title">
                                     <div class="stock_name">${codeName}</div>
                                     <div class="stock_price">60,000원</div>
+
+                                    <div class="chooseAndBuy">
+                                        <div class="material-icons choose_stock">bookmark_border</div>
+                                        <div class="material-icons" id="buy_stock" data-toggle="modal"
+                                            data-target="#buyModal">shopping_cart</div>
+                                    </div>
                                 </div>
                                 <div class="prev_price">어제보다 <span class="red">600원(16%)</span></div>
                             </div>
@@ -264,6 +270,57 @@
             </div>
         </div>
 
+
+
+
+
+
+        <!-- The Modal -->
+        <div class="modal" id="buyModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">구매하기</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div>
+
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <script>
             $(function () {
 
@@ -306,6 +363,17 @@
 
             })
 
+
+
+            //찜하기 db 연결 필요
+            $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").on("click", function () {
+                const str = $(this).text()
+                if (str === "bookmark_border") {
+                    $(this).text("bookmark")
+                } else {
+                    $(this).text("bookmark_border")
+                }
+            })
 
 
 
