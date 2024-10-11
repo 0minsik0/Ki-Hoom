@@ -13,3 +13,4 @@
 	<result column="bcategory_no" property="bcategoryNo"/>
 	<result column="declaration_count" property="declarationCount"/>
 </resultMap>
+</mapper>

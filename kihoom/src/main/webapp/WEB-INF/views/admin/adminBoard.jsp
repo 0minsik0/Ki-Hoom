@@ -90,51 +90,50 @@
                 <jsp:include page="../header.jsp"/>
                 <div class="main-content">
                 	<div class="col-xl-8 col-md-6" style="margin: auto; max-width: 85%;">
-                                <div class="card table-card">
-                                    <div class="card-header">
-                                        <h3>게시판 관리</h3>
-                                        <div class="card-header-right">
-                                            <select>
-                                            	<option>커뮤니티</option>
-                                            	<option>공지사항</option>
-                                            	<option>문의사항</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover mb-0" style="text-align:center; align-items:center; ">
-                                                <thead>
-                                                    <tr>
-                                                        <th>카테고리</th>
-                                                        <th>제목</th>
-                                                        <th>작성자</th>
-                                                        <th>작성일</th>
-                                                        <th>신고여부</th>
-                                                        <th>수정/삭제</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>카테고리자리</td>
-                                                        <td>제목자리</td>
-                                                        <td>작성자자리</td>
-                                                        <td>작성일자리</td>
-                                                        <td>
-                                                            <div class="p-status bg-green" style="margin:auto;"></div>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-                                                            <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                    </div>
+                        <div class="card table-card">
+                            <div class="card-header">
+                                <h3>게시판 관리</h3>
+                                <div class="card-header-right">
+                                    <select>
+                                    	<option>커뮤니티</option>
+                                    	<option>공지사항</option>
+                                    	<option>문의사항</option>
+                                    </select>
                                 </div>
                             </div>
+                            <div class="card-block">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0" style="text-align:center; align-items:center; ">
+                                        <thead>
+                                            <tr>
+                                                <th>카테고리</th>
+                                                <th>제목</th>
+                                                <th>작성자</th>
+                                                <th>작성일</th>
+                                                <th>신고여부</th>
+                                                <th>수정/삭제</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>카테고리자리</td>
+                                                <td>제목자리</td>
+                                                <td>작성자자리</td>
+                                                <td>작성일자리</td>
+                                                <td>
+                                                    <div class="p-status bg-green" style="margin:auto;"></div>
+                                                </td>
+                                                <td>
+                                                    <a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                                    <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
     </div>
