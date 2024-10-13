@@ -68,7 +68,7 @@ public class NewsController {
 	
 	// 딥서치 뉴스찾기 API
 	@ResponseBody
-	@RequestMapping(value = "search.ne", produces = "application/json; utf-8")
+	@RequestMapping(value = "search.ne", produces = "application/json; charset=utf-8")
 	public String searchNews(String articles, String keyword) throws IOException {
 		
 		String url = "https://api-v2.deepsearch.com/v1/" + articles;
@@ -88,6 +88,10 @@ public class NewsController {
 		while((line=br.readLine()) != null) {
 			responseText += line;
 		}
+		
+		br.close();
+		urlConnection.disconnect();
+		
 		return responseText;
 	}
 	
