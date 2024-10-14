@@ -1,15 +1,18 @@
-/* search input css */
 #articles {
-  display: inline-block;
+  border: 1px solid #0e4ead;
+  border-radius: 5px;
+  background-color: transparent;
+  height: 41px;
+  margin: 19px 5px;
+  cursor: pointer;
 }
+
 .coolinput {
   display: flex;
-  flex: 1;
   flex-direction: column;
   width: fit-content;
   position: static;
   max-width: 240px;
-  margin-left: 20px;
 }
 
 .coolinput label.textlabel {
@@ -30,7 +33,6 @@
   border: 2px #0e4ead solid;
   border-radius: 5px;
   background: transparent;
-  display: inline;
 }
 
 .coolinput input[type="text"].newsInput:focus {
@@ -38,8 +40,7 @@
 }
 
 .inputWrap-news {
-  display: flex;
-  flex: 1;
+  display: inline;
 }
 
 /* search button css */
@@ -79,8 +80,8 @@
 }
 
 .newsCard {
-  width: 18%;
-  height: auto;
+  width: 200px;
+  height: 400px;
   background: white;
   padding: 0.4em;
   margin: 0.3em;

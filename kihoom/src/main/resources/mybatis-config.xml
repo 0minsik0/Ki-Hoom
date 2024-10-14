@@ -6,4 +6,12 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	
+	<typeAliases>
+		<typeAlias type="com.kh.kihoom.acountBook.model.vo.acount" alias="acount"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/mappers/acount-mapper.xml"/>
+	</mappers>
+	
 </configuration>

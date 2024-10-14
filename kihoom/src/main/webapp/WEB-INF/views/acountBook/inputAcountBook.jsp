@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
   <body>
     <form action="input.ac" align="center">
       <div class="wrap">
+      	<input type="hidden" value="${ loginUser.memNo }">
         <div class="acountInput">
           거래명 <br />
           <input

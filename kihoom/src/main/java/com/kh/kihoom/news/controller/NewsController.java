@@ -74,6 +74,7 @@ public class NewsController {
 		String url = "https://api-v2.deepsearch.com/v1/" + articles;
 		url += "?keyword=title:(" + URLEncoder.encode(keyword, "utf-8") + ")";
 		url += "&api_key=" + apiKey;
+		url += "&page_size=30";
 		
 		URL requetUrl = new URL(url);
 		

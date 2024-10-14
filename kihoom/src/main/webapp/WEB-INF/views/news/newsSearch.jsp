@@ -16,25 +16,34 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       <div class="page-wrap">
         <jsp:include page="../menubar.jsp" />
         <div class="main-content">
-          <select id="articles">
-            <option value="articles">국내 뉴스</option>
-            <option value="global-articles">해외 뉴스</option>
-          </select>
-          <div class="inputWrap-news">
-            <div class="coolinput">
-              <label for="input" class="textlabel">keyword : </label>
-              <input
-                type="text"
-                placeholder="키워드를 입력해주세요 :)"
-                name="keyword"
-                class="newsInput"
-              />
-            </div>
-          </div>
-          <button class="nSearchBtn" onclick="searchNews()">
-            <span>Search</span>
-          </button>
-          <div class="searchDiv"></div>
+          <table align="center">
+            <tr>
+              <td>
+                <select id="articles">
+                  <option value="articles">국내 뉴스</option>
+                  <option value="global-articles">해외 뉴스</option>
+                </select>
+              </td>
+              <td>
+                <div class="coolinput">
+                  <label for="input" class="textlabel">keyword : </label>
+                  <input
+                    type="text"
+                    placeholder="키워드를 입력해주세요 :)"
+                    name="keyword"
+                    class="newsInput"
+                  />
+                </div>
+              </td>
+              <td>
+                <button class="nSearchBtn" onclick="searchNews()">
+                  <span>Search</span>
+                </button>
+              </td>
+            </tr>
+          </table>
+
+          <div class="resultDiv"></div>
         </div>
       </div>
     </div>
@@ -88,7 +97,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                   "</div> </div> </a>";
               }
               keywordInput.val("");
-              $(".searchDiv").html(value);
+              $(".resultDiv").html(value);
             },
             error: function () {
               console.log("search ajax 실패");
