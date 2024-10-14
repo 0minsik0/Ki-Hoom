@@ -6,8 +6,8 @@
 
 
 <resultMap type="Stock" id="StockResult">
-	<result column="board_no" property="stockNo"/>
-	<result column="board_title" property="sotckId"/>
+	<result column="stock_no" property="stockNo"/>
+	<result column="stock_id" property="sotckId"/>
 	<result column="mem_no" property="memNo"/>
 	<result column="stock_account" property="stockAccount"/>
 </resultMap>
@@ -62,7 +62,7 @@ where mem_no=#{memNo}
 
 <select id="selectChooseList" resultMap="StockResult">
 select 
-stockNo
+stock_no
 from stock_choose
 where mem_no=#{memNo}
 order by choose_no desc

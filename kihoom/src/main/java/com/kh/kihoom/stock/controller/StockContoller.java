@@ -7,20 +7,24 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.kihoom.stock.model.service.StockServiceImpl;
@@ -589,30 +593,46 @@ public class StockContoller {
 	
 	
 	
-	
-	@RequestMapping(value="selectChooseList.st")
-	public void selectChooseList(String userNo) throws IOException {
+	@ResponseBody
+	@RequestMapping(value="selectChooseList.st",produces="aplication/json; charset=utf-8")
+	public String selectChooseList(String userNo) throws IOException {
 		
 		ArrayList<Stock> list = sService.selectChooseList(Integer.parseInt(userNo));
 		
-		
+		ArrayList<String> slist = new ArrayList<String>();
 		
 		for(Stock s : list) {
-			selectListStock(s.getStockNo());
+
+			String resoponseText = selectListStock(s.getStockNo());
+			
+			JsonObject jo = JsonParser.parseString(resoponseText).getAsJsonObject().get("output1").getAsJsonObject();
+			jo.addProperty("stock_no", s.getStockNo());
+			
+			slist.add(jo.toString());
+			
+	
+
 		}
+
 		
+		return new Gson().toJson(slist);
 	}
 	
 	
 	
 	
-	public void selectListStock(String code) throws IOException {
+	public String selectListStock(String code) throws IOException {
 		
-		String url ="https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-price";
+		String url ="https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice";
+		
+		String time =new SimpleDateFormat("hhmmss").format(new Date());
+		
 		
 		url += "?FID_COND_MRKT_DIV_CODE=J";
 		url += "&FID_INPUT_ISCD="+code;
-		
+		url += "&FID_ETC_CLS_CODE=";
+		url += "&FID_INPUT_HOUR_1="+time;
+		url += "&FID_PW_DATA_INCU_YN=Y";
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		//System.out.println(authorization);
 		conn.setRequestMethod("GET");
@@ -620,7 +640,8 @@ public class StockContoller {
 		conn.setRequestProperty("authorization","Bearer "+ token);
 		conn.setRequestProperty("appkey", appkey);
 		conn.setRequestProperty("appsecret", appsecret);
-		conn.setRequestProperty("tr_id", "FHKST01010100 ");
+		conn.setRequestProperty("tr_id", "FHKST03010200");
+		conn.setRequestProperty("tr_cont", "P");
 		
 		conn.connect();
 		
@@ -636,58 +657,186 @@ public class StockContoller {
 		
 		br.close();
 		conn.disconnect();
+//		System.out.println(resoponseText);
 		
 		
+		
+		return resoponseText;
 		
 		
 	}
 
 	
+	@ResponseBody
+	@RequestMapping(value="investOpinion.st", produces="aplication/json; charset=utf-8")
+	public String investOpinion(String code) throws IOException {
+		String url ="https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/invest-opinion";
+		
+		String year = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		
+//		System.out.println();
+		
+		Date d = new Date();
+		d.setYear(Integer.parseInt(year.substring(0, 4))-2-1900);
+		
+		String beforeYear = new SimpleDateFormat("yyyyMMdd").format(d);
+		System.out.println(beforeYear);
+		
+		url +="?FID_COND_MRKT_DIV_CODE=J";
+		url +="&FID_COND_SCR_DIV_CODE=16633";
+		url +="&FID_INPUT_ISCD="+code;
+		url +="&FID_INPUT_DATE_2=00"+year;
+		url +="&FID_INPUT_DATE_1=00"+beforeYear;
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHKST663300C0");
+		conn.setRequestProperty("tr_cont", "P");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+	
+		String resoponseText = "";
+		String line = "";
+		
+		while((line=br.readLine())!= null) {
+			resoponseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return resoponseText;
+		
+	}
 	
 	
-//	@ResponseBody
-//	@RequestMapping(value="", produces="")
-//	public String category() throws IOException {
-//		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-category-price";
-//		url += "?FID_COND_MRKT_DIV_CODE=U";
-//		url += "&FID_INPUT_ISCD=0001";
-//		url += "&FID_COND_SCR_DIV_CODE=20214";
-//		url += "&FID_MRKT_CLS_CODE=K";
-//		url += "&FID_BLNG_CLS_CODE=0";
-//		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-//		
-//		conn.setRequestMethod("GET");
-//		conn.setRequestProperty("content-type", "application/json");
-//		conn.setRequestProperty("authorization","Bearer "+token);
-//		conn.setRequestProperty("appkey", appkey	);
-//		conn.setRequestProperty("appsecret", appsecret);
-//		conn.setRequestProperty("tr_id", "FHPUP02140000");
-//		conn.setRequestProperty("custtype", "P");
-//		
-//		conn.connect();
-//		
-//		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//		
-//		String responseText ="";
-//		
-//		String line ="";
-//		
-//		while((line=br.readLine())!=null) {
-////			responseText += line;
+	@ResponseBody
+	@RequestMapping(value="category.st",  produces="aplication/json; charset=utf-8")
+	public String category() throws IOException {
+		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-category-price";
+		url += "?FID_COND_MRKT_DIV_CODE=U";
+		url += "&FID_INPUT_ISCD=0001";
+		url += "&FID_COND_SCR_DIV_CODE=20214";
+		url += "&FID_MRKT_CLS_CODE=Q";
+		url += "&FID_BLNG_CLS_CODE=3";
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHPUP02140000");
+		conn.setRequestProperty("custtype", "P");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText ="";
+		
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
 //			System.out.println(line);
-//		}
-//		
-//		br.close();
-//		
-//		conn.disconnect();
-//		
-//		return "";
-//	}
+		}
+		
+		br.close();
+		
+		conn.disconnect();
+		
+		return responseText;
+	}
 	
 	
 	
+	public void orderCash(String code,String division,String orderCount,@RequestParam(value="orderPrice", defaultValue="0") String orderPrice ) throws IOException {
+		
+		String testToken = testToeknP();
+		
+		String url = "https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/order-cash";
+		
+		JSONObject body = new JSONObject();
+		body.put("CANO", "50117021");
+		body.put("ACNT_PRDT_CD", "01");
+		body.put("PDNO", code);
+		body.put("ORD_DVSN", division);
+		body.put("ORD_QTY", orderCount);
+		body.put("ORD_UNPR", orderPrice);
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+	
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("authorization","Bearer "+ testToken);
+		conn.setRequestProperty("appkey", tAppkey);
+		conn.setRequestProperty("appsecret", tAppsecret);
+		conn.setRequestProperty("tr_id", "VTTC0802U");
+		
+		conn.setDoOutput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(body.toJSONString().getBytes("UTF-8"));
+		os.close();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		
+	}
 	
 	
+	public String testToeknP() throws IOException {
+		
+		String url = "https://openapivts.koreainvestment.com:29443/oauth2/tokenP";
+		
+		
+		JSONObject body = new JSONObject();
+		body.put("grant_type", "client_credentials");
+		body.put("appkey", tAppkey);
+		body.put("appsecret", tAppsecret);
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("POST");
+		conn.setDoOutput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(body.toJSONString().getBytes("UTF-8"));
+		os.close();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+	return JsonParser.parseString(responseText).getAsJsonObject().get("access_token").getAsString();
+	
+		
+	}
 	
 	
 }

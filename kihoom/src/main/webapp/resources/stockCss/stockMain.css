@@ -14,8 +14,20 @@
 }
 
 .table_area tbody>tr td {
-
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     text-align: right;
+}
+
+.table_area tbody>tr td.red {
+
+    color: red;
+}
+
+.table_area tbody>tr td.blue {
+
+    color: blue;
 }
 
 .table_area tbody>tr td:nth-child(2) {
@@ -137,6 +149,13 @@
 
 .main-content .choose_stock_session .table_area {
     width: 100%;
+
+}
+
+.main-content .choose_stock_session .table_area>tbody {
+    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 
 }
 

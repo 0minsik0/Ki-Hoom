@@ -321,13 +321,15 @@
                         </div>
                         <div>
                             <div class="name">예상 가격</div>
+                            <input type="hidden" class="buy_price">
+                            <input type="hidden" class="result_prcie">
                             <div class="result price">원</div>
                         </div>
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">구매</button>
                     </div>
 
                 </div>
@@ -365,7 +367,7 @@
                 dailyPrice("D")
                 dailyPrice("M")
                 select_stock_choose()
-
+                // investOpinion()
 
                 websokect()
 
@@ -402,6 +404,12 @@
                 stock_choose()
 
             })
+
+
+
+
+
+
 
 
             function stock_choose() {
@@ -458,11 +466,14 @@
                 })
             }
 
-
+            let choosePrice = 0;;
+            let chooseWeek = 0;
 
             $("#buyModal").on("shown.bs.modal", function () {
                 // console.log(500000)
                 selectAccount().then((list) => {
+                    // console.log(list)
+
                     if (list.length === 0) {
                         if (confirm("등록된 한국투자 계좌가 없습니다. 등록하시겠습니까?")) {
 
@@ -474,15 +485,40 @@
                         for (let i in list) {
                             value += "<option value='" + list[i].stockAccount + "'>" + list[i].stockAccount + "</option>"
                         }
-                        return value
+                        $("#buyModal .modal-content .modal-body>div .result select").html(value)
                     }
+                    $('#buyModal .result #currentPrice').click()
 
-                }).then((value) => {
-                    $("#buyModal .modal-content .modal-body>div .result select").html(value)
                 })
 
 
             })
+
+
+
+
+            $('#buyModal .result input[type=radio]').on("change", function () {
+                // console.log($(this).val())
+                // console.log(choosePrice)
+
+                choosePrice = $(this).val()
+                // console.log(choosePrice)
+                $("#buyModal .result.price").text(choosePrice * chooseWeek + "원")
+            })
+
+            $('#buyModal .result input[type=number]').on("change", function () {
+                // console.log($(this).val())
+                // console.log(choosePrice)
+
+                chooseWeek = $(this).val()
+                // console.log(chooseWeek)
+                $("#buyModal .result.price").text(choosePrice * chooseWeek + "원")
+            })
+
+
+
+
+
 
             function selectAccount() {
                 return new Promise((reject, resolve) => {
@@ -492,8 +528,8 @@
                             userNo: "${loginUser.memNo}"
                         },
                         success: function (list) {
-                            console.log(list.length)
-                            resolve(list)
+                            // console.log(list.length)
+                            reject(list)
 
                         },
                         error: function () {
@@ -729,7 +765,8 @@
                         // console.log(stock.rprs_mrkt_kor_name)
                         $(".header_stock .stock_price").text(stock.stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원")
                         $(".prev_price span").text(stock.prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원(" + stock.prdy_ctrt + "%)")
-
+                        $('#buyModal .result #currentPrice').val(stock.stck_prpr)
+                        $('#buyModal .result #marketPrice').val(stock.stck_oprc)
                         if (stock.prdy_vrss < 0) {
                             // console.log("0보다 작다")
                             $(".prev_price span").removeClass()
@@ -785,6 +822,19 @@
                 })
             }
 
+
+
+            // function investOpinion() {
+            //     $.ajax({
+            //         url: "investOpinion.st",
+            //         data: {
+            //             code: "${code}",
+            //         },
+            //         success: function (data) {
+            //             console.log(data)
+            //         }
+            //     })
+            // }
 
 
 
@@ -845,7 +895,8 @@
                             }
 
                             $(".header_stock .stock_price").text(stockArr[2].replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원")
-
+                            $('#buyModal .result #currentPrice').val(stockArr[2])
+                            $('#buyModal .result #marketPrice').val(stockArr[7])
 
 
                         } else {

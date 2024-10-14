@@ -243,10 +243,14 @@
                     <div class="buy_stock_session main_box">
                         <div class="flex">
                             <h2 style="font-weight: 900;">실현손익합</h2>
-                            <h2 style="font-weight: 900;">-458,854</h2>
+                            <h3 style="font-weight: 600;">-458,854</h3>
 
                         </div>
                         <br>
+                        <div align="right" style="font-weight: 600; cursor: pointer;" data-toggle="modal"
+                            data-target="#addAccount">
+                            + 계좌추가하기
+                        </div>
                         <table class="table_area">
                             <thead>
                                 <tr>
@@ -346,7 +350,35 @@
 
                     </div>
 
+                    <!-- The Modal -->
+                    <div class="modal" id="addAccount">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">한국 투자 증권 계좌 추가</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <input type="text" />
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form action="" method="post" align="center">
+                                        <input type="tel" placeholder="계좌 - 앞 8자리" max="99999999" required pattern="\d*"
+                                            maxlength="8" name="firstAccount">-<input type="tel"
+                                            placeholder="계좌 - 뒤 2자리" max="99" required name="secondAccount"
+                                            pattern="\d*" maxlength="2">
+                                    </form>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="main_box tag_session">
@@ -529,6 +561,9 @@
             <script>
                 $(function () {
                     $('.pageinfo_area .page').eq(0).click()
+
+                    selectChooseList();
+                    categoryList();
                 })
 
                 let pageNum = 1;
@@ -651,6 +686,13 @@
                 })
 
 
+                $(".choose_stock_session .table_area").on("click", "tbody>tr", function () {
+                    const stock_no = $(this).children('input').val();
+                    const stock_name = $(this).children("td").eq(0).text();
+                    // console.log(stock_no)
+                    location.href = "detail.st?code=" + stock_no + "&codeName=" + stock_name
+                })
+
 
 
 
@@ -696,19 +738,19 @@
                                     value += "<tr>"
                                         + "<input type='hidden' name='stock_No' value=" + list[i].mksc_shrn_iscd + ">"
                                         + "<td>" + list[i].data_rank + " " + list[i].hts_kor_isnm + "</td>"
-                                        + "<td>" + list[i].stck_prpr + "</td>"
-                                        + "<td class='red'>" + list[i].prdy_ctrt + "</td>"
-                                        + "<td>" + list[i].acml_tr_pbmn.toLocaleString() + "</td>"
-                                        + "<td>" + list[i].vol_inrt + "</td>"
+                                        + "<td>" + list[i].stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='red'>" + list[i].prdy_ctrt + "%</td>"
+                                        + "<td>" + list[i].acml_tr_pbmn.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
+                                        + "<td>" + list[i].vol_inrt + "%</td>"
                                         + "</tr>"
                                 } else {
                                     value += "<tr>"
                                         + "<input type='hidden' name='stock_No' value=" + list[i].mksc_shrn_iscd + ">"
                                         + "<td>" + list[i].data_rank + " " + list[i].hts_kor_isnm + "</td>"
-                                        + "<td>" + list[i].stck_prpr + "</td>"
-                                        + "<td class='blue'>" + list[i].prdy_ctrt + "</td>"
-                                        + "<td>" + list[i].acml_tr_pbmn.toLocaleString() + "</td>"
-                                        + "<td>" + list[i].vol_inrt + "</td>"
+                                        + "<td>" + list[i].stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='blue'>" + list[i].prdy_ctrt + "%</td>"
+                                        + "<td>" + list[i].acml_tr_pbmn.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
+                                        + "<td>" + list[i].vol_inrt + "%</td>"
                                         + "</tr>"
                                 }
 
@@ -767,19 +809,19 @@
                                     value += "<tr>"
                                         + "<input type='hidden' name='stock_No' value=" + list[i].stck_shrn_iscd + ">"
                                         + "<td>" + list[i].data_rank + " " + list[i].hts_kor_isnm + "</td>"
-                                        + "<td>" + list[i].stck_prpr + "</td>"
-                                        + "<td class='red'>" + list[i].prdy_ctrt + "</td>"
-                                        + "<td>" + list[i].stck_hgpr + "</td>"
-                                        + "<td>" + list[i].stck_lwpr + "</td>"
+                                        + "<td>" + list[i].stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='red'>" + list[i].prdy_ctrt + "%</td>"
+                                        + "<td>" + list[i].stck_hgpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td>" + list[i].stck_lwpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
                                         + "</tr>"
                                 } else {
                                     value += "<tr>"
                                         + "<input type='hidden' name='stock_No' value=" + list[i].stck_shrn_iscd + ">"
                                         + "<td>" + list[i].data_rank + " " + list[i].hts_kor_isnm + "</td>"
-                                        + "<td>" + list[i].stck_prpr + "</td>"
-                                        + "<td class='blue'>" + list[i].prdy_ctrt + "</td>"
-                                        + "<td>" + list[i].stck_hgpr + "</td>"
-                                        + "<td>" + list[i].stck_lwpr + "</td>"
+                                        + "<td>" + list[i].stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='blue'>" + list[i].prdy_ctrt + "%</td>"
+                                        + "<td>" + list[i].stck_hgpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td>" + list[i].stck_lwpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
                                         + "</tr>"
                                 }
 
@@ -835,19 +877,19 @@
                                     value += "<tr>"
                                         + "<input type='hidden' name='stock_No' value=" + list[i].mksc_shrn_iscd + ">"
                                         + "<td>" + list[i].data_rank + " " + list[i].hts_kor_isnm + "</td>"
-                                        + "<td>" + list[i].stck_prpr + "</td>"
-                                        + "<td class='red'>" + list[i].prdy_ctrt + "</td>"
-                                        + "<td>" + list[i].iqry_csnu + "</td>"
-                                        + "<td>" + list[i].acml_vol + "</td>"
+                                        + "<td>" + list[i].stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='red'>" + list[i].prdy_ctrt + "%</td>"
+                                        + "<td>" + list[i].iqry_csnu.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
+                                        + "<td>" + list[i].acml_vol.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
                                         + "</tr>"
                                 } else {
                                     value += "<tr>"
                                         + "<input type='hidden' name='stock_No' value=" + list[i].mksc_shrn_iscd + ">"
                                         + "<td>" + list[i].data_rank + " " + list[i].hts_kor_isnm + "</td>"
-                                        + "<td>" + list[i].stck_prpr + "</td>"
-                                        + "<td class='blue'>" + list[i].prdy_ctrt + "</td>"
-                                        + "<td>" + list[i].iqry_csnu + "</td>"
-                                        + "<td>" + list[i].acml_vol + "</td>"
+                                        + "<td>" + list[i].stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='blue'>" + list[i].prdy_ctrt + "%</td>"
+                                        + "<td>" + list[i].iqry_csnu.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
+                                        + "<td>" + list[i].acml_vol.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
                                         + "</tr>"
                                 }
 
@@ -876,6 +918,38 @@
                             userNo: "${loginUser.memNo}"
                         },
                         success: function (list) {
+                            // console.log(list)
+                            let value = "";
+                            for (let i in list) {
+                                // console.log(i)
+
+                                const item = JSON.parse(list[i])
+
+
+
+                                // console.log(item)
+                                if (item.prdy_ctrt.substr(0, 1) !== "-") {
+                                    value += "<tr>"
+                                        + "<input type='hidden' name='stock_No' value='" + item.stock_no + "'>"
+                                        + "<td>" + item.hts_kor_isnm + "</td>"
+                                        + "<td>" + item.stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='red'>" + item.prdy_ctrt + "%</td>"
+                                        + "<td>" + item.acml_vol.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
+                                        + "</tr>"
+
+                                } else {
+                                    value += "<tr>"
+                                        + "<input type='hidden' name='stock_No' value='" + item.stock_no + "'>"
+                                        + "<td>" + item.hts_kor_isnm + "</td>"
+                                        + "<td>" + item.stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                        + "<td class='blue'>" + item.prdy_ctrt + "%</td>"
+                                        + "<td>" + item.acml_vol.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "건</td>"
+                                        + "</tr>"
+                                }
+
+                            }
+
+                            $(".choose_stock_session .table_area tbody").html(value)
 
                         }
                     })
@@ -883,11 +957,34 @@
 
 
 
+                function categoryList() {
+                    $.ajax({
+                        url: "category.st",
+                        success: function (data) {
+                            console.log(data)
+                        },
+                        error: function () {
+                            console.log("실패")
+                        }
+                    })
+                }
 
 
+                $("#addAccount form input[name=firstAccount]").on("keyup", function () {
+                    if (this.value.length > this.maxLength) {
+                        this.value = this.value.slice(0, this.maxLength);
+                    }
+                })
 
+                $("#addAccount form input[name=secondAccount]").on("change", function () {
+                    let len = $(this).val().length
+                    if (len < 2) {
+                        $(this).attr("readonly", false)
+                    } else {
+                        $(this).attr("readonly", true)
 
-
+                    }
+                })
 
 
 
