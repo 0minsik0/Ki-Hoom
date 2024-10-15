@@ -47,4 +47,10 @@ public class StockServiceImpl implements StockService{
 		return sDao.selectChooseList(sql,memNo);
 	}
 
+	@Override
+	public int insertAddAccount(Stock s) {
+		// TODO Auto-generated method stub
+		return sDao.insertAddAccount(sql, s);
+	}
+
 }

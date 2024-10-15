@@ -48,6 +48,9 @@ public class StockContoller {
 	
 	private static String token ="";
 	
+	private static String testToken="";
+	
+	
 	private static String approvalKey="";
 	
 	
@@ -756,16 +759,19 @@ public class StockContoller {
 	}
 	
 	
-	
-	public void orderCash(String code,String division,String orderCount,@RequestParam(value="orderPrice", defaultValue="0") String orderPrice ) throws IOException {
+	@ResponseBody
+	@RequestMapping(value="buyStoct.st", produces="aplication/json; charset=utf-8")
+	public String orderCash(String code,String division,String orderCount,String orderPrice, String firstAccount, String secondAccount ) throws IOException {
 		
-		String testToken = testToeknP();
+		if(testToken.equals("")) {
+			testToeknP();
+		}
 		
 		String url = "https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/order-cash";
 		
 		JSONObject body = new JSONObject();
-		body.put("CANO", "50117021");
-		body.put("ACNT_PRDT_CD", "01");
+		body.put("CANO", firstAccount);
+		body.put("ACNT_PRDT_CD", secondAccount);
 		body.put("PDNO", code);
 		body.put("ORD_DVSN", division);
 		body.put("ORD_QTY", orderCount);
@@ -798,11 +804,12 @@ public class StockContoller {
 		br.close();
 		conn.disconnect();
 		
+		return responseText;
 		
 	}
 	
 	
-	public String testToeknP() throws IOException {
+	public void testToeknP() throws IOException {
 		
 		String url = "https://openapivts.koreainvestment.com:29443/oauth2/tokenP";
 		
@@ -833,10 +840,92 @@ public class StockContoller {
 		br.close();
 		conn.disconnect();
 		
-	return JsonParser.parseString(responseText).getAsJsonObject().get("access_token").getAsString();
+		testToken= JsonParser.parseString(responseText).getAsJsonObject().get("access_token").getAsString();
 	
 		
 	}
+	
+	
+	@RequestMapping("addAccount.st")
+	public ModelAndView addAccount(String memNo,String firstAccount, String secondAccount,ModelAndView mv) {
+		
+		Stock s = new Stock();
+		s.setMemNo(Integer.parseInt(memNo));
+		s.setStockAccount(firstAccount+"-"+secondAccount);
+		
+		int result = sService.insertAddAccount(s);
+		
+		
+		if(result>0) {
+			mv.addObject("alertMsg", "성공적으로 등록되었습니다.");
+		}else {
+			mv.addObject("alertMsg", "계좌등록에 실패했습니다.");
+		}
+		
+		mv.setViewName("redirect:stock.st");
+		
+		return mv;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="selectbuyStockList.st", produces="aplication/json; charset=utf-8")
+	public String selectbuyStockList(String firstAccount, String secondAccount) throws IOException {
+		
+		if(testToken.equals("")) {
+			testToeknP();
+		}
+		
+
+		
+		
+		String url ="https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance";
+		url += "?CANO="+firstAccount; // 계좌 앞
+		url += "&ACNT_PRDT_CD="+secondAccount; //계좌 뒤
+		url += "&AFHR_FLPR_YN=N";
+		url += "&OFL_YN=";
+		url += "&INQR_DVSN=01";
+		url += "&UNPR_DVSN=01";
+		url += "&FUND_STTL_ICLD_YN=Y";
+		url += "&FNCG_AMT_AUTO_RDPT_YN=N";
+		url += "&PRCS_DVSN=00";
+		url += "&CTX_AREA_FK100=";
+		url += "&CTX_AREA_NK100=";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("authorization","Bearer "+ testToken);
+		conn.setRequestProperty("appkey", tAppkey);
+		conn.setRequestProperty("appsecret", tAppsecret);
+		conn.setRequestProperty("tr_id", "VTTC8434R");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return responseText;
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

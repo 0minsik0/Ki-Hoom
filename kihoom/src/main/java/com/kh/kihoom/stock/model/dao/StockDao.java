@@ -31,5 +31,7 @@ public class StockDao {
 		return (ArrayList)sql.selectList("stockMapper.selectChooseList", memNo);
 	}
 	
-	
+	public int insertAddAccount(SqlSessionTemplate sql, Stock s) {
+		return sql.insert("stockMapper.insertAddAccount", s);
+	}
 }

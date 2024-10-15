@@ -18,4 +18,6 @@ public interface StockService {
 	
 	
 	ArrayList<Stock> selectChooseList(int memNo);
+	
+	int insertAddAccount(Stock s);
 }

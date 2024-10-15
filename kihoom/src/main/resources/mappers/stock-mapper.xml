@@ -70,6 +70,21 @@ order by choose_no desc
 </select>
 
 
+<insert id="insertAddAccount">
+insert 
+into stock_buy
+(
+    buy_no
+  , mem_no
+  , stock_account
+)
+values
+(
+	stock_buy_seq.nextval
+  , #{memNo}
+  , #{stockAccount}
+)
+</insert>
 
 
 

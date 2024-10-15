@@ -296,8 +296,8 @@
                         <div>
                             <div class="name">내계좌</div>
                             <div class="result">
-                                <select name="" id="">
-                                    <option value="">dd</option>
+                                <select name="myAccount_list" id="">
+                                    <option>dd</option>
                                 </select>
                             </div>
                         </div>
@@ -323,14 +323,14 @@
                             <div class="name">예상 가격</div>
                             <input type="hidden" class="buy_price">
                             <input type="hidden" class="result_prcie">
-                            <div class="result price">원</div>
+                            <div class="result price"><span></span>원</div>
                         </div>
+                        <br>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" align="center"
+                            onclick="return buyStock()">구매</button>
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">구매</button>
-                    </div>
+
 
                 </div>
             </div>
@@ -407,8 +407,69 @@
 
 
 
+            function buyStock() {
+                const account = $("#buyModal .result select[name=myAccount_list]").val()
+                // console.log(account)
+                const accountArr = account.split("-")
+                // console.log(accountArr)
+                const firstAccount = accountArr[0]
+                const secondAccount = accountArr[1]
+                let division = "00"
+                let orderPrice = $("#buyModal .result.price span").text()
+
+                const orderCount = $("#buyModal .result .week").val()
+                // console.log(orderCount)
+
+                if (orderCount == 0) {
+                    alert("최소 1주 구매하셔야 합니다.")
+                    return false
+                } else {
+                    if ($("#buyModal .result input[name=checkPrice]:checked").attr("id") === "marketPrice") {
+                        division = "01"
+                        orderPrice = "0"
+                    }
+                    // console.log(division)
+                    buyStock_ajax(firstAccount, secondAccount, division, orderCount, orderPrice)
+                }
+
+            }
 
 
+            function buyStock_ajax(firstAccount, secondAccount, division, orderCount, orderPrice) {
+                $.ajax({
+                    url: "buyStoct.st",
+                    data: {
+                        code: "${code}",
+                        division: division,
+                        orderCount: orderCount,
+                        orderPrice: orderPrice,
+                        firstAccount: firstAccount,
+                        secondAccount: secondAccount
+                    },
+                    success: function (data) {
+                        // console.log(data)
+
+                        let value = ""
+                        if (data.rt_cd === "0") {
+                            const output = data.output
+                            const hh = output.ORD_TMD.substr(0, 2)
+                            const mm = output.ORD_TMD.substr(2, 2)
+
+                            value = "주문이 정상 처리되었습니다.\n"
+                                + "영업점코드 : " + output.KRX_FWDG_ORD_ORGNO
+                                + "\n주문번호 : " + output.ODNO
+                                + "\n주문시간 : " + hh + "시 " + mm + "분"
+
+                        } else {
+                            value = "주문에 실패했습니다.\n오류 : " + data.msg1
+                        }
+
+                        alert(value)
+
+                    },
+                    error: function () { }
+                })
+            }
 
 
 
@@ -503,7 +564,8 @@
 
                 choosePrice = $(this).val()
                 // console.log(choosePrice)
-                $("#buyModal .result.price").text(choosePrice * chooseWeek + "원")
+                $("#buyModal .result.price span").text(choosePrice * chooseWeek)
+
             })
 
             $('#buyModal .result input[type=number]').on("change", function () {
@@ -512,7 +574,7 @@
 
                 chooseWeek = $(this).val()
                 // console.log(chooseWeek)
-                $("#buyModal .result.price").text(choosePrice * chooseWeek + "원")
+                $("#buyModal .result.price span").text(choosePrice * chooseWeek)
             })
 
 

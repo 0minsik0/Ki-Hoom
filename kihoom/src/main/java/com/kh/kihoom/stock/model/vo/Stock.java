@@ -19,5 +19,6 @@ public class Stock {
 	private String price;
 	private String prdyCtrt; // 전일 대비율
 	private String prdyvrssvolRate; //전일 대비 거래량비율
+
 	
 }
