@@ -680,10 +680,10 @@ public class StockContoller {
 //		System.out.println();
 		
 		Date d = new Date();
-		d.setYear(Integer.parseInt(year.substring(0, 4))-2-1900);
+		d.setMonth(Integer.parseInt(year.substring(4, 6))-1-3);
 		
 		String beforeYear = new SimpleDateFormat("yyyyMMdd").format(d);
-		System.out.println(beforeYear);
+//		System.out.println(beforeYear);
 		
 		url +="?FID_COND_MRKT_DIV_CODE=J";
 		url +="&FID_COND_SCR_DIV_CODE=16633";
@@ -922,9 +922,7 @@ public class StockContoller {
 	
 	
 	
-	
-	
-	
+
 	
 	
 	

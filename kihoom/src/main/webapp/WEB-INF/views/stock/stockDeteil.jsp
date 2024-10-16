@@ -235,16 +235,165 @@
                             </div>
 
                             <div class="chat_area main_box">
-                                <div class="title">실시간 채팅</div>
+                                <div class="title">종목투자 현황</div>
                                 <br>
                                 <div class="content_area">
-                                    <div class="chat_view">
-
+                                    <div class="contnet_box head">
+                                        <div>일자</div>
+                                        <div>회원사명</div>
+                                        <div>투자의견</div>
+                                        <div>목표주가</div>
+                                        <div>직전투자의견</div>
+                                        <div>직전목표주가</div>
                                     </div>
-                                    <br>
-                                    <div class="chat_input">
-                                        <textarea name="" id=""></textarea>
-                                        <div class="material-icons">send</div>
+
+                                    <div class="content_view">
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+
+
                                     </div>
 
                                 </div>
@@ -367,10 +516,9 @@
                 dailyPrice("D")
                 dailyPrice("M")
                 select_stock_choose()
-                // investOpinion()
+                investOpinion()
 
                 websokect()
-
 
 
 
@@ -886,17 +1034,42 @@
 
 
 
-            // function investOpinion() {
-            //     $.ajax({
-            //         url: "investOpinion.st",
-            //         data: {
-            //             code: "${code}",
-            //         },
-            //         success: function (data) {
-            //             console.log(data)
-            //         }
-            //     })
-            // }
+            function investOpinion() {
+                $.ajax({
+                    url: "investOpinion.st",
+                    data: {
+                        code: "${code}",
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        const list = data.output
+                        let value = ""
+                        if (data.rt_cd === "0" && list.length !== 0) {
+                            // console.log("0")
+                            for (let i in list) {
+                                value += "<div class='contnet_box'>"
+                                    + "<div>" + list[i].stck_bsop_date + "</div>"
+                                    + "<div>" + list[i].mbcr_name + "</div>"
+                                    + "<div>" + list[i].invt_opnn + "</div>"
+                                    + "<div>" + list[i].rgbf_invt_opnn + "</div>"
+                                    + "<div>" + list[i].hts_goal_prc.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</div>"
+                                    + "<div>" + list[i].dprt + "%</div>"
+                                    + "</div>"
+                            }
+
+
+
+
+
+                        } else {
+                            console.log("없음")
+                            value = "<div class='contnet_box' ><h6>해당 데이터가 없습니다.</h6></div>"
+                        }
+                        console.log("gggg")
+                        $(".main-content .content_session .footer_session .chat_area .content_area .content_view").html(value)
+                    }
+                })
+            }
 
 
 
