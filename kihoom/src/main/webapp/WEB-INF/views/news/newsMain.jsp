@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%>
                 "</div>" +
                 "</div> </div> </a>";
             }
-            $(".main-content").html(newsValue + value);
+            $(".resultDiv").html(newsValue + value);
           },
           error: function () {
             console.log("국제 뉴스 ajax 통신 실패");

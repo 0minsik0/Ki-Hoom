@@ -7,7 +7,7 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.kh.kihoom.acountBook.model.vo.acount" alias="acount"/>
+		<typeAlias type="com.kh.kihoom.acountBook.model.vo.Acount" alias="acount"/>
 	</typeAliases>
 	
 	<mappers>

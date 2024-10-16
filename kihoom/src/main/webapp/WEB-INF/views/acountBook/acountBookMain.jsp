@@ -140,33 +140,30 @@ pageEncoding="UTF-8"%>
 
           <script>
             /* 인증 코드 */
-             function certification() {
-               $.ajax({
-                 url: "certification.ac",
-                 type: "GET",
-                 success: function (response) {
-                   const url = response.url;
-                   window.open(url, "_self");
+            function certification() {
+              $.ajax({
+                url: "certification.ac",
+                type: "GET",
+                success: function (response) {
+                  const url = response.url;
+                  window.open(url, "_self");
 
-                    let urlStr = window.location.href;
-	                let resultUrl = new URL(urlStr);
-	                let urlParams = resultUrl.searchParams;
-	                let userCode = urlParams.get('code');
-	
-	                $("#codeDisplay").text("사용자 인증 코드 : " + userCode);
-
-                 },
-                 error: function (request, status, error) {
-                   console.log("url 생성 ajax 오류");
-                 },
-               });
-             }
+                  const userCode = url.find("code");
+                  $("#codeDisplay").html(
+                    "userCode : " + userCode + " (*코드를 복사하세요!)"
+                  );
+                },
+                error: function (request, status, error) {
+                  console.log("url 생성 ajax 오류");
+                },
+              });
+            }
 
             /* 토큰 발급 코드 */
+            /*
              function passport(){
             	$.ajax({
             		url:"passport.ac",
-            		type: "POST",
             		data : {
             			code : ${userCode},
             		},
@@ -179,9 +176,9 @@ pageEncoding="UTF-8"%>
             		},
             	})
             }
-            
+            */
+
             /* 있는 계좌 불러오기 */
-            
           </script>
 
           <!-- 전체 통계 그래프 -->
@@ -478,42 +475,112 @@ pageEncoding="UTF-8"%>
             </script>
           </div>
 
-          <!-- Button trigger modal -->
-          <div
-            class="btn col-md-3 icon-list-item ik ik-plus-circle"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          ></div>
+          
 
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    가계부 직접 입력하기
-                  </h1>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <jsp:include page="inputAcountBook.jsp" />
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+              	거래내역보기
+              	<!-- Button trigger modal -->
+		          <div
+		            class="btn col-md-3 icon-list-item ik ik-plus-circle"
+		            data-bs-toggle="modal"
+		            data-bs-target="#exampleModal"
+		          ></div>
+		
+		          <!-- Modal -->
+		          <div
+		            class="modal fade"
+		            id="exampleModal"
+		            tabindex="-1"
+		            aria-labelledby="exampleModalLabel"
+		            aria-hidden="true"
+		          >
+		            <div class="modal-dialog">
+		              <div class="modal-content">
+		                <div class="modal-header">
+		                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+		                    가계부 수기 입력
+		                  </h1>
+		                  <button
+		                    type="button"
+		                    class="btn-close"
+		                    data-bs-dismiss="modal"
+		                    aria-label="Close"
+		                  ></button>
+		                </div>
+		                <div class="modal-body">
+		                  <jsp:include page="inputAcountBook.jsp" />
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+              
+              
+              <div class="card-doby">
+                <div
+                  id="data_table_wrapper"
+                  class="dataTables_wrapper dt-bootstrap4 no-footer"
+                >
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <div id="data_table_filter" class="dataTables_filter">
+                        <label>
+                          "Search:"
+                          <input
+                            type="search"
+                            class="form-control form-control-sm"
+                            placeholder
+                            aria-controls="data_table"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <table
+                      id="data_table"
+                      class="table dataTableno-footer"
+                      role="grid"
+                      aria-describedby="data_table_info"
+                    >
+                      <thead>
+                        <tr role="row">
+                          <th>거래 날짜</th>
+                          <th>거래 유형</th>
+                          <th>거래 구분</th>
+                          <th>거래내역명</th>
+                          <th>금액</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      	<tr role="row" class="odd">
+                      		<td class="sorting_1">2024-10-15</td>
+                      		<td>입금</td>
+                      		<td>현금</td>
+                      		<td>(주)네이버 급여</td>
+                      		<td>7,500,000</td>
+                      	</tr>
+                      	<tr role="row" class="odd">
+                      		<td class="sorting_1">2024-10-15</td>
+                      		<td>출금</td>
+                      		<td>카드</td>
+                      		<td>솔낭구</td>
+                      		<td>10,000</td>
+                      	</tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
-        <!-- 메인 컨테이너 div -->
+
+        <!-- 메인 컨테이너 div 끝 -->
       </div>
     </div>
   </body>

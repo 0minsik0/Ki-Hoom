@@ -11,7 +11,32 @@ pageEncoding="UTF-8"%>
   <body>
     <form action="input.ac" align="center">
       <div class="wrap">
-      	<input type="hidden" value="${ loginUser.memNo }">
+        <input type="hidden" value="${ loginUser.memNo }" />
+        <div class="dealSet">
+          <div class="acountInput">
+            거래 유형 <br />
+            <select name="dealType" id="dealType">
+              <option>입금</option>
+              <option>출금</option>
+            </select>
+          </div>
+          <div class="acountInput">
+            거래 구분 <br />
+            <select name="dealDivide" id="dealDivide">
+              <option>카드</option>
+              <option>현금</option>
+            </select>
+          </div>
+        </div>
+        <div class="acountInput">
+          거래 날짜 <br />
+          <input
+            type="date"
+            id="paymentDate"
+            name="paymentDate"
+            placeholder="거래날짜를 입력해주세요"
+          />
+        </div>
         <div class="acountInput">
           거래명 <br />
           <input
@@ -30,29 +55,6 @@ pageEncoding="UTF-8"%>
             placeholder="거래금액을 입력해주세요"
           />
           원
-        </div>
-        <div class="acountInput">
-          거래 날짜 <br />
-          <input
-            type="date"
-            id="paymentDate"
-            name="paymentDate"
-            placeholder="거래날짜를 입력해주세요"
-          />
-        </div>
-        <div class="acountInput">
-          거래 유형 <br />
-          <select name="dealType" id="dealType">
-            <option>입금</option>
-            <option>출금</option>
-          </select>
-        </div>
-        <div class="acountInput">
-          거래 구분 <br />
-          <select name="dealDivide" id="dealDivide">
-            <option>카드</option>
-            <option>현금</option>
-          </select>
         </div>
         <br />
         <button id="submit">등록하기</button>

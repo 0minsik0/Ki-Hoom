@@ -49,16 +49,13 @@
                                     <div class="submenu-content">
                                     	<a href="acountBook.ac" class="menu-item">🧾 가계부</a>
                                     	<a href="target.ta" class="menu-item">💰 자산 모으기</a>
-                                    	
                                     </div>
                                 </div>
-                                <div class="nav-item has-sub">
-                                    <a href="javascript:void(0)"><i class="ik ik-menu"></i><span>뉴스</span> </a>
-                                    <div class="submenu-content">
-                                        <a href="view.ne" class="menu-item">📰 시장 포켓뉴스</a>
-                                        <a href="searchView.ne" class="menu-item">🔎 뉴스 검색</a>
-                                    </div>
+                                
+                                <div class="nav-item">
+                                    <a href="searchView.ne"><i class="ik ik-command"></i><span>뉴스</span></a>
                                 </div>
+                                
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>스케줄</span> </a>
                                     <div class="submenu-content">
