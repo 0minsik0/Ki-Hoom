@@ -14,15 +14,17 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	
-	<!-- repositories : 기본저장소에서 다운 받지 못하는 경우 직접 다운 받고자 하는 사설저장소를 등록 -->
 	<repositories>
 		<repository>
-			<id>Atlassian 3rdParty</id>
-			<url>https://packages.atlassian.com/maven-3rdparty/</url>
-		</repository>
-	</repositories>
+        <id>Atlassian 3rdParty</id>
+        <url>https://packages.atlassian.com/maven-3rdparty/</url>
+ 
+     </repository>
 	
+	</repositories>
 
+	
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -42,6 +44,12 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+				
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>		
 				
 		<!-- AspectJ -->
 		<dependency>
@@ -218,6 +226,9 @@
 		
 		       
 	</dependencies>
+	
+	
+	
     <build>
         <plugins>
             <plugin>
