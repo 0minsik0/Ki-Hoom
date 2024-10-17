@@ -6,16 +6,28 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.kh.kihoom.acountBook.model.service.AcountServiceImpl;
+import com.kh.kihoom.acountBook.model.vo.Acount;
+import com.kh.kihoom.common.model.vo.PageInfo;
+import com.kh.kihoom.common.template.Pagination;
 
 @Controller
 public class AcountBookController {
+	
+	@Autowired
+	private AcountServiceImpl aService;
 	
 	private static final String clientId = "b0fe461d-f5c1-454f-87af-6f063de143bf";
 	private static final String clientSecret = "10d37300-57c4-44c8-94cb-a2d5e938ce76";
@@ -80,10 +92,27 @@ public class AcountBookController {
 		return "inputAcountBook";
 	}
 	
-	// input 폼 안에있는 값 디비저장
+	// 수기작성 페이징바
+	@RequestMapping(value = "list.ac")
+	public ModelAndView acountList(@RequestParam(value="cpage", defaultValue = "1") int currentPage, ModelAndView mv) {
+		int listCount = aService.selectListCount();
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
+		ArrayList<Acount> list = aService.selectList(pi);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("acountBook/acountBook");
+		return mv;
+	}
+	
+	// 가게부 수기작성 insert
 	@RequestMapping("input.ac")
 	public String inputAcountBook() {
-		return "redirect:inputAcountBook";
+		
+		
+		
+		return "acountBook/acountBookMain";
 	}
 	
 	

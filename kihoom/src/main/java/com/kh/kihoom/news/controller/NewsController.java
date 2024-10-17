@@ -12,18 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.RequestScope;
 
-/**
- * @author kimSeoKyeong
- * news
- *
- */
 @Controller
 public class NewsController {
 	
 	private static final String serviceKey = "ZnJHRJcFm1CHgoqO9w%2BLRHa4cDabVANf76N8bG6DVVZBPZp7ZYtg1dmCIu2Ru5CAjhOvZNF9zGHtP4rwJnX4lg%3D%3D";
 	private static final String apiKey = "27453aadccd3440e8817528adb6d4d98";
 	// 세계뉴스 jsp
-	@RequestMapping("view.ne")
+	@RequestMapping(value = "view.ne")
 	public String mainViewNews() {
 		return "news/newsMain";
 	}
@@ -61,7 +56,7 @@ public class NewsController {
 	}
 	
 	// 뉴스찾기 jsp
-	@RequestMapping("searchView.ne")
+	@RequestMapping(value = "searchView.ne")
 	public String searchNewsView() {
 		return "news/newsSearch";
 	}

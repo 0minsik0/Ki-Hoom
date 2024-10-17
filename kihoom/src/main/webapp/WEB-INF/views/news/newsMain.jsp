@@ -11,11 +11,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="resources/css/news.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <jsp:include page="../header.jsp" />
-      <div class="page-wrap">
-        <jsp:include page="../menubar.jsp" />
-        <div class="main-content">
+
           <!-- 로딩될때..! -->
           <div class="typewriter" align="center">
             <div class="slide"><i></i></div>
@@ -23,9 +19,6 @@ pageEncoding="UTF-8"%>
             <div class="keyboard"></div>
             <div>뉴스 가져오는중입니다</div>
           </div>
-        </div>
-      </div>
-    </div>
 
     <script>
       $(window).load(() => {

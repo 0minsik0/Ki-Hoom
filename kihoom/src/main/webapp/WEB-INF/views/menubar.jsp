@@ -51,10 +51,10 @@
                                     	<a href="target.ta" class="menu-item">💰 자산 모으기</a>
                                     </div>
                                 </div>
-                                
+
                                 <div class="nav-item">
-                                    <a href="searchView.ne"><i class="ik ik-command"></i><span>뉴스</span></a>
-                                </div>
+								     <a href="searchView.ne"><i class="ik ik-menu"></i><span>뉴스</span> </a>
+								</div>
                                 
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>스케줄</span> </a>
