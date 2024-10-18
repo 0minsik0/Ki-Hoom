@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
@@ -52,6 +53,13 @@ pageEncoding="UTF-8"%>
         your experience.
       </p>
     <![endif]-->
+    
+    <c:if test="${not empty alertMsg}">
+	    <script>
+	        alert("${alertMsg}"); // 알림창으로 메시지 표시
+	    </script>
+	</c:if>
+	<c:remove var="alertMsg" scope="session"/>
 
     <div class="auth-wrapper">
       <div class="container-fluid h-100">

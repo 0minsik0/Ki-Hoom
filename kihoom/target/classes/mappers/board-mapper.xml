@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="boardMapper">
+
+<resultMap type="Board" id="boardResult">
+	<result column="board_no" property="boardNo"/>
+	<result column="board_title" property="boardTitle"/>
+	<result column="mem_no" property="memNo"/>
+	<result column="board_writer" property="boardWriter"/>
+	<result column="board_content" property="boardContent"/>
+	<result column="status" property="status"/>
+	<result column="board_count" property="boardCount"/>
+	<result column="bcategory_no" property="bcategoryNo"/>
+	<result column="declaration_count" property="declarationCount"/>
+</resultMap>
+</mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +88,7 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-                <jsp:include page="../header.jsp"/>
+                <jsp:include page="../common/header.jsp"/>
                 <div class="main-content">
                 	<div class="col-xl-8 col-md-6" style="margin: auto; max-width: 85%;">
                                 <div class="card table-card">
@@ -108,22 +109,24 @@
                                                     <tr>
                                                         <th>회원명</th>
                                                         <th>상태</th>
-                                                        <th>신고누적횟수</th>
+                                                        <th>가입일</th>
                                                         <th>수정/삭제</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>회원명</td>
-                                                        <td>
-                                                            <div class="p-status bg-green"></div>
-                                                        </td>
-                                                        <td>신고받은횟수</td>
-                                                        <td>
-                                                            <a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-                                                            <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                	<c:forEach var="m" items="${ list }">
+	                                                    <tr>
+	                                                        <td>${ m.memId }</td>
+	                                                        <td>
+	                                                            <div class="p-status bg-green"></div>
+	                                                        </td>
+	                                                        <td>${ m.enrollDate }</td>
+	                                                        <td>
+	                                                            <a href="update.me"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+	                                                            <a href="delete.me"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+	                                                        </td>
+	                                                    </tr>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>

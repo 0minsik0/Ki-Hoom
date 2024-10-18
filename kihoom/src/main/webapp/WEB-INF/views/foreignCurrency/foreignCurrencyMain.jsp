@@ -36,9 +36,9 @@ b {
 <body>
 
 	<div class="wrapper">
-		<jsp:include page="../header.jsp" />
+		<jsp:include page="../common/header.jsp" />
 		<div class="page-wrap">
-			<jsp:include page="../menubar.jsp" />
+			<jsp:include page="../common/menubar.jsp" />
 			<div class="main-content">
 				<!-- 메인 컨텐츠 자리 -->
 				<div class="container-fluid">

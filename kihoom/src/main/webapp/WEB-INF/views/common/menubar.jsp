@@ -46,9 +46,6 @@
                                 <div class="nav-item">
                                     <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
                                 </div>
-                                <div class="nav-item active">
-                                    <a href="./index.jsp"><i class="ik ik-bar-chart-2"></i><span>게시판</span></a>
-                                </div>
                                 <div class="nav-item">
                                     <a href="list.bo"><i class="ik ik-users"></i><span>게시판</span></a>
                                 </div>

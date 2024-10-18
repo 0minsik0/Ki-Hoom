@@ -66,8 +66,9 @@
 				
 				
 				 -->
-				 <mapping path="/myPage.me"/>
-				<beans:bean class="com.kh.kihoom.member.controller.LoginInterceptor" id="loginInterceptor"/>	
+				<mapping path="/update.me"/>	
+				<mapping path="/mypage.lo"/>	
+				<beans:bean class="com.kh.kihoom.member.controller.LoginInterceptor" id="loginInterceptor"/>
 			</interceptor>
 		</interceptors>
 		

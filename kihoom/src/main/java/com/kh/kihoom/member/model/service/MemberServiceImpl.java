@@ -55,6 +55,17 @@ public class MemberServiceImpl implements MemberService{
 
 		return mDao.findPwd(sqlSession, m);
 	}
+
+	// 회원정보 수정
+	@Override
+	public int updateMember(Member m) {
+		return mDao.updateMember(sqlSession, m);
+	}
+
+	@Override
+	public int deleteMember(String memId) {
+		return mDao.deleteMember(sqlSession, memId);
+	}
 	
 	/*
 	@Getter

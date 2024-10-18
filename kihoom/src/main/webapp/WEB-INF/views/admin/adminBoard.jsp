@@ -87,7 +87,7 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-                <jsp:include page="../header.jsp"/>
+                <jsp:include page="../common/header.jsp"/>
                 <div class="main-content">
                 	<div class="col-xl-8 col-md-6" style="margin: auto; max-width: 85%;">
                         <div class="card table-card">
