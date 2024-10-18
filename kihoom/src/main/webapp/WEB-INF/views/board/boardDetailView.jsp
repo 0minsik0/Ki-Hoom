@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +25,9 @@
 		font-size: 16px;
 		color: #999;
 	}
-	
-	.header-content p{
-		margin: 0 !important;
+
+	.like-area {
+		display: flex;
 	}
 </style>
 </head>
@@ -35,7 +36,6 @@
 		<jsp:include page="../common/header.jsp" />
 		<div class="page-wrap">
 			<jsp:include page="../common/menubar.jsp" />
-			
 			<div class="main-content">
 				<div class="col-md-12" style="margin: auto; max-width: 85%;">
 					<div class="card">
@@ -51,6 +51,10 @@
 							<div>
 								<p style="height: 500px;">${ b.boardContent }</p>
 							</div>
+							<div class="like-area">
+								<c:if test="${ not empty loginUser and like}"></c:if>
+								<i class="fa fa-heart text-danger"></i>
+								<p>${ like }</p>
 							</div>
 						</div>
 					</div>

@@ -31,8 +31,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int insertBoard(Board b) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bDao.insertBoard(sqlSession, b);
 	}
 
 	@Override
@@ -42,8 +41,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int boardLikeCount(int boardNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bDao.boardLikeCount(sqlSession, boardNo);
 	}
 
 	@Override

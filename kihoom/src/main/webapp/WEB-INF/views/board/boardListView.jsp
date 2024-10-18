@@ -67,6 +67,11 @@
 				        <div class="card-header">
 				        	<div class="title-area">
 					            <h3>게시판</h3>
+					            <br>
+					            <!-- 로그인후 상태일 경우만 보여지는 글쓰기 버튼-->
+				            	<c:if test="${ not empty loginUser }">
+					           		<a class="btn btn-secondary btn-sm" style="float:right" href="enrollForm.bo">글쓰기</a>
+				            	</c:if>
 				        	</div>
 				        	<div class="selection-area">
 					            <select class="form-control">
@@ -97,7 +102,7 @@
 						                        <td>[${ b.categoryName }]${ b.boardTitle }</td>
 						                        <td>${ b.boardWriter }</td>
 						                        <td>${ b.boardCount }</td>
-						                        <td>${ b.boardLike }</td>
+						                        <td>${ b.likeCount }</td>
 						                        <td>${ b.createDate }</td>
 	                    					</tr>
                 						</c:forEach>

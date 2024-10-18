@@ -29,8 +29,17 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.increaseCount", boardNo);
 	}
 	
+	public int boardLikeCount(SqlSessionTemplate sqlSession, int boardNo) {
+		System.out.println(boardNo);
+		return sqlSession.selectOne("boardMapper.boardLikeCount", boardNo);
+	}
+	
 	public Board selectBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
+	}
+	
+	public int insertBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.insertBoard", b);
 	}
 
 }

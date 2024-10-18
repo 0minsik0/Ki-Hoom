@@ -17,7 +17,7 @@ public class Board {
 	private String boardContent;
 	private String createDate;
 	private String status;
-	private int boardLike;
+	private int likeCount;
 	private int boardCount;
 	private int bCategoryNo;
 	private String categoryName;
