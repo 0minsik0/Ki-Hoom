@@ -5,89 +5,129 @@
 
 
 
-<resultMap type="Stock" id="StockResult">
-	<result column="stock_no" property="stockNo"/>
-	<result column="stock_id" property="sotckId"/>
-	<result column="mem_no" property="memNo"/>
-	<result column="stock_account" property="stockAccount"/>
-</resultMap>
+	<resultMap type="Stock" id="StockResult">
+		<result column="stock_no" property="stockNo" />
+		<result column="stock_id" property="sotckId" />
+		<result column="mem_no" property="memNo" />
+		<result column="stock_account" property="stockAccount" />
+	</resultMap>
 
 
-<select id="selectStockChoose" resultType="_int">
-select count(*) as "count"
-from stock_choose
-where mem_no = #{memNo}
-and stock_no = #{stockNo}
-
-
-</select>
-
-<insert id="insertStockChoose">
-insert
-into stock_choose
-(
-    choose_no
-  , mem_no
-  , stock_no
-)
-values
-(
-   stock_choose_seq.nextval
- , #{memNo}
- , #{stockNo}
-)
-
-</insert>
-
-
-<delete id="deleteStockChosse">
-delete from stock_choose
-where mem_no = #{memNo}
-and stock_no = #{stockNo}
-</delete>
-
-
-
-<select id="selectStockAccount" resultMap="StockResult">
-select 
- mem_no
-, stock_account
-from stock_buy
-where mem_no=#{memNo}
-
-</select>
+	<resultMap type="StockChat" id="StockChatResult">
+		<result column="mem_no" property="memNo" />
+		<result column="mem_id" property="memId" />
+		<result column="message" property="message" />
+		<result column="send_date" property="date" />
+	</resultMap>
 
 
 
 
-<select id="selectChooseList" resultMap="StockResult">
-select 
-stock_no
-from stock_choose
-where mem_no=#{memNo}
-order by choose_no desc
-
-</select>
-
-
-<insert id="insertAddAccount">
-insert 
-into stock_buy
-(
-    buy_no
-  , mem_no
-  , stock_account
-)
-values
-(
-	stock_buy_seq.nextval
-  , #{memNo}
-  , #{stockAccount}
-)
-</insert>
+	<select id="selectStockChoose" resultType="_int">
+		select count(*) as
+		"count"
+		from stock_choose
+		where mem_no = #{memNo}
+		and stock_no =
+		#{stockNo}
 
 
+	</select>
 
+	<insert id="insertStockChoose">
+		insert
+		into stock_choose
+		(
+		choose_no
+		, mem_no
+		, stock_no
+		)
+		values
+		(
+		stock_choose_seq.nextval
+		, #{memNo}
+		, #{stockNo}
+		)
+
+	</insert>
+
+
+	<delete id="deleteStockChosse">
+		delete from stock_choose
+		where mem_no = #{memNo}
+		and
+		stock_no = #{stockNo}
+	</delete>
+
+
+
+	<select id="selectStockAccount" resultMap="StockResult">
+		select
+		mem_no
+		,
+		stock_account
+		from stock_buy
+		where mem_no=#{memNo}
+
+	</select>
+
+
+
+
+	<select id="selectChooseList" resultMap="StockResult">
+		select
+		stock_no
+		from
+		stock_choose
+		where mem_no=#{memNo}
+		order by choose_no desc
+
+	</select>
+
+
+	<insert id="insertAddAccount">
+		insert
+		into stock_buy
+		(
+		buy_no
+		, mem_no
+		, stock_account
+		)
+		values
+		(
+		stock_buy_seq.nextval
+		, #{memNo}
+		, #{stockAccount}
+		)
+	</insert>
+
+
+	<select id="selectMessageList" resultMap="StockChatResult">
+		select
+		mem_no
+		, mem_id
+		, message
+		, send_date
+		from stock_chat
+		where rownum <![CDATA[ < ]]>
+		50
+
+	</select>
+
+
+	<insert id="insertMessage">
+		insert
+		into stock_chat
+		values
+		(
+		stock_chat_seq.nextval
+		,
+		#{memNo}
+		, #{memId}
+		, #{message}
+		, #{date}
+		)
+	</insert>
 
 
 

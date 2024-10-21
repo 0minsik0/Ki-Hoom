@@ -10,6 +10,7 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="resources/sockjs.min.js"></script>
             <link rel="stylesheet" href="resources/stockCss/stockMain.css">
         </head>
 
@@ -568,6 +569,43 @@
                         </div>
 
 
+                        <div class="main_box chat_session">
+                            <h2 style="font-weight: 900;">토론장</h2>
+
+                            <hr>
+
+                            <div class="chat_content_wrap">
+                                <div class="chat_view">
+                                    <div class="view_area">
+                                        <div class="chat_item">
+                                            <div class="user_id">asdf</div>
+                                            <div class="message">asddffd
+                                                aasddddddddddddddddddffffffffffffffffffffasdddddddddddddddddddddddddddddfffffff
+                                            </div>
+                                            <div class="date">10/21 18:20</div>
+                                        </div>
+                                        <div class="chat_item right">
+                                            <div class="user_id">rasdf</div>
+                                            <div class="message">rasdfa asdf asd fsadf sadf saf asdf sad ㅁㄴㅇㄹ ㅁㄴㅇㄹ ㅁㄴㅇㄹ
+                                                ㅁㄴㅇㄹ ㅁㄴㅇㄹ ㅁㄴㅇㄹ ㅁㄴㅇㄹ ㄴㅁ</div>
+                                            <div class="date">10/21 18:20</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="chat_input_area">
+                                    <textarea name="" id="chat_message"></textarea>
+                                    <button id="message_send" class="btn btn-outline-success"
+                                        onclick="send_message()">send</button>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
 
 
 
@@ -578,11 +616,79 @@
                 <script>
                     $(function () {
                         $('.pageinfo_area .page').eq(0).click()
-
                         selectChooseList();
                         categoryList();
                         selectAccount();
                     })
+
+                    const ws = new SockJS("socketChat")
+                    let flag = false
+
+                    ws.onopen = function () {
+                        console.log("연결")
+                        flag = true
+                    }
+
+                    ws.onmessage = function (e) {
+                        console.log(e)
+                        const message = JSON.parse(e.data)
+                        // console.log(message)
+                        let val = "";
+                        if (message.userNo === "${loginUser.memNo}") {
+                            // console.log("같음")
+                            val += "<div class='chat_item right'>"
+                                + "<div class='user_id'>" + message.userId + "</div>"
+                                + "<div class='message'>" + message.msg + "</div>"
+                                + "<div class='date'>" + message.date + "</div>"
+                                + "</div>"
+
+
+                        } else {
+                            // console.log("다름")
+                            val += "<div class='chat_item'>"
+                                + "<div class='user_id'>" + message.userId + "</div>"
+                                + "<div class='message'>" + message.msg + "</div>"
+                                + "<div class='date'>" + message.date + "</div>"
+                                + "</div>"
+                        }
+
+                        $(".chat_session .chat_content_wrap .view_area").append(val)
+                    }
+
+
+                    $(".chat_session .chat_content_wrap #chat_message").on('keyup', function (e) {
+                        // console.log(e.originalEvent.keyCode)
+                        if (e.originalEvent.keyCode === 13) {
+                            if (flag) {
+                                // console.log("엔터")
+                                $(".chat_session .chat_content_wrap #message_send").click()
+                            }
+                        }
+                    })
+
+                    function send_message() {
+                        // console.log(55)
+                        let sendMsg = $(".chat_session .chat_content_wrap #chat_message").val()
+                        if (sendMsg === "") {
+                            alert("보낼 메세지를 입력해주세요")
+                            $(".chat_session .chat_content_wrap #chat_message").focus()
+                        } else {
+                            let date = new Date();
+                            let message = {
+                                userNo: "${loginUser.memNo}",
+                                userId: "${loginUser.memId}",
+                                msg: sendMsg,
+                                date: date.getMonth() + 1 + "/" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes()
+                            }
+                            ws.send(JSON.stringify(message))
+                            $(".chat_session .chat_content_wrap #chat_message").val("").focus()
+
+                        }
+                    }
+
+
+
+
 
                     let pageNum = 1;
 
@@ -1055,7 +1161,7 @@
                                 secondAccount: second
                             },
                             success: function (data) {
-                                console.log(data)
+                                // console.log(data)
                                 let value = ""
 
                                 if (data.rt_cd === "0") {
@@ -1126,7 +1232,7 @@
 
                     function selectBuyStock() {
                         const account = $(".buy_stock_session .account_area select[name=account_list]").val()
-                        console.log(account)
+                        // console.log(account)
                         if (account === "등록된 계좌가 없습니다.") {
 
                         } else {
