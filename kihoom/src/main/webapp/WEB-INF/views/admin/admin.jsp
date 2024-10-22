@@ -51,7 +51,7 @@
                                     <a href="adminMember.ad"><i class="ik ik-users"></i><span>회원관리</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="adminBoard.ad"><i class="ik ik-edit-1"></i><span>게시판관리</span></a>
+                                    <a href="list.ad"><i class="ik ik-edit-1"></i><span>게시판관리</span></a>
                                 </div>
                             </nav>
                         </div>

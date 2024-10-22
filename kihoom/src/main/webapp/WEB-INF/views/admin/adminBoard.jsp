@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,40 @@
         <link rel="stylesheet" href="resources/dist/css/theme.min.css">
         <script src="resources/src/js/vendor/modernizr-2.8.3.min.js"></script>
         
+        <style>
+        	#pagingArea{
+				display: flex;
+				justify-content: center;
+			}
+			
+			.pagination{
+				width: 200px;
+			}
+			
+			.pageNo{
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				margin-left: 20px;
+			}
+			
+			.pageNo:hover{
+				text-decoration: underline;
+			}
+			
+			.pageNo.selected{
+				border: 1px solid gray;
+			}
+			
+			.pageNo.selected a{
+				color:  #007bff;
+			}
+			
+			.pageNo.selected:hover{
+				text-decoration: underline;
+				text-decoration-color: #007bff;
+			}
+        </style>
 </head>
 <body>
 
@@ -52,7 +87,7 @@
                                     <a href="adminMember.ad"><i class="ik ik-users"></i><span>회원관리</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="./index.jsp"><i class="ik ik-edit-1"></i><span>게시판관리</span></a>
+                                    <a href="list.ad"><i class="ik ik-edit-1"></i><span>게시판관리</span></a>
                                 </div>
                             </nav>
                         </div>
@@ -103,33 +138,57 @@
                             </div>
                             <div class="card-block">
                                 <div class="table-responsive">
-                                    <table class="table table-hover mb-0" style="text-align:center; align-items:center; ">
+                                    <table id="boardList" class="table table-hover mb-0" style="text-align:center; align-items:center; ">
                                         <thead>
-                                            <tr>
-                                                <th>카테고리</th>
-                                                <th>제목</th>
-                                                <th>작성자</th>
-                                                <th>작성일</th>
-                                                <th>신고여부</th>
-                                                <th>수정/삭제</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>카테고리자리</td>
-                                                <td>제목자리</td>
-                                                <td>작성자자리</td>
-                                                <td>작성일자리</td>
-                                                <td>
-                                                    <div class="p-status bg-green" style="margin:auto;"></div>
-                                                </td>
+				                        <tr>
+				                            <th></th>
+				                            <th>제목</th>
+				                            <th>작성자</th>
+				                            <th>조회</th>
+				                            <th>좋아요</th>
+				                            <th>작성일</th>
+				                        </tr>
+				                    </thead>
+				                    <tbody>
+				                      	<c:forEach var="b" items="${ list }">
+						                    <tr>
+						                        <td class="bno">${ b.boardNo }</td>
+						                        <td>[${ b.categoryName }]${ b.boardTitle }</td>
+						                        <td>${ b.boardWriter }</td>
+						                        <td>${ b.boardCount }</td>
+						                        <td>${ b.likeCount }</td>
+						                        <td>${ b.createDate }</td>
                                                 <td>
                                                     <a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
                                                     <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a>
                                                 </td>
                                             </tr>
-                                        </tbody>
+                                         </c:forEach>
+                                   	</tbody>
                                     </table>
+                                    
+                                    <script>
+										$(function(){
+											$("#boardList>tbody>tr").click(function(){
+												location.href = 'detail.bo?bno=' + $(this).children(".bno").text();
+											})
+										})
+									</script>
+                                    
+                                    <div id="pagingArea">
+					                <ul class="pagination">
+						                   	<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+						                	<c:choose>
+												<c:when test="${ pi.currentPage eq p}">
+							                    	<li class="pageNo selected"><a href="list.ad?cpage=${ p }">${ p }</a></li>
+												</c:when>
+												<c:otherwise>
+							                    	<li class="pageNo"><a href="list.ad?cpage=${ p }">${ p }</a></li>
+												</c:otherwise>
+						               		</c:choose>
+					                   	</c:forEach>
+					                </ul>
+					            	</div>
                                 </div>
                             </div>
                         </div>

@@ -23,18 +23,6 @@
 		</repository>
 	</repositories>
 	
-	
-	<repositories>
-		<repository>
-        <id>Atlassian 3rdParty</id>
-        <url>https://packages.atlassian.com/maven-3rdparty/</url>
- 
-     </repository>
-	
-	</repositories>
-
-	
-	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>

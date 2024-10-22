@@ -26,6 +26,45 @@
         <link rel="stylesheet" href="resources/dist/css/theme.min.css">
         <script src="resources/src/js/vendor/modernizr-2.8.3.min.js"></script>
         
+<style>
+#pagingArea{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.pagination{
+		width: 200px;
+	}
+	
+	.pageNo{
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		margin-left: 20px;
+	}
+	
+	.pageNo:hover{
+		text-decoration: underline;
+	}
+	
+	.pageNo.selected{
+		border: 1px solid gray;
+	}
+	
+	.pageNo.selected a{
+		color:  #007bff;
+	}
+	
+	.pageNo.selected:hover{
+		text-decoration: underline;
+		text-decoration-color: #007bff;
+	}
+	
+	button{
+		border: none;
+    	background-color: unset;
+	}
+</style>
 </head>
 <body>
 
@@ -53,7 +92,7 @@
                                     <a href="adminMember.ad"><i class="ik ik-users"></i><span>회원관리</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="adminBoard.ad"><i class="ik ik-edit-1"></i><span>게시판관리</span></a>
+                                    <a href="list.ad"><i class="ik ik-edit-1"></i><span>게시판관리</span></a>
                                 </div>
                             </nav>
                         </div>
@@ -122,21 +161,77 @@
 	                                                        </td>
 	                                                        <td>${ m.enrollDate }</td>
 	                                                        <td>
-	                                                            <a href="update.me"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-	                                                            <a href="delete.me"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+	                                                            <a href="updateMember.ad?memNo=${m.memNo}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+	                                                            <button type="button" class="open-delete-modal" data-toggle="modal" data-memid="${m.memId}" data-target="#exampleModalCenter"><i class="ik ik-trash-2 f-16 text-red"></i></button>
 	                                                        </td>
 	                                                    </tr>
                                                     </c:forEach>
                                                 </tbody>
                                             </table>
+                                            <br>
+                                            <div id="pagingArea">
+								                <ul class="pagination">
+									                   	<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+									                	<c:choose>
+															<c:when test="${ pi.currentPage eq p}">
+										                    	<li class="pageNo selected"><a href="adminMember.ad?cpage=${ p }">${ p }</a></li>
+															</c:when>
+															<c:otherwise>
+										                    	<li class="pageNo"><a href="adminMember.ad?cpage=${ p }">${ p }</a></li>
+															</c:otherwise>
+									               		</c:choose>
+								                   	</c:forEach>
+								                </ul>
+								            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                 </div>
             </div>
     </div>
+	
+	<!-- 회원탈퇴 모달 -->
+	
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterLabel">회원탈퇴</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <form action="deleteMember.ad" method="post">
+                <div class="modal-body" align="center">
+               
+                   <b>
+                                   정말로 탈퇴 시키겠습니까?
+                   </b>
+                   <br><br>
 
+               	
+                           관리자 비밀번호 : 
+                    <input type="password" name="adminPwd" required>
+                    <input type="hidden" name="memId" value="${m.memId}">
+                   
+
+               </div>
+               <div class="modal-footer">
+                   <button type="submit" class="btn btn-danger">탈퇴하기</button>
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+               </div>
+               </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    $(document).ready(function() {
+        // 탈퇴 모달 열 때 memId 값 설정
+        $('.open-delete-modal').on('click', function() {
+            var memId = $(this).data('memid'); // 클릭된 버튼의 data-memid 값 가져오기
+            $('#exampleModalCenter input[name="memId"]').val(memId); // 모달의 숨겨진 input에 memId 설정
+        });
+    });
+</script>
 </body>
 </html>

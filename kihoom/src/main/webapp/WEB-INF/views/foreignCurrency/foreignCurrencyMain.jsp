@@ -31,6 +31,11 @@ th .sorting-template {
 b {
 	font-size: 18px;
 }
+
+#converted-amount{
+    font-size: 18px;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -209,10 +214,10 @@ b {
                                         <h3>환율계산기</h3>
                                     </div>
                                     <div class="card-body calculator" style="margin-top: 60px;">
-                                    	<label for="krw-amount"><b>한국 원화 (KRW):</b></label>
+                                    	<label for="krw-amount"><b>한국 원화 (KRW) :</b></label>
 							            <input type="number" id="krw-amount" class="form-control" placeholder="원화 금액을 입력하세요"><br>
 							
-							            <label for="currency-select"><b>환산할 국가를 선택하세요:</b></label>
+							            <label for="currency-select"><b>환산할 국가를 선택하세요 :</b></label>
 							            <select id="currency-select" class="form-control">
 							                <option value="" selected disabled hidden>국가를 선택하세요.</option>
 							                <option value="JPY(100)">일본(JPY)</option>
@@ -235,7 +240,7 @@ b {
 							            </select><br>
 							
 							            <!-- 환산된 금액을 보여줄 곳 -->
-							            <p><b>환산된 금액:</b> <span id="converted-amount">-</span></p>
+							            <p><b>환산된 금액 : </b> <span id="converted-amount">-</span></p>
                                     </div>
                                 </div>
                             </div>

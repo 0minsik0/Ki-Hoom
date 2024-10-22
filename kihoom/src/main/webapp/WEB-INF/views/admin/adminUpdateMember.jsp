@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이 페이지</title>
+<title>관리자 회원정보수정</title>
 <!-- DataTables CSS 추가 -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
@@ -46,14 +46,15 @@ b {
 					<div class="card">
 						<div class="card-header"><h3>정보수정</h3></div>
 	                           <div class="card-body">
-	                               <form action="update.me" method="post">
+	                               <form action="updateMemberProcess.me" method="post">
+	                               <input type="hidden" name="memNo" value="${member.memNo}">
 	                                   <div class="form-group">
 	                                       <label for="exampleInputUsername">아이디</label>
-	                                       <input type="text" class="form-control" id="name" name="memId" value="${ loginUser.memId }" readonly>
+	                                       <input type="text" class="form-control" id="name" name="memId" value="${member.memId}" readonly>
 	                                   </div>
 	                                   <div class="form-group">
 	                                       <label for="exampleInputPassword1">비밀번호</label>
-	                                       <input type="password" class="form-control" id="password" name="memPwd" value="${ loginUser.memPwd }" readonly>
+	                                       <input type="password" class="form-control" id="password" name="memPwd" value="${member.memPwd}" readonly>
 	                                   </div>
 	                                   <div class="form-group">
 	                                   	<button type="button" class="btn btn-secondary" id="updatePwd">변경하기</button>
@@ -89,20 +90,19 @@ b {
 									    
                                        <div class="form-group">
 	                                       <label for="exampleInputName">이름</label>
-	                                       <input type="text" class="form-control" id="name" name="memName" value="${ loginUser.memName }" readonly>
+	                                       <input type="text" class="form-control" id="name" name="memName" value="${member.memName}" readonly>
 	                                   </div>
 	                                   
 	                                   <div class="form-group">
 	                                       <label for="exampleInputEmail">이메일</label>
-	                                       <input type="email" class="form-control" id="email" name="email" value="${ loginUser.email }">
+	                                       <input type="email" class="form-control" id="email" name="email" value="${member.email}">
 	                                   </div>
 	                                   <div class="form-group">
 	                                       <label for="exampleInputPhone">전화번호</label>
-	                                       <input type="phone" class="form-control" id="phone" name="phone" value="${ loginUser.phone }">
+	                                       <input type="phone" class="form-control" id="phone" name="phone" value="${member.phone}">
 	                                   </div>
 	                                 
 	                                   <button type="submit" class="btn btn-primary mr-2">수정하기</button>
-	                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">회원탈퇴</button>
 	                                 </form>
 	                           </div>
 					</div>
@@ -111,40 +111,6 @@ b {
 		</div>
 	</div>
 	
-	<!-- 회원탈퇴 모달 -->
-	
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterLabel">회원탈퇴</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <form action="delete.me" method="post">
-                <div class="modal-body" align="center">
-               
-                   <b>
-                                   탈퇴 후 복구가 불가능합니다. <br>   
-                                   정말로 탈퇴 하시겠습니까?
-                   </b>
-                   <br><br>
-
-               	
-                           비밀번호 : 
-                       <input type="password" name="memPwd" required>
-                       <input type="hidden" name="memId" value="${loginUser.memId}">
-                       
-                   
-
-               </div>
-               <div class="modal-footer">
-                   <button type="submit" class="btn btn-danger">탈퇴하기</button>
-                   <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-               </div>
-               </form>
-            </div>
-        </div>
-    </div>
 
 	<script>
 	$(document).ready(function() {

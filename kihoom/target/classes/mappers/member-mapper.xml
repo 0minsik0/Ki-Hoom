@@ -92,4 +92,51 @@
 		 where mem_id = #{memId}
 	</update>
 	
+	<select id="selectListCount" resultType="_int">
+		select
+			   count(*)
+		  from member
+		 where status = 'Y' 			   
+	</select>
+	
+	<select id="selectList" resultMap="memberResult">
+		select MEM_NO
+	          , MEM_ID
+	          , MEM_PWD
+	          , MEM_NAME
+	          , EMAIL
+	          , PHONE
+	          , ENROLL_DATE
+	          , STATUS
+	    from MEMBER 
+	      where STATUS = 'Y'
+	      order 
+		    by enroll_date desc      
+	</select>
+	
+	<select id="selectMemberByNo" resultMap="memberResult">
+		select MEM_NO
+	          , MEM_ID
+	          , MEM_PWD
+	          , MEM_NAME
+	          , EMAIL
+	          , PHONE
+	          , ENROLL_DATE
+	          , STATUS
+	    from MEMBER
+	    where MEM_no = #{memNo} 
+	      and STATUS = 'Y'
+	</select>
+	
+	<update id="updateMemberByNo">
+		update member
+		   set mem_id = #{memId}
+		   	 , mem_pwd = #{memPwd}
+		   	 , mem_name = #{memName}
+		     , email = #{email}
+		     , phone = #{phone}
+		     , enroll_date = sysdate
+		 where mem_no = #{memNo}    
+	</update>
+	
 </mapper>
