@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.kihoom.stock.model.dao.StockDao;
 import com.kh.kihoom.stock.model.vo.Stock;
+import com.kh.kihoom.stock.model.vo.StockCategory;
 
 @Service
 public class StockServiceImpl implements StockService{
@@ -51,6 +52,12 @@ public class StockServiceImpl implements StockService{
 	public int insertAddAccount(Stock s) {
 		// TODO Auto-generated method stub
 		return sDao.insertAddAccount(sql, s);
+	}
+
+	@Override
+	public ArrayList<StockCategory> selectCategoryList() {
+		// TODO Auto-generated method stub
+		return sDao.selectCategoryList(sql);
 	}
 
 }

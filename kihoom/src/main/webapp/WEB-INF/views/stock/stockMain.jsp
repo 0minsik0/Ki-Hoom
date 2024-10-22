@@ -30,16 +30,23 @@
                     <jsp:include page="../common/menubar.jsp" />
                     <div class="main-content">
 
+
+
+
+
                         <div class="table_session main_box">
                             <div class="top_area">
                                 <h2 style="font-weight: 900;">차트</h2>
                                 <div class="stock_search_area">
-                                    <form action="">
-                                        <input type="search" name="stockName">
-                                        <button type="submit" class="material-icons">
-                                            search
-                                        </button>
-                                    </form>
+
+                                    <input type="search" name="stockName">
+                                    <button type="submit" class="material-icons">
+                                        search
+                                    </button>
+
+                                    <button id="searchModal_btn" data-toggle="modal" , data-target="#searchModal"
+                                        style="display: none;"></button>
+
                                 </div>
                             </div>
                             <br>
@@ -400,167 +407,91 @@
 
 
                         <div class="main_box tag_session">
-                            <h2 style="font-weight: 900;">지금 뜨는 카테고리</h2>
+                            <h2 style="font-weight: 900;">카테고리</h2>
                             <hr>
                             <div class="tag_area">
-                                <div class="tag_item">
-                                    <div class="top_area">
-                                        <div class="top_left">
-                                            <div class="material-icons">looks_one</div>
-                                            <div>전자제품</div>
-                                        </div>
-                                        <div class="total">5.2%</div>
-                                    </div>
-                                    <div class="bottom_area">
+                                <div class="container">
 
-                                        <div class="item">
-                                            <div class="title">1. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">2. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">3. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="tag_item">
-                                    <div class="top_area">
-                                        <div class="top_left">
-                                            <div class="material-icons">looks_two</div>
-                                            <div>전자제품</div>
-                                        </div>
-                                        <div class="total">5.2%</div>
-                                    </div>
-                                    <div class="bottom_area">
-
-                                        <div class="item">
-                                            <div class="title">1. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">2. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">3. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="tag_item">
-                                    <div class="top_area">
-                                        <div class="top_left">
-                                            <div class="material-icons">looks_3</div>
-                                            <div>전자제품</div>
-                                        </div>
-                                        <div class="total">5.2%</div>
-                                    </div>
-                                    <div class="bottom_area">
-
-                                        <div class="item">
-                                            <div class="title">1. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">2. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">3. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="tag_item">
-                                    <div class="top_area">
-                                        <div class="top_left">
-                                            <div class="material-icons">looks_4</div>
-                                            <div>전자제품</div>
-                                        </div>
-                                        <div class="total">5.2%</div>
-                                    </div>
-                                    <div class="bottom_area">
-
-                                        <div class="item">
-                                            <div class="title">1. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">2. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">3. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-
-                                    </div>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>업종 지수명</th>
+                                                <th>업종 지수 현재가</th>
+                                                <th>업종 지수 전일 대비율</th>
+                                                <th>업종 지수 누적 거래량</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>John</td>
+                                                <td>Doe</td>
+                                                <td>john@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mary</td>
+                                                <td>Moe</td>
+                                                <td>mary@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
 
-                                <div class="tag_item">
-                                    <div class="top_area">
-                                        <div class="top_left">
-                                            <div class="material-icons">looks_5</div>
-                                            <div>전자제품</div>
-                                        </div>
-                                        <div class="total">5.2%</div>
-                                    </div>
-                                    <div class="bottom_area">
-
-                                        <div class="item">
-                                            <div class="title">1. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">2. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">3. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="tag_item">
-                                    <div class="top_area">
-                                        <div class="top_left">
-                                            <div class="material-icons">looks_6</div>
-                                            <div>전자제품</div>
-                                        </div>
-                                        <div class="total">5.2%</div>
-                                    </div>
-                                    <div class="bottom_area">
-
-                                        <div class="item">
-                                            <div class="title">1. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">2. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="title">3. 삼성</div>
-                                            <div class="rate">5.3%</div>
-                                        </div>
-
-                                    </div>
-                                </div>
 
                             </div>
 
@@ -606,12 +537,78 @@
 
                         </div>
 
+                        <div class="main_box letay_session">
+                            <h2 style="font-weight: 900;">최근 본 주식</h2>
 
+                            <hr>
+
+                            <div class="view_content">
+                                <div class="item">
+                                    <div>삼성전자(005930)</div>
+                                    <input type="hidden" value="">
+                                    <input type="hidden" value="">
+                                </div>
+                                <div class="item">삼성전자(005930)</div>
+                            </div>
+                        </div>
 
 
 
                     </div><!--  메인 content 끝  -->
                 </div>
+
+
+                <div class="modal" id="searchModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">검색</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="container">
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>종목코드</th>
+                                                <th>종목명</th>
+                                                <th>시장</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>John</td>
+                                                <td>Doe</td>
+                                                <td>john@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mary</td>
+                                                <td>Moe</td>
+                                                <td>mary@example.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>July</td>
+                                                <td>Dooley</td>
+                                                <td>july@example.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
                 <script>
                     $(function () {
@@ -619,6 +616,7 @@
                         selectChooseList();
                         categoryList();
                         selectAccount();
+                        storage();
                     })
 
                     const ws = new SockJS("socketChat")
@@ -630,7 +628,7 @@
                     }
 
                     ws.onmessage = function (e) {
-                        console.log(e)
+                        // console.log(e)
                         const message = JSON.parse(e.data)
                         // console.log(message)
                         let val = "";
@@ -665,6 +663,133 @@
                             }
                         }
                     })
+
+
+                    function storage() {
+
+
+                        let arr = JSON.parse(localStorage.getItem("watced_stock"))
+                        if (arr === null) {
+                            arr = []
+                        }
+
+                        // console.log(arr.length)
+                        if (arr.length === 0) {
+                            // console.log(555)
+                            localStorage.setItem("watced_stock", JSON.stringify(arr))
+                        } else {
+                            let value = ""
+                            for (let i = arr.length - 1; i >= 0; i--) {
+                                // console.log(i)
+                                value += "<div class='item'>"
+                                    + "<div>" + arr[i].name + "(" + arr[i].no + ")</div>"
+                                    + "<input type='hidden' value='" + arr[i].no + "'>"
+                                    + "<input type='hidden' value='" + arr[i].name + "'>"
+                                    + "</div>"
+                            }
+                            // console.log(value)
+                            $(".letay_session .view_content").html(value)
+
+                        }
+
+
+                    }
+
+
+                    $(".letay_session .view_content").on("click", ".item", function () {
+                        const code = $(this).children("input").eq(0).val()
+                        const codeName = $(this).children("input").eq(1).val()
+                        location.href = "detail.st?code=" + code + "&codeName=" + codeName
+
+                    })
+
+
+
+                    $(".table_session .stock_search_area input[name=stockName]").on('keydown', function (e) {
+                        // console.log(e.keyCode)
+                        if (e.keyCode === 13) {
+                            // console.log("엔터")
+                            $(".table_session .stock_search_area button[type=submit]").click()
+                        }
+                    })
+
+
+                    $(".table_session .stock_search_area button[type=submit]").on('click', function () {
+                        let value = $(".table_session .stock_search_area input[name=stockName]").val()
+                        console.log(value)
+                        if (value === "") {
+                            alert("검색어를 입력해주세요")
+                            $(".table_session .stock_search_area input[name=stockName]").focus()
+                        } else {
+                            searchStock(value)
+                        }
+
+                    })
+
+
+                    function searchStock(search) {
+                        $.ajax({
+                            url: "searchStock.st",
+                            data: {
+                                search: search
+                            },
+                            success: function (data) {
+                                console.log(data)
+                                const list = data.response.body.items.item
+                                console.log(list)
+
+                                let value = ""
+                                console.log(list.length)
+                                if (list.length === 0) {
+                                    // console.log('0')
+                                    value = "<tr><td style='text-align: center;' colspan='3'>일치하는 검색어가 없습니다. 다시 입력해주세요</td></tr>"
+                                } else {
+                                    // console.log('ddd')
+                                    for (let i in list) {
+                                        value += "<tr>"
+                                            + "<td>" + list[i].srtnCd + "</td>"
+                                            + "<td>" + list[i].itmsNm + "</td>"
+                                            + "<td>" + list[i].mrktCtg + "</td>"
+                                            + "</tr>"
+                                    }
+                                }
+
+                                $("#searchModal .container .table tbody").html(value)
+                                $(".table_session .stock_search_area input[name=stockName]").val("")
+                                $(".table_session .stock_search_area #searchModal_btn").click()
+
+                            },
+                            error: function () {
+                                console.log("55")
+                            }
+                        })
+                    }
+
+
+
+                    $("#searchModal .container .table tbody").on("click", "tr", function () {
+                        const code = $(this).children("td").eq(0).text()
+                        if (code === "일치하는 검색어가 없습니다. 다시 입력해주세요") {
+                            $("#searchModal .close").click()
+
+                        } else {
+                            const arr = [...code]
+                            // console.log(arr)
+                            arr.shift()
+                            const codeNo = arr.join("")
+                            // console.log(codeNo)
+                            const codeName = $(this).children("td").eq(1).text()
+                            location.href = "detail.st?code=" + codeNo + "&codeName=" + codeName
+                        }
+
+                    })
+
+
+
+
+
+
+
 
                     function send_message() {
                         // console.log(55)

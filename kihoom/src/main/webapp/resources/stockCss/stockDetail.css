@@ -37,30 +37,30 @@
     justify-content: space-between;
 }
 
-.main-content .deteil_session .header .stock_search>form {
+.main-content .deteil_session .header .stock_search {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.main-content .deteil_session .header .stock_search>form {
+.main-content .deteil_session .header .stock_search {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.main-content .deteil_session .header .stock_search>form>input {
+.main-content .deteil_session .header .stock_search>input {
     padding: 5px;
     width: 200px;
 }
 
-.main-content .deteil_session .header .stock_search>form>button {
+.main-content .deteil_session .header .stock_search>button {
     border-radius: 5px;
     background-color: transparent;
     transition: .3s;
 }
 
-.main-content .deteil_session .header .stock_search>form>button:hover {
+.main-content .deteil_session .header .stock_search>button:hover {
     border-radius: 5px;
     background-color: #dae7ff;
 }

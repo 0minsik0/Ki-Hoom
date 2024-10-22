@@ -3,6 +3,7 @@ package com.kh.kihoom.stock.model.service;
 import java.util.ArrayList;
 
 import com.kh.kihoom.stock.model.vo.Stock;
+import com.kh.kihoom.stock.model.vo.StockCategory;
 
 public interface StockService {
 	//관심 조회
@@ -20,4 +21,7 @@ public interface StockService {
 	ArrayList<Stock> selectChooseList(int memNo);
 	
 	int insertAddAccount(Stock s);
+	
+	
+	ArrayList<StockCategory> selectCategoryList();
 }

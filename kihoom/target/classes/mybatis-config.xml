@@ -14,6 +14,7 @@
   		<typeAliases>
   			<typeAlias type="com.kh.kihoom.member.model.vo.Member" alias="Member"/>
   			<typeAlias type="com.kh.kihoom.stock.model.vo.Stock" alias="Stock"/>
+  			<typeAlias type="com.kh.kihoom.stock.model.vo.StockCategory" alias="StockCategory"/>
   			<typeAlias type="com.kh.kihoom.stock.stockChatWebsocket.model.vo.StockChat" alias="StockChat"/>
   		</typeAliases>
   		

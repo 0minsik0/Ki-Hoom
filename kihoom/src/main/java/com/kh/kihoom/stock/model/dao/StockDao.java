@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kihoom.stock.model.vo.Stock;
+import com.kh.kihoom.stock.model.vo.StockCategory;
 
 @Repository
 public class StockDao {
@@ -34,4 +35,10 @@ public class StockDao {
 	public int insertAddAccount(SqlSessionTemplate sql, Stock s) {
 		return sql.insert("stockMapper.insertAddAccount", s);
 	}
+	
+	public ArrayList<StockCategory> selectCategoryList(SqlSessionTemplate sql){
+		return (ArrayList)sql.selectList("stockMapper.selectCategoryList");
+	}
+	
+	
 }

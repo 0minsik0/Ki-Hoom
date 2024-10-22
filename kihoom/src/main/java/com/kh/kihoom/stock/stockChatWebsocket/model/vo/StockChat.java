@@ -10,6 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class StockChat {
+	private int chatNo;
 	private int memNo;
 	private String memId;
 	private String message;

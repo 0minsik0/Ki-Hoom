@@ -43,12 +43,13 @@
 
 
                             <div class="stock_search">
-                                <form action="">
-                                    <input type="search" name="stockName">
-                                    <button type="submit" class="material-icons">
-                                        search
-                                    </button>
-                                </form>
+                                <input type="search" name="stockName">
+                                <button type="submit" class="material-icons">
+                                    search
+                                </button>
+
+                                <button id="searchModal_btn" data-toggle="modal" , data-target="#searchModal"
+                                    style="display: none;"></button>
                             </div>
                         </div>
 
@@ -491,7 +492,53 @@
 
 
 
+        <div class="modal" id="searchModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">검색</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="container">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>종목코드</th>
+                                        <th>종목명</th>
+                                        <th>시장</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mary</td>
+                                        <td>Moe</td>
+                                        <td>mary@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>July</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
 
 
 
@@ -517,7 +564,7 @@
                 dailyPrice("M")
                 select_stock_choose()
                 investOpinion()
-
+                storage()
                 websokect()
 
 
@@ -530,6 +577,116 @@
             document.addEventListener("DOMContentLoaded", function () {
 
             })
+
+
+
+            function storage() {
+                let arr = JSON.parse(localStorage.getItem("watced_stock"))
+                let stock = {
+                    no: "${code}",
+                    name: "${codeName}"
+                }
+
+                // let result = arr.find((e) => e.no === stock.no ? true : false)
+
+                let copyArr = arr.filter((e) => e.no !== stock.no)
+
+                copyArr.push(stock)
+
+
+                localStorage.setItem("watced_stock", JSON.stringify(copyArr))
+
+            }
+
+
+
+
+            $(".deteil_session .stock_search input[name=stockName]").on('keydown', function (e) {
+                // console.log(e.keyCode)
+                if (e.keyCode === 13) {
+                    // console.log("엔터")
+                    $(".deteil_session .stock_search button[type=submit]").click()
+                }
+            })
+
+
+            $(".deteil_session .stock_search button[type=submit]").on('click', function () {
+                let value = $(".deteil_session .stock_search input[name=stockName]").val()
+                // console.log(value)
+                if (value === "") {
+                    alert("검색어를 입력해주세요")
+                    $(".deteil_session .stock_search input[name=stockName]").focus()
+                } else {
+                    searchStock(value)
+                }
+
+            })
+
+
+            function searchStock(search) {
+                $.ajax({
+                    url: "searchStock.st",
+                    data: {
+                        search: search
+                    },
+                    success: function (data) {
+                        // console.log(data)
+                        const list = data.response.body.items.item
+                        // console.log(list)
+
+                        let value = ""
+                        // console.log(list.length)
+                        if (list.length === 0) {
+                            // console.log('0')
+                            value = "<tr><td style='text-align: center;' colspan='3'>일치하는 검색어가 없습니다. 다시 입력해주세요</td></tr>"
+                        } else {
+                            // console.log('ddd')
+                            for (let i in list) {
+                                value += "<tr>"
+                                    + "<td>" + list[i].srtnCd + "</td>"
+                                    + "<td>" + list[i].itmsNm + "</td>"
+                                    + "<td>" + list[i].mrktCtg + "</td>"
+                                    + "</tr>"
+                            }
+                        }
+
+                        $("#searchModal .container .table tbody").html(value)
+                        $(".deteil_session .stock_search input[name=stockName]").val("")
+                        $(".deteil_session .stock_search #searchModal_btn").click()
+
+                    },
+                    error: function () {
+                        console.log("55")
+                    }
+                })
+            }
+
+
+
+            $("#searchModal .container .table tbody").on("click", "tr", function () {
+                const code = $(this).children("td").eq(0).text()
+                if (code === "일치하는 검색어가 없습니다. 다시 입력해주세요") {
+                    $("#searchModal .close").click()
+
+                } else {
+                    const arr = [...code]
+                    // console.log(arr)
+                    arr.shift()
+                    const codeNo = arr.join("")
+                    // console.log(codeNo)
+                    const codeName = $(this).children("td").eq(1).text()
+                    location.href = "detail.st?code=" + codeNo + "&codeName=" + codeName
+                }
+
+            })
+
+
+
+
+
+
+
+
 
 
             $(".chart_area .chart_title .daliy").on("click", function () {

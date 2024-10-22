@@ -12,8 +12,20 @@
 		<result column="stock_account" property="stockAccount" />
 	</resultMap>
 
+	<resultMap type="StockCategory" id="StockCategoryResult">
+		<result column="category_no" property="categoryNo" />
+		<result column="category_name" property="categoryName" />
+		<result column="stock_no" property="stockNo" />
+		<result column="stock_name" property="stockName" />
+	</resultMap>
+
+
+
+
+
 
 	<resultMap type="StockChat" id="StockChatResult">
+		<result column="chat_no" property="chatNo" />
 		<result column="mem_no" property="memNo" />
 		<result column="mem_id" property="memId" />
 		<result column="message" property="message" />
@@ -103,16 +115,24 @@
 
 
 	<select id="selectMessageList" resultMap="StockChatResult">
+		select *
+		from (
 		select
-		mem_no
+		chat_no
+		, mem_no
 		, mem_id
 		, message
 		, send_date
-		from stock_chat
+		from
+		stock_chat
+		order by chat_no desc
+		)
 		where rownum <![CDATA[ < ]]>
-		50
+		51
+		order by chat_no
 
 	</select>
+
 
 
 	<insert id="insertMessage">
@@ -128,6 +148,14 @@
 		, #{date}
 		)
 	</insert>
+
+	<select id="selectCategoryList" resultMap="StockCategoryResult">
+		select
+		category_no
+		, category_name
+		from stock_category
+		group by category_no, category_name
+	</select>
 
 
 

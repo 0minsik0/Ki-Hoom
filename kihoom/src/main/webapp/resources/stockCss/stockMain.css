@@ -48,25 +48,25 @@
 
 }
 
-.main-content .table_session .top_area .stock_search_area>form {
+.main-content .table_session .top_area .stock_search_area {
     display: flex;
     align-items: center;
     margin-top: 10px;
     gap: 10px
 }
 
-.main-content .table_session .top_area .stock_search_area>form>input {
+.main-content .table_session .top_area .stock_search_area>input {
     padding: 5px;
 
 }
 
-.main-content .table_session .top_area .stock_search_area>form>button {
+.main-content .table_session .top_area .stock_search_area>button {
     border-radius: 5px;
     background-color: transparent;
     transition: .3s;
 }
 
-.main-content .table_session .top_area .stock_search_area>form>button:hover {
+.main-content .table_session .top_area .stock_search_area>button:hover {
     border-radius: 5px;
     background-color: #dae7ff;
 }
@@ -180,75 +180,38 @@
 
 .main-content .tag_session {
     width: 750px;
-
+    height: 550px;
 
 }
 
 .main-content .tag_session .tag_area {
     width: 100%;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    overflow: auto;
     padding: 10px;
-    gap: 10px;
+    height: 455px;
 
 }
 
-.main-content .tag_session .tag_area .tag_item {
-    width: 350px;
-    height: 100px;
-    background-color: #e5e5e5;
-    border-radius: 5px;
-    padding: 10px;
+.main-content .tag_session .tag_area::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.main-content .tag_session .tag_area .tag_item .top_area {
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    font-weight: 600;
+.main-content .tag_session .tag_area::-webkit-scrollbar-thumb {
+    height: 15%;
+    background-color: #fff;
+
+    border-radius: 1rem;
+    border: 4px solid #cecece;
 }
 
-.main-content .tag_session .tag_area .tag_item .top_area .top_left {
-    display: flex;
-    font-size: 18px;
-    font-weight: 600;
-    gap: 10px;
-}
-
-.main-content .tag_session .tag_area .tag_item .top_area .total {
-    font-size: 18px;
-    font-weight: 900;
-    color: red;
-    margin-right: 20px;
+.main-content .tag_session .tag_area::-webkit-scrollbar {
+    background-color: #fff;
+    width: 0.9rem;
 }
 
 
-
-.main-content .tag_session .tag_area .tag_item .bottom_area {
-    display: flex;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 12px;
-    margin-top: 10px;
-
-}
-
-
-
-.main-content .tag_session .tag_area .tag_item .bottom_area .item {
-    margin-top: 10px;
-    display: flex;
-    gap: 5px;
-    font-weight: 600;
-    font-size: 15px;
-
-}
-
-.main-content .tag_session .tag_area .tag_item .bottom_area .item .rate {
-    color: red;
-}
 
 
 
@@ -349,4 +312,33 @@
 .main-content .chat_session .chat_content_wrap .chat_input_area #chat_message {
     resize: none;
     flex-grow: 1;
+}
+
+
+.main-content .letay_session {
+    width: 250px;
+
+}
+
+
+.main-content .letay_session .view_content {
+    height: 490px;
+    overflow: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.main-content .letay_session .view_content .item {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    color: #444;
+}
+
+.main-content .letay_session .view_content .item>div {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

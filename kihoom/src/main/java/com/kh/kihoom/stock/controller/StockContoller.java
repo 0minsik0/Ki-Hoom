@@ -29,22 +29,30 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.kihoom.stock.model.service.StockServiceImpl;
 import com.kh.kihoom.stock.model.vo.Stock;
+import com.kh.kihoom.stock.model.vo.StockCategory;
 
 
 @Controller
 public class StockContoller {
 
+	
+	// 한국투자증권 모의 투자 인증키
 	private static final String tAppkey="PSNzdnf4UtNBnrduPUlJ7PgXsZr4sjyLQFvw";
 	private static final String tAppsecret="B6vHu51s3xKL6hsTajHeQUaZlwB2Ec+57AjtH+h6HpOAMDNln+9mmRTPPpb7i8XlQT5QPGa+6mkMq1qTv8L18h2rd3y66EVLdO3fGThig7JZpfaJYjwwWrLjf0G36IVcAri/rdDFmnmkcHftOb41gycA71frsuX9Cv8rt6EaTBGkDhx/xYg=";
 	
+	
+	//한국투자증권 실전 인증키
 	private static final String appkey ="PSIfx1pdjQlgcjk1c7lNhaBHWnB15rr7T5JS";
 	private static final String appsecret ="lIs9yZIdbWjft8pCctH/fh8MfXsRvZqnqAjowhY+OCnOPFjNLO3MxYOhCLg0rOZubmLqJPQlaYw7lO6vp1N89l+xL9bfrzvh3+3OZET6WoeT83jRfaVXqEyzz8N6W/LMGJOTiyl+AQCfy3F4o9aJMTUYGsXI+zIPY5yxjpGtTYSyfoS8vAM=";
 	
 	
+	// 네이버 인증키
 	private static final String naverId ="ZPsZLlyR0_kD8ni2BjxA";
 	private static final String naverSecret ="C6VrkqKczu";
 	
 	
+	//공공서비스 인증키
+	private static final String apiKey ="nOK8KJwcjNmRHtG8JQVv9s8rtoFYk%2Fhf%2FGsSdzHgtl%2FGbGcd73kk5A45ykvBzUwzj1X4gJCKAo38%2BJmVCEhO0A%3D%3D";
 	
 	private static String token ="";
 	
@@ -726,7 +734,7 @@ public class StockContoller {
 		url += "?FID_COND_MRKT_DIV_CODE=U";
 		url += "&FID_INPUT_ISCD=0001";
 		url += "&FID_COND_SCR_DIV_CODE=20214";
-		url += "&FID_MRKT_CLS_CODE=Q";
+		url += "&FID_MRKT_CLS_CODE=K";
 		url += "&FID_BLNG_CLS_CODE=3";
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		
@@ -918,10 +926,48 @@ public class StockContoller {
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value="searchStock.st", produces="aplication/json; charset=utf-8")
+	public String searchStock(String search) throws IOException {
+		
+		String url ="https://apis.data.go.kr/1160100/service/GetKrxListedInfoService/getItemInfo";
+		url += "?serviceKey="+apiKey;
+		url += "&likeItmsNm="+URLEncoder.encode(search, "utf-8");
+		url += "&resultType=json";
+		
+//		System.out.println(url);
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return responseText;
+	}
 
 	
 	
-	
+	@ResponseBody
+	@RequestMapping(value="categoryList.st" , produces="aplication/json; charset=utf-8")
+	public String categoryList() {
+		
+		ArrayList<StockCategory> list = sService.selectCategoryList();
+		
+		return new Gson().toJson(list);
+	}
 
 	
 	
