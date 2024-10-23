@@ -23,5 +23,5 @@ public interface StockService {
 	int insertAddAccount(Stock s);
 	
 	
-	ArrayList<StockCategory> selectCategoryList();
+	ArrayList<StockCategory> selectCategoryList(ArrayList<String> categoryList);
 }

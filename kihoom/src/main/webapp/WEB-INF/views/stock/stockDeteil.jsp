@@ -602,9 +602,9 @@
 
 
             $(".deteil_session .stock_search input[name=stockName]").on('keydown', function (e) {
-                // console.log(e.keyCode)
+                // ////console.log(e.keyCode)
                 if (e.keyCode === 13) {
-                    // console.log("엔터")
+                    // ////console.log("엔터")
                     $(".deteil_session .stock_search button[type=submit]").click()
                 }
             })
@@ -612,7 +612,7 @@
 
             $(".deteil_session .stock_search button[type=submit]").on('click', function () {
                 let value = $(".deteil_session .stock_search input[name=stockName]").val()
-                // console.log(value)
+                // ////console.log(value)
                 if (value === "") {
                     alert("검색어를 입력해주세요")
                     $(".deteil_session .stock_search input[name=stockName]").focus()
@@ -630,17 +630,17 @@
                         search: search
                     },
                     success: function (data) {
-                        // console.log(data)
+                        // ////console.log(data)
                         const list = data.response.body.items.item
-                        // console.log(list)
+                        // ////console.log(list)
 
                         let value = ""
-                        // console.log(list.length)
+                        // ////console.log(list.length)
                         if (list.length === 0) {
-                            // console.log('0')
+                            // ////console.log('0')
                             value = "<tr><td style='text-align: center;' colspan='3'>일치하는 검색어가 없습니다. 다시 입력해주세요</td></tr>"
                         } else {
-                            // console.log('ddd')
+                            // ////console.log('ddd')
                             for (let i in list) {
                                 value += "<tr>"
                                     + "<td>" + list[i].srtnCd + "</td>"
@@ -656,7 +656,7 @@
 
                     },
                     error: function () {
-                        console.log("55")
+                        ////console.log("55")
                     }
                 })
             }
@@ -670,10 +670,10 @@
 
                 } else {
                     const arr = [...code]
-                    // console.log(arr)
+                    // ////console.log(arr)
                     arr.shift()
                     const codeNo = arr.join("")
-                    // console.log(codeNo)
+                    // ////console.log(codeNo)
                     const codeName = $(this).children("td").eq(1).text()
                     location.href = "detail.st?code=" + codeNo + "&codeName=" + codeName
                 }
@@ -714,16 +714,16 @@
 
             function buyStock() {
                 const account = $("#buyModal .result select[name=myAccount_list]").val()
-                // console.log(account)
+                // ////console.log(account)
                 const accountArr = account.split("-")
-                // console.log(accountArr)
+                // ////console.log(accountArr)
                 const firstAccount = accountArr[0]
                 const secondAccount = accountArr[1]
                 let division = "00"
                 let orderPrice = $("#buyModal .result.price span").text()
 
                 const orderCount = $("#buyModal .result .week").val()
-                // console.log(orderCount)
+                // ////console.log(orderCount)
 
                 if (orderCount == 0) {
                     alert("최소 1주 구매하셔야 합니다.")
@@ -733,7 +733,7 @@
                         division = "01"
                         orderPrice = "0"
                     }
-                    // console.log(division)
+                    // ////console.log(division)
                     buyStock_ajax(firstAccount, secondAccount, division, orderCount, orderPrice)
                 }
 
@@ -752,7 +752,7 @@
                         secondAccount: secondAccount
                     },
                     success: function (data) {
-                        // console.log(data)
+                        // ////console.log(data)
 
                         let value = ""
                         if (data.rt_cd === "0") {
@@ -786,7 +786,7 @@
                         userNo: "${loginUser.memNo}"
                     },
                     success: function (result) {
-                        // console.log(result)
+                        // ////console.log(result)
 
                         if (result === "iyyy") {
                             alert("관심주식에 등록되었습니다.")
@@ -800,7 +800,7 @@
                         select_stock_choose()
                     },
                     error: function () {
-                        console.log("통신 실패")
+                        ////console.log("통신 실패")
                     },
 
                 })
@@ -814,7 +814,7 @@
                         userNo: "${loginUser.memNo}"
                     },
                     success: function (result) {
-                        // console.log(result)
+                        // ////console.log(result)
 
                         if (result === "0") {
                             $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").text("bookmark_border")
@@ -826,7 +826,7 @@
 
                     },
                     error: function () {
-                        console.log("통신 실패")
+                        ////console.log("통신 실패")
                     },
 
                 })
@@ -836,9 +836,9 @@
             let chooseWeek = 0;
 
             $("#buyModal").on("shown.bs.modal", function () {
-                // console.log(500000)
+                // ////console.log(500000)
                 selectAccount().then((list) => {
-                    // console.log(list)
+                    // ////console.log(list)
 
                     if (list.length === 0) {
                         if (confirm("등록된 한국투자 계좌가 없습니다. 등록하시겠습니까?")) {
@@ -864,21 +864,21 @@
 
 
             $('#buyModal .result input[type=radio]').on("change", function () {
-                // console.log($(this).val())
-                // console.log(choosePrice)
+                // ////console.log($(this).val())
+                // ////console.log(choosePrice)
 
                 choosePrice = $(this).val()
-                // console.log(choosePrice)
+                // ////console.log(choosePrice)
                 $("#buyModal .result.price span").text(choosePrice * chooseWeek)
 
             })
 
             $('#buyModal .result input[type=number]').on("change", function () {
-                // console.log($(this).val())
-                // console.log(choosePrice)
+                // ////console.log($(this).val())
+                // ////console.log(choosePrice)
 
                 chooseWeek = $(this).val()
-                // console.log(chooseWeek)
+                // ////console.log(chooseWeek)
                 $("#buyModal .result.price span").text(choosePrice * chooseWeek)
             })
 
@@ -895,12 +895,12 @@
                             userNo: "${loginUser.memNo}"
                         },
                         success: function (list) {
-                            // console.log(list.length)
+                            // ////console.log(list.length)
                             reject(list)
 
                         },
                         error: function () {
-                            console.log("실패")
+                            ////console.log("실패")
                         }
                     })
                 })
@@ -971,7 +971,7 @@
                         daliy: daliy
                     },
                     success: function (data) {
-                        // console.log(data.output.reverse())
+                        // //console.log(data.output.reverse())
                         const daliyArr = data.output.reverse();
                         // let daliyArr = []
 
@@ -979,7 +979,7 @@
                         //     daliyArr.push(list[i].stck_bsop_date)
 
                         // }
-                        // console.log(daliyArr)
+                        // //console.log(daliyArr)
 
                         let label = "";
                         // chart.data.labels.push(daliyArr.stck_bsop_date);
@@ -989,19 +989,19 @@
                             for (let i in daliyArr) {
                                 let month = daliyArr[i].stck_bsop_date.substr(4, 2)
                                 let day = daliyArr[i].stck_bsop_date.substr(6, 2)
-                                // console.log(month.substr(0, 1))
-                                // console.log(daliyArr[i].stck_bsop_date)
+                                // //console.log(month.substr(0, 1))
+                                // //console.log(daliyArr[i].stck_bsop_date)
                                 if (month.substr(0, 1) == 0) {
-                                    // console.log('dd')
+                                    // //console.log('dd')
                                     month = month.substr(1, 1)
                                 }
 
                                 if (day.substr(0, 1) == 0) {
-                                    // console.log('dd')
+                                    // //console.log('dd')
                                     day = day.substr(1, 1)
                                 }
                                 label = month + "월 " + day + "일"
-                                // console.log(label)
+                                // //console.log(label)
                                 chart.data.labels.push(label);
                                 chart.data.datasets[0].data.push(daliyArr[i].stck_clpr);
                                 chart.data.datasets[1].data.push(daliyArr[i].stck_oprc);
@@ -1013,16 +1013,16 @@
                             for (let i in daliyArr) {
                                 let month = daliyArr[i].stck_bsop_date.substr(4, 2)
                                 let year = daliyArr[i].stck_bsop_date.substr(0, 4)
-                                // console.log(month.substr(0, 1))
-                                // console.log(daliyArr[i].stck_bsop_date)
+                                // //console.log(month.substr(0, 1))
+                                // //console.log(daliyArr[i].stck_bsop_date)
                                 if (month.substr(0, 1) == 0) {
-                                    // console.log('dd')
+                                    // //console.log('dd')
                                     month = month.substr(1, 1)
                                 }
 
 
                                 label = year + "년 " + month + "월 "
-                                // console.log(label)
+                                // //console.log(label)
                                 chart_month.data.labels.push(label);
                                 chart_month.data.datasets[0].data.push(daliyArr[i].stck_clpr);
                                 chart_month.data.datasets[1].data.push(daliyArr[i].stck_oprc);
@@ -1048,7 +1048,7 @@
                         codeName: "${codeName}"
                     },
                     success: function (data) {
-                        // console.log(data.items)
+                        // //console.log(data.items)
                         const list = data.items
                         let value = ""
                         for (let i in list) {
@@ -1056,7 +1056,7 @@
                             let date = dateArr[3] + "년 "
                             date += dateArr[2] + "  "
                             date += dateArr[1] + "일"
-                            // console.log(dateArr)
+                            // //console.log(dateArr)
                             value += "<a class='content' target='_blank' href='" + list[i].link + "'>"
                                 + "<div class='news_title'>"
                                 + "<div>" + list[i].title + "</div>"
@@ -1099,7 +1099,7 @@
 
             var escapable = /[\x00-\x1f\ud800-\udfff\u200c\u2028-\u202f\u2060-\u206f\ufff0-\uffff]/g;
             function filterUnicode(quoted) {
-                // console.log(escapable)
+                // //console.log(escapable)
                 escapable.lastIndex = 0;
                 if (!escapable.test(quoted)) return quoted;
 
@@ -1109,12 +1109,12 @@
             }
 
             function log(s) {
-                console.log(s);
+                //console.log(s);
                 if (document.readyState !== "complete") {
-                    console.log(log.buffer)
+                    //console.log(log.buffer)
                     log3.buffer.push(s);
                 } else {
-                    console.log(s)
+                    //console.log(s)
                 }
             }
             log.buffer = [];
@@ -1127,15 +1127,15 @@
                         code: "${code}"
                     },
                     success: function (data) {
-                        // console.log(data.output)
+                        // //console.log(data.output)
                         const stock = data.output
-                        // console.log(stock.rprs_mrkt_kor_name)
+                        // //console.log(stock.rprs_mrkt_kor_name)
                         $(".header_stock .stock_price").text(stock.stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원")
                         $(".prev_price span").text(stock.prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원(" + stock.prdy_ctrt + "%)")
                         $('#buyModal .result #currentPrice').val(stock.stck_prpr)
                         $('#buyModal .result #marketPrice').val(stock.stck_oprc)
                         if (stock.prdy_vrss < 0) {
-                            // console.log("0보다 작다")
+                            // //console.log("0보다 작다")
                             $(".prev_price span").removeClass()
                             $(".prev_price span").addClass("blue")
 
@@ -1198,11 +1198,11 @@
                         code: "${code}",
                     },
                     success: function (data) {
-                        console.log(data)
+                        //console.log(data)
                         const list = data.output
                         let value = ""
                         if (data.rt_cd === "0" && list.length !== 0) {
-                            // console.log("0")
+                            // //console.log("0")
                             for (let i in list) {
                                 value += "<div class='contnet_box'>"
                                     + "<div>" + list[i].stck_bsop_date + "</div>"
@@ -1219,10 +1219,10 @@
 
 
                         } else {
-                            console.log("없음")
+                            //console.log("없음")
                             value = "<div class='contnet_box' ><h6>해당 데이터가 없습니다.</h6></div>"
                         }
-                        console.log("gggg")
+                        //console.log("gggg")
                         $(".main-content .content_session .footer_session .chat_area .content_area .content_view").html(value)
                     }
                 })
@@ -1236,25 +1236,25 @@
                 ws.onopen = function () {
                     ws.send(JSON.stringify(sendMssage))
                     ws.onmessage = function (event) {
-                        //console.log(event)
-                        // console.log(event.data)
+                        ////console.log(event)
+                        // //console.log(event.data)
                         let msg = filterUnicode(event.data)
-                        // console.log(msg[1])
+                        // //console.log(msg[1])
 
                         let msgArr = msg.split("|")
-                        // console.log(msgArr[0])
+                        // //console.log(msgArr[0])
                         if (msgArr[0] == 0 || msgArr[0] == 1) {
                             const stock = msgArr[3]
-                            // console.log(stock)
+                            // //console.log(stock)
 
                             const stockArr = stock.split("^")
-                            // console.log(stockArr)
+                            // //console.log(stockArr)
 
 
                             $(".prev_price span").text(stockArr[4].replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원(" + stockArr[5] + "%)")
 
                             if (stockArr[4] < 0) {
-                                // console.log("0보다 작다")
+                                // //console.log("0보다 작다")
                                 $(".prev_price span").removeClass()
                                 $(".prev_price span").addClass("blue")
 
@@ -1293,12 +1293,12 @@
 
                         } else {
                             const json = event.data;
-                            // console.log(json)
+                            // //console.log(json)
                             let obj = JSON.parse(json);
-                            // console.log(obj)
+                            // //console.log(obj)
                             let trid = obj.header.tr_id
                             let encyn = obj.header.encyn
-                            // console.log(trid)
+                            // //console.log(trid)
 
                             if (trid === "PINGPONG") {
                                 nowStock();

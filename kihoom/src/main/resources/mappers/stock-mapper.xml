@@ -149,12 +149,13 @@
 		)
 	</insert>
 
-	<select id="selectCategoryList" resultMap="StockCategoryResult">
-		select
-		category_no
-		, category_name
+	<select id="selectCategoryList"  resultMap="StockCategoryResult">
+		select stock_no, stock_name
 		from stock_category
-		group by category_no, category_name
+		where category_no in 
+		<foreach collection="list" item="category" index="indxe" separator="," open="(" close=")" >
+			#{category}
+		</foreach>
 	</select>
 
 

@@ -411,18 +411,20 @@
                             <hr>
                             <div class="tag_area">
                                 <div class="container">
-
+                                    <button id="tag_modal_btn" style="display: none;" data-toggle="modal"
+                                        data-target="#tag_modal"></button>
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>업종 지수명</th>
                                                 <th>업종 지수 현재가</th>
+                                                <th>업종 지수 전일 대비</th>
                                                 <th>업종 지수 전일 대비율</th>
-                                                <th>업종 지수 누적 거래량</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <input type="hidden" value="">
                                                 <td>John</td>
                                                 <td>Doe</td>
                                                 <td>john@example.com</td>
@@ -495,6 +497,39 @@
 
                             </div>
 
+
+                            <!-- The Modal -->
+                            <div class="modal" id="tag_modal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Modal Heading</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                            <div><span>삼성전자</span>(<span>005930</span>)</div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -1004,7 +1039,7 @@
                                     }
 
                                 }
-                                //console.log(value)
+                                ////console.log(value)
                                 $('.table_session.main_box .table_area>thead').html(header)
 
                                 $('.table_session.main_box .table_area>tbody').html(value)
@@ -1028,11 +1063,11 @@
                                 no: no
                             },
                             success: function (data) {
-                                //console.log(data)
+                                ////console.log(data)
                                 const list = data.output
 
-                                //console.log(list)
-                                //console.log(num)
+                                ////console.log(list)
+                                ////console.log(num)
 
                                 let begin = 0;
 
@@ -1051,7 +1086,7 @@
                                     + "</tr>"
 
                                 let value = "";
-                                //console.log(page)
+                                ////console.log(page)
 
                                 for (let i = begin; i < page; i++) {
                                     if (list[i].prdy_ctrt > 0) {
@@ -1075,7 +1110,7 @@
                                     }
 
                                 }
-                                //console.log(value)
+                                ////console.log(value)
                                 $('.table_session.main_box .table_area>thead').html(header)
                                 $('.table_session.main_box .table_area>tbody').html(value)
 
@@ -1094,11 +1129,11 @@
                         $.ajax({
                             url: "market.st",
                             success: function (data) {
-                                //console.log(data)
+                                ////console.log(data)
                                 const list = data.output
 
-                                //console.log(list)
-                                //console.log(num)
+                                ////console.log(list)
+                                ////console.log(num)
 
                                 let begin = 0;
 
@@ -1119,7 +1154,7 @@
                                     + "</tr>"
 
                                 let value = "";
-                                //console.log(page)
+                                ////console.log(page)
 
                                 for (let i = begin; i < page; i++) {
                                     if (list[i].prdy_ctrt > 0) {
@@ -1143,7 +1178,7 @@
                                     }
 
                                 }
-                                //console.log(value)
+                                ////console.log(value)
                                 $('.table_session.main_box .table_area>thead').html(header)
                                 $('.table_session.main_box .table_area>tbody').html(value)
 
@@ -1167,16 +1202,16 @@
                                 userNo: "${loginUser.memNo}"
                             },
                             success: function (list) {
-                                // console.log(list)
+                                // //console.log(list)
                                 let value = "";
                                 for (let i in list) {
-                                    // console.log(i)
+                                    // //console.log(i)
 
                                     const item = JSON.parse(list[i])
 
 
 
-                                    // console.log(item)
+                                    // //console.log(item)
                                     if (item.prdy_ctrt.substr(0, 1) !== "-") {
                                         value += "<tr>"
                                             + "<input type='hidden' name='stock_No' value='" + item.stock_no + "'>"
@@ -1206,14 +1241,241 @@
 
 
 
+
+                    $('.tag_session .container .table tbody').on("click", "tr", function () {
+                        let value = $(this).children("input").val()
+                        let name = $(this).children("td").eq(0).text()
+                        // //console.log(name)
+                        $("#tag_modal .modal-header h4").text(name)
+
+                        //console.log(value)
+                        categoryStockList(value)
+                    })
+
+                    function categoryStockList(category) {
+                        $.ajax({
+                            url: "categoryList.st",
+                            data: {
+                                category: category
+                            },
+                            success: function (list) {
+                                //console.log(list)
+
+                                let value = ""
+                                for (let i in list) {
+                                    value += "<div><span>" + list[i].stockName + "</span>(<span>" + list[i].stockNo + "</span>)</div>"
+                                }
+
+                                $("#tag_modal .modal-body").html(value)
+                                $(".tag_session .container #tag_modal_btn").click()
+                            }
+                        })
+                    }
+
+                    $("#tag_modal .modal-body").on("click", "div", function () {
+                        let code = $(this).children("span").eq(1).text()
+                        let codeName = $(this).children("span").eq(0).text()
+                        // //console.log(code)
+                        // //console.log(codeName)
+                        location.href = "detail.st?code=" + code + "&codeName=" + codeName
+
+                    })
+
+
+
+
                     function categoryList() {
                         $.ajax({
                             url: "category.st",
                             success: function (data) {
-                                console.log(data)
+                                // //console.log(data)
+                                const list = data.output2
+                                // //console.log(list)
+
+                                let value = ""
+
+                                for (let i in list) {
+                                    let code = list[i].bstp_cls_code
+                                    if (code === "0005") {
+                                        //음식
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='919,923'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0006") {
+                                        //섬유 의복
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='931'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0018") {
+                                        //건설업
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='72,332,994'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0008") {
+                                        //화학
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='340,467,156,158'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0014") {
+                                        //의료정밀
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='35,912,555,49,104,77'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0009") {
+                                        //의약품
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='296,385'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0010") {
+                                        //비금속광물
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='940,146'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0011") {
+                                        //철강, 금속
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='343,44'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0012") {
+                                        //기계
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='71,97,489,920'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0013") {
+                                        //전기 전자
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='87,985,29,982,257,546,65,700,375,134'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0019") {
+                                        //운수 창고
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='72,50,995,142'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0020") {
+                                        //통신업
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='270,382,986'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0021") {
+                                        //금융
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='324'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0026") {
+                                        //서비스
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='42,999,57,786'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0027") {
+                                        //제조업
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='387,43,197,982,330,363,930'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0007") {
+                                        //종이
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='319'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0015") {
+                                        //운수, 장비
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='330'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0017") {
+                                        //전기 ,가스업
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='270,65,489'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    } else if (code === "0016") {
+                                        //유통
+                                        value += "<tr>"
+                                            + "<input type='hidden' value='73,319'>"
+                                            + "<td>" + list[i].hts_kor_isnm + "</td>"
+                                            + "<td>" + list[i].bstp_nmix_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</td>"
+                                            + "<td>" + list[i].bstp_nmix_prdy_ctrt + "%</td>"
+                                            + "</tr>"
+                                    }
+                                }
+
+                                $('.tag_session .container .table tbody').html(value)
+
+
                             },
                             error: function () {
-                                console.log("실패")
+                                //console.log("실패")
                             }
                         })
                     }
@@ -1257,7 +1519,7 @@
                                 userNo: "${loginUser.memNo}"
                             },
                             success: function (list) {
-                                // console.log(list.length)
+                                // //console.log(list.length)
                                 let value = "";
                                 if (list.length === 0) {
                                     value = "등록된 계좌가 없습니다."
@@ -1270,7 +1532,7 @@
                                 selectBuyStock()
                             },
                             error: function () {
-                                console.log("실패")
+                                //console.log("실패")
                             }
                         })
 
@@ -1286,13 +1548,13 @@
                                 secondAccount: second
                             },
                             success: function (data) {
-                                // console.log(data)
+                                // //console.log(data)
                                 let value = ""
 
                                 if (data.rt_cd === "0") {
                                     const output1 = data.output1
 
-                                    // console.log(output1)
+                                    // //console.log(output1)
                                     $(".buy_stock_session .flex h3").text(data.output2[0].asst_icdc_amt.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원")
                                     for (let i in output1) {
 
@@ -1319,9 +1581,9 @@
                                 let i = 0
                                 $(".buy_stock_session .table_area tbody td").each((index, item) => {
                                     if (index !== 4 * i) {
-                                        // console.log(i * 4)
+                                        // //console.log(i * 4)
                                         $(item).removeClass()
-                                        // console.log($(item).text().substr(0, 1))
+                                        // //console.log($(item).text().substr(0, 1))
                                         if ($(item).text().substr(0, 1) === "-") {
                                             $(item).addClass("blue")
                                         } else {
@@ -1345,7 +1607,7 @@
                     $(".buy_stock_session .table_area tbody").on("click", "tr", function () {
                         const stock_no = $(this).children("input").val()
                         const stock_name = $(this).children("td").eq(0).text();
-                        // console.log(stock_name)
+                        // //console.log(stock_name)
 
                         if (stock_name !== "구매하신 이력이 없습니다.") {
                             location.href = "detail.st?code=" + stock_no + "&codeName=" + stock_name
@@ -1357,15 +1619,15 @@
 
                     function selectBuyStock() {
                         const account = $(".buy_stock_session .account_area select[name=account_list]").val()
-                        // console.log(account)
+                        // //console.log(account)
                         if (account === "등록된 계좌가 없습니다.") {
 
                         } else {
                             const accountArr = account.split("-")
                             const first = accountArr[0]
                             const second = accountArr[1]
-                            // console.log(first)
-                            // console.log(second)
+                            // //console.log(first)
+                            // //console.log(second)
 
                             selectbuyStockList(first, second)
 
@@ -1406,7 +1668,7 @@
 
                 // 주식 접근토큰
                 const b = a.then((result) => {
-                    //console.log(result);
+                    ////console.log(result);
                     return token(result)
                 })
 
@@ -1425,7 +1687,7 @@
                         $.ajax({
                             url: "stockKey.st",
                             success: function (result) {
-                                //console.log(result)
+                                ////console.log(result)
                                 resolve(result)
                             }
                         })

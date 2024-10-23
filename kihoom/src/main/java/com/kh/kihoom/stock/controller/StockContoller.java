@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -962,9 +963,15 @@ public class StockContoller {
 	
 	@ResponseBody
 	@RequestMapping(value="categoryList.st" , produces="aplication/json; charset=utf-8")
-	public String categoryList() {
+	public String categoryList(String category) {
 		
-		ArrayList<StockCategory> list = sService.selectCategoryList();
+		String[] categoryArr = category.split(",");
+		
+		ArrayList<String> categoryList = new ArrayList<String>(Arrays.asList(categoryArr));
+		
+//		System.out.println(categoryList);
+		
+		ArrayList<StockCategory> list = sService.selectCategoryList(categoryList);
 		
 		return new Gson().toJson(list);
 	}

@@ -55,9 +55,13 @@ public class StockServiceImpl implements StockService{
 	}
 
 	@Override
-	public ArrayList<StockCategory> selectCategoryList() {
+	public ArrayList<StockCategory> selectCategoryList(ArrayList<String> categoryList) {
 		// TODO Auto-generated method stub
-		return sDao.selectCategoryList(sql);
+		return sDao.selectCategoryList(sql, categoryList);
 	}
+
+
+
+
 
 }

@@ -36,8 +36,8 @@ public class StockDao {
 		return sql.insert("stockMapper.insertAddAccount", s);
 	}
 	
-	public ArrayList<StockCategory> selectCategoryList(SqlSessionTemplate sql){
-		return (ArrayList)sql.selectList("stockMapper.selectCategoryList");
+	public ArrayList<StockCategory> selectCategoryList(SqlSessionTemplate sql , ArrayList<String> categoryList){
+		return (ArrayList)sql.selectList("stockMapper.selectCategoryList", categoryList);
 	}
 	
 	
