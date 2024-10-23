@@ -28,8 +28,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.kh.kihoom" />
+
 	<beans:bean id="stockChatHandler"
 		class="com.kh.kihoom.stock.stockChatWebsocket.ChatHandler" />
 
@@ -43,15 +42,7 @@
 
 	<!-- 위의 방식이 xml 방식임 => 장점 : xml 문서 내에서 한 눈에 볼 수 있어서 관리의 편의성은 높음 => 단점 : 
 		단, bean의 개수가 많아지면 오히려 관리하기가 더 어려워짐 / 여러 개발자가 같은 xml파일을 수정하면 충돌이 발생할 수 있음 -->
-	<interceptors>
-		<interceptor>
-			<!-- interceptor에 추가 <mapping path="/update.me"/> <mapping path="/enrollForm.bo"/> -->
-			<mapping path="/myPage.me" />
-			<beans:bean
-				class="com.kh.kihoom.member.controller.LoginInterceptor"
-				id="loginInterceptor" />
-		</interceptor>
-	</interceptors>
+
 
 
 	
