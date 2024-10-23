@@ -661,6 +661,9 @@
                         console.log("연결")
                         flag = true
                     }
+                    ws.onerror = function (e) {
+                        console.log("실패" + console.error(e.error))
+                    }
 
                     ws.onmessage = function (e) {
                         // console.log(e)
