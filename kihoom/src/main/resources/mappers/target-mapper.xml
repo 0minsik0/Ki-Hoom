@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="targetMapper">
+
+	<resultMap type="InTarget" id="IntargetResult">
+		<result column="mem_no" property="memNo"/>
+		<result column="in_date" property="inDate"/>
+		<result column="in_amount" property="inAmount"/>
+	</resultMap>
+
+	<select id="targetCountList" resultType="_int">
+		select count(*)
+		  from intarget
+		 where mem_no = #{memNo}
+	</select>
+	
+	<select id="targetList" resultMap="IntargetResult">
+		select 
+		       mem_no
+		     , to_char(in_date, 'YYYY-MM-DD') in_date
+		     , in_amount
+		  from intarget
+		 where mem_no = #{memNo}
+		 order
+		    by in_date
+	</select>
+	
+
+</mapper>

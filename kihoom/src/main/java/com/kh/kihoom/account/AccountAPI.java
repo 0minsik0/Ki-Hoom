@@ -86,9 +86,9 @@ public class AccountAPI {
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    JsonNode rootNode = objectMapper.readTree(responseText.toString());
 	    
-	    ArrayList<String> fintechUseNums = new ArrayList<>();
-	    ArrayList<String> accountNumMaskeds = new ArrayList<>();
-	    ArrayList<String> bankNames = new ArrayList<>();
+	    ArrayList<String> fintechUseNums = new ArrayList();
+	    ArrayList<String> accountNumMaskeds = new ArrayList();
+	    ArrayList<String> bankNames = new ArrayList();
 	    
 	    // 핀테크 번호, 계좌 번호, 은행 이름 추출
 	    JsonNode resList = rootNode.path("res_list");

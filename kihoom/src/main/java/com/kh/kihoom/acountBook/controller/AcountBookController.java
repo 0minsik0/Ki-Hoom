@@ -7,9 +7,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.kihoom.acountBook.model.service.AcountServiceImpl;
 import com.kh.kihoom.acountBook.model.vo.Acount;
+
 import com.kh.kihoom.common.model.vo.PageInfo;
 import com.kh.kihoom.common.template.Pagination;
+import com.kh.kihoom.member.model.vo.Member;
 
 @Controller
 public class AcountBookController {
@@ -34,8 +38,31 @@ public class AcountBookController {
 
 	// 가게부 메인화면
 	@RequestMapping("acountBook.ac")
-	public String acountBookView() {
-		return "acountBook/acountBookMain";
+	public ModelAndView acountBookView(@RequestParam(value="cpage", defaultValue = "1") int currentPage,
+								 ModelAndView mv, HttpSession session, Acount acount) {
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		int memNo = loginUser.getMemNo();
+		
+		int listCount = aService.selectListCount(memNo);
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
+		
+		ArrayList<Acount> list = aService.selectList(pi, memNo);
+		
+		ArrayList<Acount> totalList = aService.totalList(memNo);
+		
+		ArrayList<Acount> monthList = aService.monthList(memNo);
+		
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .addObject("totalList", totalList)
+		  .addObject("monthList", monthList)
+		  .setViewName("acountBook/acountBookMain");
+
+		return mv;
 	}
 	
 	// 계좌 조회를 위한 토큰받기위한 인증
@@ -94,25 +121,56 @@ public class AcountBookController {
 	
 	// 수기작성 페이징바
 	@RequestMapping(value = "list.ac")
-	public ModelAndView acountList(@RequestParam(value="cpage", defaultValue = "1") int currentPage, ModelAndView mv) {
-		int listCount = aService.selectListCount();
+	public ModelAndView acountList(@RequestParam(value="cpage", defaultValue = "1") int currentPage, 
+								   ModelAndView mv, HttpSession session) {
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+					
+		int memNo = loginUser.getMemNo();
+		
+		int listCount = aService.selectListCount(memNo);
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
-		ArrayList<Acount> list = aService.selectList(pi);
+		
+		ArrayList<Acount> list = aService.selectList(pi, memNo);
 		
 		mv.addObject("pi", pi)
-		  .addObject("list", list)
-		  .setViewName("acountBook/acountBook");
+		.addObject("list", list)
+		.setViewName("acountBook/acountBookMain");
+			
 		return mv;
+
 	}
 	
 	// 가게부 수기작성 insert
 	@RequestMapping("input.ac")
-	public String inputAcountBook() {
+	public String inputAcountBook(Acount a, HttpSession session) {
 		
+		int result = aService.insertAcountBook(a);
 		
-		
-		return "acountBook/acountBookMain";
+		if(result > 0) {
+			session.setAttribute("alertMsg", "성공적으로 등록되었습니다.");
+			return "redirect:acountBook.ac";
+		}else {
+			session.setAttribute("alertMsg", "등록이 실패하였습니다.");
+			return "redirect:/";
+		}
+	}
+	
+	// 월별 수입 통계
+	@ResponseBody
+	@RequestMapping(value = "monthIn.ac", produces = "application/json; charset=utf-8")
+	public String monthInAmount(Acount a) {
+		ArrayList<Acount> list = aService.mInList(a);
+		return new Gson().toJson(list);
+	}
+	
+	// 월별 지출 통계
+	@ResponseBody
+	@RequestMapping(value = "monthOut.ac", produces = "application/json; charset=utf-8")
+	public String monthOutAmount(Acount a) {
+		ArrayList<Acount> list = aService.mOutList(a);
+		return new Gson().toJson(list);
 	}
 	
 	
