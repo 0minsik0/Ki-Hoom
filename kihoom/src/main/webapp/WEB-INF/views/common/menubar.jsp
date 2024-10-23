@@ -68,11 +68,8 @@
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
                                     <div class="submenu-content">
-                                        <a href="stock.st" class="menu-item">Modals</a>
-                                        <a href="resources/pages/ui/notifications.html" class="menu-item">Notifications</a>
-                                        <a href="resources/pages/ui/carousel.html" class="menu-item">Slider</a>
-                                        <a href="resources/pages/ui/range-slider.html" class="menu-item">Range Slider</a>
-                                        <a href="resources/pages/ui/rating.html" class="menu-item">Rating</a>
+                                        <a href="stock.st" class="menu-item">투자/주식</a>
+                                    
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
