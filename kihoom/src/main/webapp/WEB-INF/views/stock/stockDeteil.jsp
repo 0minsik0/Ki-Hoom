@@ -23,6 +23,8 @@
             <div class="page-wrap">
                 <jsp:include page="../common/menubar.jsp" />
                 <div class="main-content">
+                    <button id="addAccount_btn" style="display: none;" data-toggle="modal"
+                        data-target="#addAccount"></button>
                     <div class="deteil_session main_box">
                         <div class="header ">
                             <div class="header_stock">
@@ -487,7 +489,32 @@
         </div>
 
 
+        <div class="modal" id="addAccount">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">한국 투자 증권 계좌 추가</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="addAccount.st" method="post" align="center">
+                            <input type="hidden" name="memNo" value="${loginUser.memNo}">
+                            <input type="number" placeholder="계좌 - 앞 8자리" max="99999999" required pattern="\d*"
+                                maxlength="8" name="firstAccount">-<input type="number" placeholder="계좌 - 뒤 2자리"
+                                max="99" required name="secondAccount" pattern="\d*" maxlength="2">
+
+                            <br><br>
+                            <input type="submit" onclick="return accountsubmit()" class="btn btn-secondary">
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
 
 
 
@@ -579,6 +606,37 @@
             })
 
 
+
+
+
+            $("#addAccount form input[name=firstAccount]").on("input", function () {
+                if (this.value.length > 8) {
+                    this.value = this.value.slice(0, 8);
+                }
+            })
+
+            $("#addAccount form input[name=secondAccount]").on("input", function () {
+                if (this.value.length > 2) {
+                    this.value = this.value.slice(0, 2);
+                }
+            })
+
+
+            function accountsubmit() {
+                let first = $("#addAccount form input[name=firstAccount]").val()
+                let second = $("#addAccount form input[name=secondAccount]").val()
+
+                if (first.length < 8) {
+                    alert("계좌 앞 8자리를 적지 않았습니다.")
+                    $("#addAccount form input[name=firstAccount]").focus()
+                    return false
+                }
+                if (second.length < 2) {
+                    alert("계좌 뒤 2자리를 적지 않았습니다.")
+                    $("#addAccount form input[name=secondAccount]").focus()
+                    return false
+                }
+            }
 
             function storage() {
                 let arr = JSON.parse(localStorage.getItem("watced_stock"))
@@ -841,10 +899,9 @@
                     // ////console.log(list)
 
                     if (list.length === 0) {
+                        $("#buyModal .modal-header .close").click()
                         if (confirm("등록된 한국투자 계좌가 없습니다. 등록하시겠습니까?")) {
-
-                        } else {
-
+                            $('.main-content #addAccount_btn').click();
                         }
                     } else {
                         let value = "";

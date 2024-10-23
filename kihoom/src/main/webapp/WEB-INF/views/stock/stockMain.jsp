@@ -286,90 +286,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
-                                    <tr>
-                                        <input type="hidden" name="stock_No" value="">
-                                        <td>종목명</td>
-                                        <td>매매일자</td>
-                                        <td>실현손익</td>
-                                        <td>손익률</td>
-                                    </tr>
+
                                 </tbody>
                             </table>
 
@@ -1522,11 +1439,13 @@
                                 userNo: "${loginUser.memNo}"
                             },
                             success: function (list) {
-                                // //console.log(list.length)
+                                console.log(list.length)
                                 let value = "";
                                 if (list.length === 0) {
-                                    value = "등록된 계좌가 없습니다."
+                                    console.log("ss")
+                                    value += "<option value='등록된 계좌가 없습니다.'>등록된 계좌가 없습니다.</option>"
                                 } else {
+                                    console.log('dd')
                                     for (let i in list) {
                                         value += "<option value='" + list[i].stockAccount + "'>" + list[i].stockAccount + "</option>"
                                     }
