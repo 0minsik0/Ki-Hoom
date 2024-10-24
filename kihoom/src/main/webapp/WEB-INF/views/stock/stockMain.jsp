@@ -268,7 +268,6 @@
                             <div class="account_area" style="display: flex; justify-content: space-between;">
                                 <div>
                                     <select name="account_list">
-                                        <option value="">11111111-12</option>
                                     </select>
                                 </div>
                                 <div style="font-weight: 600; cursor: pointer;" data-toggle="modal"
