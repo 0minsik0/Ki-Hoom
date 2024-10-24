@@ -57,20 +57,12 @@
                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-box"></i><span>증명서 발급</span></a>
-                                    <div class="submenu-content">
-                                        <a href="resources/pages/ui/alerts.html" class="menu-item">Alerts</a>
-                                        <a href="resources/pages/ui/badges.html" class="menu-item">Badges</a>
-                                        <a href="resources/pages/ui/buttons.html" class="menu-item">Buttons</a>
-                                        <a href="resources/pages/ui/navigation.html" class="menu-item">Navigation</a>
-                                    </div>
+                                    <a href="certificateMain.ce"><i class="ik ik-box"></i><span>증명서 발급</span></a>
+                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
-                                    <div class="submenu-content">
-                                        <a href="stock.st" class="menu-item">투자/주식</a>
-                                    
-                                    </div>
+                                    <a href="stock.st"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
+                                   
                                 </div>
                                 <div class="nav-item has-sub">
                                     <a href="#"><i class="ik ik-package"></i><span>포인트</span></a>
