@@ -56,6 +56,17 @@ public class AcountServiceImpl implements AcountService{
 		return aDao.monthList(sqlSession, memNo);
 	}
 
+	@Override
+	public ArrayList<Acount> weekTotalListOut(Acount a) {
+		return aDao.weekTotalListOut(sqlSession, a);
+	}
+
+	@Override
+	public ArrayList<Acount> weekTotalListIn(Acount a) {
+		return aDao.weekTotalListIn(sqlSession, a);
+	}
+	
+
 
 	
 }

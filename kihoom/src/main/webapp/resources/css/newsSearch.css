@@ -1,76 +1,55 @@
+.searchContainer {
+  align-items: center;
+  width: 100%;
+}
+
+/* option css */
 #articles {
   border: 1px solid #0e4ead;
   border-radius: 5px;
   background-color: transparent;
   height: 41px;
-  margin: 19px 5px;
+  margin-right: 5px;
   cursor: pointer;
 }
 
-.coolinput {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  position: static;
-  max-width: 240px;
+/* input, btn css */
+.inputGroup {
+  display: inline-flex;
+  align-items: center;
 }
 
-.coolinput label.textlabel {
-  font-size: 0.75rem;
-  color: #0e4ead;
-  font-weight: 700;
-  position: relative;
-  top: 0.5rem;
-  margin: 0 0 0 7px;
-  padding: 0 3px;
-  background: #f6f7fb;
-  width: fit-content;
-}
-
-.coolinput input[type="text"].newsInput {
-  padding: 11px 10px;
-  font-size: 0.75rem;
-  border: 2px #0e4ead solid;
-  border-radius: 5px;
-  background: transparent;
-}
-
-.coolinput input[type="text"].newsInput:focus {
-  outline: none;
-}
-
-.inputWrap-news {
-  display: inline;
-}
-
-/* search button css */
-.nSearchBtn {
-  background: transparent;
-  height: 41px;
-  margin: 19px 5px;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
+.input {
+  min-height: 41px;
+  max-width: 200px;
+  padding: 0 1rem;
+  color: black;
+  font-size: 15px;
   border: 1px solid #0e4ead;
-  border-radius: 5px;
-  outline: none;
-  overflow: hidden;
-  color: #0e4ead;
-  transition: color 0.3s 0.1s ease-out;
-  text-align: center;
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
 }
 
-.nSearchBtn span {
-  margin: 10px;
-}
-
-.nSearchBtn:hover {
-  color: #fff;
-  border: 1px solid #0e4ead;
+.buttonSubmit {
+  min-height: 41px;
+  max-width: 65px;
+  border: none;
+  border-radius: 0 6px 6px 0;
   background-color: #0e4ead;
-  transition: 1s;
-  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buttonSubmit:hover {
+  background-color: #88b7ff;
+}
+
+.input:focus,
+.input:focus-visible {
+  border-color: #88b7ff;
+  outline: none;
 }
 
 /* 포토카드 css */
@@ -81,7 +60,7 @@
 
 .newsCard {
   width: 200px;
-  height: 400px;
+  height: 350px;
   background: white;
   padding: 0.4em;
   margin: 0.3em;

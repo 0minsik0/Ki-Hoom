@@ -31,5 +31,9 @@ public interface AcountService {
 	
 	ArrayList<Acount> monthList(int memNo);
 	
+	ArrayList<Acount> weekTotalListOut(Acount a);
+	
+	ArrayList<Acount> weekTotalListIn(Acount a);
+	
 
 }

@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -155,6 +158,20 @@ public class AcountBookController {
 			session.setAttribute("alertMsg", "등록이 실패하였습니다.");
 			return "redirect:/";
 		}
+	}
+	
+	// 주간 전체 통계
+	@ResponseBody
+	@RequestMapping(value = "weekList.ac", produces = "application/json; charset=utf-8")
+	public String weekTotalListOut(Acount a) {
+		ArrayList<Acount> outList = aService.weekTotalListOut(a);
+		ArrayList<Acount> inWList = aService.weekTotalListIn(a);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("outList", outList);
+		map.put("inWList", inWList);
+		
+		return new Gson().toJson(map);
 	}
 	
 	// 월별 수입 통계

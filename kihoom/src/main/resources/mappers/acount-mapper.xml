@@ -101,6 +101,36 @@
             by payment_date desc
 	</select>
 	
+	<select id="weekTotalListOut" resultMap="acountResult">
+		select to_char(payment_date, 'MM') payment_date, 
+	           to_char(payment_date, 'W') deal_divide, 
+	           deal_type, 
+	           sum(amount) amount 
+	      from acountbook
+	     where mem_no = #{memNo}
+	       and EXTRACT(MONTH FROM payment_DATE) = #{paymentDate}
+	       and deal_type = '출금'
+	     group
+	        by to_char(payment_date, 'W'), to_char(payment_date, 'MM'), deal_type
+	     order
+	        by 1,2
+	</select>
+	
+	<select id="weekTotalListIn" resultMap="acountResult">
+		select to_char(payment_date, 'MM') payment_date, 
+	           to_char(payment_date, 'W') deal_divide, 
+	           deal_type, 
+	           sum(amount) amount 
+	      from acountbook
+	     where mem_no = #{memNo}
+	       and EXTRACT(MONTH FROM payment_DATE) = #{paymentDate}
+	       and deal_type = '입금'
+	     group
+	        by to_char(payment_date, 'W'), to_char(payment_date, 'MM'), deal_type
+	     order
+	        by 1,2
+	</select>
+	
 	
 	
 	

@@ -45,5 +45,13 @@ public class AcountDao {
 	public ArrayList<Acount> monthList(SqlSessionTemplate sqlSession, int memNo){
 		return (ArrayList)sqlSession.selectList("acountMapper.monthList", memNo);
 	}
+	
+	public ArrayList<Acount> weekTotalListOut(SqlSessionTemplate sqlSession, Acount a){
+		return (ArrayList)sqlSession.selectList("acountMapper.weekTotalListOut", a);
+	}
+	
+	public ArrayList<Acount> weekTotalListIn(SqlSessionTemplate sqlSession, Acount a){
+		return (ArrayList)sqlSession.selectList("acountMapper.weekTotalListIn", a);
+	}
 
 }

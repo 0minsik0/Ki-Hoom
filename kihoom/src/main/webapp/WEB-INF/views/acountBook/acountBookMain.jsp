@@ -179,6 +179,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                   <div id="monthTotal" onclick="showMonthTotal()">월별</div>
 
                   <div id="weekTotal" onclick="showWeekTotal()">주간별</div>
+                  <select id="weekMonth">
+	                  <c:forEach var="mm" items="${ monthList }">
+	                     <option value="${ mm.paymentDate }">
+	                       ${ mm.paymentDate }
+	                     </option>
+	                  </c:forEach>
+                  </select>
                 </div>
 
                 <div class="card-body">
@@ -191,12 +198,40 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
                   <div id="weekContent" style="display: none">
                     <div id="chartdiv9"></div>
+                    <div id="noDataMessagee" style="display:none; color: blue" align="center">
+                    	입력된 값이 없습니다.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
+            
             <script>
+            /* week Content */
+            $(document).ready(() => {
+            	
+            	$(document).ready(() => {
+                    let wMonth = $("#weekMonth").val();
+                    fetchData(wMonth);
+
+                    $('#weekMonth').change(() => {
+                        wMonth = $("#weekMonth").val();
+                        fetchData(wMonth);
+                    });
+
+                function fetchData(wMonth) {
+                    $.ajax({
+                        url: "weekList.ac",
+                        data: {
+                            memNo: ${loginUser.memNo},
+                            paymentDate: wMonth,
+                        },
+                        success: function (wArray) {
+                        	console.log(wArray)
+                        	
+                        	
+                        	
                         	/* weekContent */
                         	am5.ready(function () {
                            // Create root element
@@ -228,36 +263,35 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                                x: am5.p50,
                              })
                            );
+                        	
+                           let data = [];
+									
+		                       	   // inWList 처리
+		                           wArray.inWList.forEach(item => {
+		                        	   console.log(item)
+		                               data.push({
+		                                   week: item.dealDivide + "주", // dealDivide를 week으로 사용
+		                                   입금: item.amount, // 입금 amount
+		                                   출금: 0,
+		                               });
+		                           });
+		                       	   console.log(data)
 
-                           var data = [
-                             {
-                               week: "2주",
-                               europe: 2.5,
-                               namerica: 2.5,
-                               asia: 2.1,
-                               lamerica: 1,
-                               meast: 0.8,
-                               africa: 0.4,
-                             },
-                             {
-                               week: "3주",
-                               europe: 2.6,
-                               namerica: 2.7,
-                               asia: 2.2,
-                               lamerica: 0.5,
-                               meast: 0.4,
-                               africa: 0.3,
-                             },
-                             {
-                               week: "4주",
-                               europe: 2.8,
-                               namerica: 2.9,
-                               asia: 2.4,
-                               lamerica: 0.3,
-                               meast: 0.9,
-                               africa: 0.5,
-                             },
-                           ];
+		                           // outList 처리
+		                            wArray.outList.forEach(item => {
+		                               // 해당 dealDivide에 맞는 entry를 찾아서 업데이트
+		                               const weekData = data.find(d => d.week === item.dealDivide);
+		                               if (weekData) {
+		                                   weekData.출금 += item.amount; // 출금 amount 추가
+		                               } else {
+		                                   // dealDivide가 없는 경우 새로 추가
+		                                   data.push({
+		                                       week: item.dealDivide + "주",
+		                                       입금: 0, // 초기값으로 0 설정
+		                                       출금: item.amount, // 출금 amount
+		                                   });
+		                               }
+		                           });
 
                            // Create axes
                            // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
@@ -309,7 +343,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                                strokeOpacity: 0,
                              });
 
-                             series.data.setAll(data);
+                             xAxis.data.setAll(data);
+                             chart.series.each(series => {
+                                 series.data.setAll(data); // 각 시리즈에 데이터 설정
+                             });
 
                              // Make stuff animate on load
                              // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -331,56 +368,64 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                              legend.data.push(series);
                            }
 
-                           makeSeries("Europe", "europe");
-                           makeSeries("North America", "namerica");
-                           makeSeries("Asia", "asia");
-                           makeSeries("Latin America", "lamerica");
-                           makeSeries("Middle East", "meast");
-                           makeSeries("Africa", "africa");
+                           makeSeries("입금 금액", "입금");
+                           makeSeries("출금 금액", "출금");
 
                            // Make stuff animate on load
                            // https://www.amcharts.com/docs/v5/concepts/animations/
                            chart.appear(1000, 100);
                          }); // end am5.ready()
+                        	
+                        	
+                        	
+                        }, /* success 끝*/
+                        error: function () {
+                            console.error("주간 리스트 ajax 조회 실패");
+                        },
+                    });
+                }
+            });
+        });
 
-                         /* month Content */
-                          am5.ready(function () {
+                /* month Content */
+                 am5.ready(function () {
 
-                          var root = am5.Root.new("chartdiv0");
+                 var root = am5.Root.new("chartdiv0");
 
-                          root.setThemes([am5themes_Animated.new(root)]);
+                 root.setThemes([am5themes_Animated.new(root)]);
 
-                          var chart = root.container.children.push(
-                            am5xy.XYChart.new(root, {
-                              panX: false,
-                              panY: false,
-                              paddingLeft: 0,
-                              wheelX: "panX",
-                              wheelY: "zoomX",
-                              layout: root.verticalLayout,
-                            })
-                          );
+                 var chart = root.container.children.push(
+                   am5xy.XYChart.new(root, {
+                     panX: false,
+                     panY: false,
+                     paddingLeft: 0,
+                     wheelX: "panX",
+                     wheelY: "zoomX",
+                     layout: root.verticalLayout,
+                   })
+                 );
 
-                          var legend = chart.children.push(
-                            am5.Legend.new(root, {
-                              centerX: am5.p50,
-                              x: am5.p50,
-                            })
-                          );
+                 var legend = chart.children.push(
+                   am5.Legend.new(root, {
+                     centerX: am5.p50,
+                     x: am5.p50,
+                   })
+                 );
 
-                          var data = [
-                          <c:forEach var="total" items="${totalList}">
-                         	{
-                             	month: "${total.paymentDate}월",
-                         		${total.dealType}: ${total.amount},
-                         	},
-                         </c:forEach>
-                          ];
+                 var data = [
+                 <c:forEach var="total" items="${totalList}">
+                	{
+                    	month: "${total.paymentDate}월",
+                		${total.dealType}: ${total.amount},
+                	},
+                </c:forEach>
+                 ];
 
 	             // 데이터 비어있을때 출력될거
 	              if(data.length == 0){
 	              	chart.hide();
 	              	document.getElementById("noDataMessage").style.display = "block";
+	              	$("#chartdiv0").hide();
 	              }else{
                            var xRenderer = am5xy.AxisRendererX.new(root, {
                              cellStartLocation: 0.1,
@@ -821,6 +866,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           </div>
 
           <!-- 메인 컨테이너 div 끝 -->
+
         </div>
       </div>
     </div>
