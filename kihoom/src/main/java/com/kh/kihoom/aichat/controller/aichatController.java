@@ -1,48 +1,38 @@
 package com.kh.kihoom.aichat.controller;
 
-
-//import com.example.demo.dto.GPTRequest;
-//import com.example.demo.dto.GPTResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.kihoom.aichat.dto.GPTRequest;
-import com.kh.kihoom.aichat.dto.GPTResponse;
+import com.kh.kihoom.aichat.model.service.OpenAIService;
 
 @RestController
 @RequestMapping("/gpt")
 @RequiredArgsConstructor
 public class aichatController {
 
-    @Value("${gpt.model}")
-    private String model;
-
-    @Value("${gpt.api.url}")
-    private String apiUrl;
-    private final RestTemplate restTemplate;
-
+    @Autowired
+    private OpenAIService openAIService;
     
-    @GetMapping("/aichat.ac")
-    public String chat(@RequestParam("prompt") String prompt){
-
-        GPTRequest request = new GPTRequest(
-                model,prompt,1,256,1,2,2);
-
-        GPTResponse gptResponse = restTemplate.postForObject(
-                apiUrl
-                , request
-                , GPTResponse.class
-        );
-
-
-        return gptResponse.getChoices().get(0).getMessage().getContent();
-
-
+    @RequestMapping("AIChat.ai")
+	public String AIChatMain() {
+		return "aichat/aichat";
+	}
+    
+    @PostMapping("/askQuestion")
+    public ResponseEntity<String> askQuestion(@RequestParam String question) {
+        // OpenAI에서 받은 응답
+        String aiResponse = openAIService.getAIResponse(question);
+        
+        // 응답 인코딩을 UTF-8로 설정
+        return ResponseEntity.ok()
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE + ";charset=UTF-8")
+            .body(aiResponse);
     }
-    
 }

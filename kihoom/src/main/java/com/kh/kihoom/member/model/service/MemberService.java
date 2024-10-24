@@ -19,7 +19,13 @@ public interface MemberService {
 	
 	
 	//비밀번호찾기
-	Member findPwd1(Member m);
+	Member findPwd(Member m);
+	
+	// 회원정보 수정
+	int updateMember(Member m);
+	
+	// 회원탈퇴
+	int deleteMember(String memId);
 	
 	//아이디찾기
 	List<Member> findId(Member m);

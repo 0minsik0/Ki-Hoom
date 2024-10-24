@@ -1,50 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-   <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>ThemeKit - Admin Template</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>AI 문의</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chatBox {
+            width: 80%;
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #userInput {
+            width: 80%;
+            padding: 10px;
+        }
+        #sendBtn {
+            padding: 10px;
+        }
+        
+    </style>
+  </head>
 
-<style>
-	#chat_box{
-		width:1500px;
-		height:1500px;
-		border: black solid 1px;
-	}
-</style>
- 
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-		
-        <div class="wrapper">
-            <jsp:include page="../common/header.jsp"/>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
 
-            <div class="page-wrap">
-                <jsp:include page="../common/menubar.jsp"/>
-                <div class="main-content">
-                	
-                	<div id=chat_box>
-                	
-                		안 녕
-                		
-                	
-                	
-                	</div>
-                	
-                	
-                	
-                	
-                	
-                	
-                	
+    <div class="wrapper">
+      <header class="header-top" header-theme="light">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between">
+            <div class="top-menu d-flex align-items-center">
+              <button
+                type="button"
+                class="btn-icon mobile-nav-toggle d-lg-none"
+              >
+                <span></span>
+              </button>
+              <div class="header-search">
+                <div class="input-group">
+                  <span class="input-group-addon search-close"
+                    ><i class="ik ik-x"></i
+                  ></span>
+                  <input type="text" class="form-control" />
+                  <span class="input-group-addon search-btn"
+                    ><i class="ik ik-search"></i
+                  ></span>
                 </div>
                 
              
@@ -106,101 +124,83 @@ pageEncoding="UTF-8"%>
                 
             </div>
         </div>
-        
-        
-        
+      </header>
 
-        <div class="modal fade apps-modal" id="appsModal" tabindex="-1" role="dialog" aria-labelledby="appsModalLabel" aria-hidden="true" data-backdrop="false">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ik ik-x-circle"></i></button>
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="quick-search">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 ml-auto mr-auto">
-                                    <div class="input-wrap">
-                                        <input type="text" id="quick-search" class="form-control" placeholder="Search..." />
-                                        <i class="ik ik-search"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div class="page-wrap">
+        <jsp:include page="../common/menubar.jsp"/>
+        <div class="main-content">
+        	<div class="col-md-10" style="margin: 50px auto;">
+        		<div class="card">
+					<div class="card-header">
+        				<h2><b>AI Chat</b></h2>
+    				</div>
+    				<div class="card-body">
+    					<div id="chatBox" style="margin: auto;"></div>
+    					<br>
+					    <input type="text" id="userInput" placeholder="질문을 입력하세요." style="margin-left: 102.578px; border-radius:10px">
+					    <button id="sendBtn" class="btn btn-primary btn-rounded" style="width: 60px; height: 38px; margin-left:5px;">전송</button>
+    				</div>
+   				</div>
+    
+			</div>
+    <script>
+    $(document).ready(function(){
+        // 전송 버튼 클릭 시
+        $("#sendBtn").click(function(){
+            sendMessage();
+        });
+
+        // 엔터 키를 누를 때 전송 버튼 클릭 이벤트 트리거
+        $("#userInput").keydown(function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();  // 엔터 키로 줄 바꿈을 막음
+                $("#sendBtn").click();  // 전송 버튼 클릭 이벤트 트리거
+            }
+        });
+
+        // 메시지 전송 함수
+        function sendMessage() {
+            var userQuestion = $("#userInput").val();
+            if(userQuestion.trim() === "") return;
+
+            // 사용자 질문을 채팅 창에 추가 (누적)
+            $("#chatBox").append("<p><b>회원:</b> " + userQuestion + "</p>");
+            
+            // Ajax로 서버에 질문을 보내고 응답 받기
+            $.ajax({
+                url: "askQuestion",
+                method: "POST",
+                data: { question: userQuestion },
+                success: function(response) {
+                    try {
+                        // 응답을 JSON으로 파싱
+                        var jsonResponse = JSON.parse(response);
+                        
+                        // AI 응답에서 content 부분만 추출하여 표시
+                        var aiResponseContent = jsonResponse.choices[0].message.content || "응답을 처리할 수 없습니다.";
+                        
+                        // AI 응답을 채팅 창에 추가 (누적)
+                        $("#chatBox").append("<p><b>AI:</b> " + aiResponseContent + "</p>");
+                    } catch (e) {
+                        console.error("응답 처리 중 오류 발생:", e);
+                        $("#chatBox").append("<p><b>AI:</b> 응답을 처리하는 중 오류가 발생했습니다.</p>");
+                    }
                     
-                    
-                    
-                    
-                    
-                    <div class="modal-body d-flex align-items-center">
-                        <div class="container">
-                            <div class="apps-wrap">
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
-                                </div>
-                                <div class="app-item dropdown">
-                                    <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-command"></i><span>Ui</span></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-mail"></i><span>Message</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-users"></i><span>Accounts</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-shopping-cart"></i><span>Sales</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-briefcase"></i><span>Purchase</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-server"></i><span>Menus</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-clipboard"></i><span>Pages</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-message-square"></i><span>Chats</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-map-pin"></i><span>Contacts</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-box"></i><span>Blocks</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-calendar"></i><span>Events</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-bell"></i><span>Notifications</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-pie-chart"></i><span>Reports</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-layers"></i><span>Tasks</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-edit"></i><span>Blogs</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-settings"></i><span>Settings</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-more-horizontal"></i><span>More</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    // 입력창 초기화 및 스크롤 하단으로 이동
+                    $("#userInput").val("");
+                    $("#chatBox").scrollTop($("#chatBox")[0].scrollHeight);
+                },
+                error: function() {
+                    $("#chatBox").append("<p><b>AI:</b> 서버 응답 중 오류가 발생했습니다.</p>");
+                }
+            });
+        }
+    });
+</script>
         
-       
-    </body>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
     

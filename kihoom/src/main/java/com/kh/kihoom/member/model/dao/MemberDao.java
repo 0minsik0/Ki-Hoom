@@ -46,6 +46,16 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.findPwd", m);
 	}
 
+	// 회원정보 수정
+	public int updateMember(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.update("memberMapper.updateMember", m);
+	}
+
+
+	public int deleteMember(SqlSessionTemplate sqlSession, String memId) {
+		return sqlSession.update("memberMapper.deleteMember", memId);
+	}
+	
 	
 	public Member kakaoLogin(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.selectOne("memberMapper.kakaoLogin", m);

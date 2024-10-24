@@ -25,6 +25,4 @@ public class Member {
 	private Date enrollDate;
 	private String status;
 	private String snsId;
-
-	
 }

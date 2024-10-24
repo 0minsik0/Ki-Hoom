@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>ThemeKit - Admin Template</title>
+        <title>Ki-Hoom</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,10 +19,10 @@
         <![endif]-->
 		
         <div class="wrapper">
-            <jsp:include page="common/header.jsp"/>
 
             <div class="page-wrap">
                 <jsp:include page="common/menubar.jsp"/>
+                <jsp:include page="common/header.jsp"/>
                 <div class="main-content">
                 	<button class="btn1">계좌 인증</button>
                 	
@@ -81,7 +81,7 @@
                             <div class="list-group row">
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Gene Newman">
                                     <figure class="user--online">
-                                        <img src="resources/img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src=" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Gene Newman</span>  <span class="username">@gene_newman</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Billy Black">
@@ -106,7 +106,7 @@
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
                                     <figure class="user--offline">
-                                        <img src="resources/img/users/1.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
