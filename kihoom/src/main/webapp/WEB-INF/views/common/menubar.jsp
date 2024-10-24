@@ -57,35 +57,18 @@
                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-box"></i><span>증명서 발급</span></a>
-                                    <div class="submenu-content">
-                                        <a href="resources/pages/ui/alerts.html" class="menu-item">Alerts</a>
-                                        <a href="resources/pages/ui/badges.html" class="menu-item">Badges</a>
-                                        <a href="resources/pages/ui/buttons.html" class="menu-item">Buttons</a>
-                                        <a href="resources/pages/ui/navigation.html" class="menu-item">Navigation</a>
-                                    </div>
+                                    <a href="certificateMain.ce"><i class="ik ik-box"></i><span>보조금 24</span></a>
+                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
-                                    <div class="submenu-content">
-                                        <a href="stock.st" class="menu-item">Modals</a>
-                                        <a href="resources/pages/ui/notifications.html" class="menu-item">Notifications</a>
-                                        <a href="resources/pages/ui/carousel.html" class="menu-item">Slider</a>
-                                        <a href="resources/pages/ui/range-slider.html" class="menu-item">Range Slider</a>
-                                        <a href="resources/pages/ui/rating.html" class="menu-item">Rating</a>
-                                    </div>
-                                </div>
-                                <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-package"></i><span>포인트</span></a>
-                                    <div class="submenu-content">
-                                        <a href="resources/pages/ui/session-timeout.html" class="menu-item">Session Timeout</a>
-                                    </div>
+                                    <a href="stock.st"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
+                                   
                                 </div>
                                 <div class="nav-item">
-                                    <a href="resources/pages/ui/icons.html"><i class="ik ik-command"></i><span>환율</span></a>
+                                    <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="aichat.ac"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
+                                    <a href="AIChat.ai"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
                                 </div>
                             </nav>
                         </div>

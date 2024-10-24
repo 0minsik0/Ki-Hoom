@@ -1,7 +1,6 @@
 package com.kh.kihoom.member.controller;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kihoom.member.model.service.MemberServiceImpl;
 import com.kh.kihoom.member.model.vo.Member;
@@ -135,6 +135,60 @@ public class MemberController {
 		@RequestMapping("memberEnrollForm.me")
 		public String memberEnrollForm() {
 		    return "member/memberEnrollForm";  // 회원가입 폼으로 이동
+		}
+		
+		// 마이페이지 이동
+		@RequestMapping("mypage.lo")
+		public String mypage() {
+			return "member/mypage";
+		}
+		
+		// 회원정보 수정
+		@RequestMapping("update.me")
+		public String updateMember(Member m, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+			
+			String encPwd = bcryptPasswordEncoder.encode(m.getMemPwd());
+			
+			m.setMemPwd(encPwd);
+			
+		    int result = mService.updateMember(m);
+		    
+		    if (result > 0) {
+
+		    	Member updateMem = mService.loginMember(m);
+		        
+		        session.setAttribute("loginUser", updateMem);
+		        
+		        redirectAttributes.addFlashAttribute("alertMsg", "성공적으로 회원정보가 수정되었습니다. 수정하기를 눌러주세요.");
+		        return "redirect:mypage.lo";
+		    } else {
+		        model.addAttribute("errorMsg", "회원정보 수정 실패");
+		        return "common/errorPage";
+		    }
+		}
+		
+		// 회원탈퇴
+		@RequestMapping("delete.me")
+		public String deleteMember(String memId, String memPwd, HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+			String encPwd = ((Member)session.getAttribute("loginUser")).getMemPwd();
+			System.out.println(encPwd);
+			if(bcryptPasswordEncoder.matches(memPwd, encPwd)) { // 비번 맞음 => 탈퇴처리
+				
+				int result = mService.deleteMember(memId);
+				
+				if(result > 0) { // 탈퇴처리 성공
+					session.removeAttribute("loginUser");
+					redirectAttributes.addFlashAttribute("alertMsg", "탈퇴 완료");
+					return "redirect:/login.lo";
+				}else { // 탈퇴처리 실패
+					model.addAttribute("errorMsg", "회원탈퇴 실패");
+					return "common/errorPage";
+				}
+				
+			}else {
+				redirectAttributes.addFlashAttribute("alertMsg", "비밀번호를 잘못 입력하였습니다. 확인해주세요.");
+				return "redirect:mypage.lo";
+			}
 		}
 		
 		

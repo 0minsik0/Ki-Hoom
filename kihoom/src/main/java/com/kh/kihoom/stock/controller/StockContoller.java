@@ -7,39 +7,68 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.kihoom.stock.model.service.StockServiceImpl;
+import com.kh.kihoom.stock.model.vo.Stock;
+import com.kh.kihoom.stock.model.vo.StockCategory;
+
 
 @Controller
 public class StockContoller {
 
+	
+	// 한국투자증권 모의 투자 인증키
 	private static final String tAppkey="PSNzdnf4UtNBnrduPUlJ7PgXsZr4sjyLQFvw";
 	private static final String tAppsecret="B6vHu51s3xKL6hsTajHeQUaZlwB2Ec+57AjtH+h6HpOAMDNln+9mmRTPPpb7i8XlQT5QPGa+6mkMq1qTv8L18h2rd3y66EVLdO3fGThig7JZpfaJYjwwWrLjf0G36IVcAri/rdDFmnmkcHftOb41gycA71frsuX9Cv8rt6EaTBGkDhx/xYg=";
 	
+	
+	//한국투자증권 실전 인증키
 	private static final String appkey ="PSIfx1pdjQlgcjk1c7lNhaBHWnB15rr7T5JS";
 	private static final String appsecret ="lIs9yZIdbWjft8pCctH/fh8MfXsRvZqnqAjowhY+OCnOPFjNLO3MxYOhCLg0rOZubmLqJPQlaYw7lO6vp1N89l+xL9bfrzvh3+3OZET6WoeT83jRfaVXqEyzz8N6W/LMGJOTiyl+AQCfy3F4o9aJMTUYGsXI+zIPY5yxjpGtTYSyfoS8vAM=";
 	
 	
+	// 네이버 인증키
 	private static final String naverId ="ZPsZLlyR0_kD8ni2BjxA";
 	private static final String naverSecret ="C6VrkqKczu";
 	
 	
+	//공공서비스 인증키
+	private static final String apiKey ="nOK8KJwcjNmRHtG8JQVv9s8rtoFYk%2Fhf%2FGsSdzHgtl%2FGbGcd73kk5A45ykvBzUwzj1X4gJCKAo38%2BJmVCEhO0A%3D%3D";
 	
 	private static String token ="";
 	
+	private static String testToken="";
+	
+	
 	private static String approvalKey="";
+	
+	
+	
+	@Autowired
+	private StockServiceImpl sService;
+	
+	
+	
 	
 	/**
 	 * @return 
@@ -60,7 +89,66 @@ public class StockContoller {
 	
 	
 	
+	@ResponseBody
+	@RequestMapping(value="chooseStock.st")
+	public String chooseStock(String code, String userNo) {
+		
 	
+		
+		Stock s = new Stock();
+		s.setStockNo(code);
+		s.setMemNo(Integer.parseInt(userNo));
+		
+//		System.out.println(s);
+		
+		
+		
+		int result = sService.selectStockChoose(s);
+		
+//		System.out.println(result);
+		
+		String resultStr = "";
+		
+		if(result==0) {
+			int insert= sService.insertStockChoose(s);
+			
+			if(insert>0) {
+				resultStr="iyyy";
+			}else {
+				resultStr = "innn";
+			}
+		}else {
+			int delete = sService.deleteStockChosse(s);
+			if(delete>0) {
+				resultStr="dyyy";
+			}else {
+				resultStr = "dnnn";
+			}
+		}
+		
+		
+		return resultStr;
+		
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("selectChoose.st")
+	public String selectChooseStock(String code, String userNo) {
+		Stock s = new Stock();
+		s.setStockNo(code);
+		s.setMemNo(Integer.parseInt(userNo));
+		
+//		System.out.println(s);
+		
+		
+		int result = sService.selectStockChoose(s);
+		
+		
+		
+		return result+"";
+	}
 	
 	
 	
@@ -503,50 +591,391 @@ public class StockContoller {
 	}
 	
 	
+
+	@ResponseBody
+	@RequestMapping(value="selectStockAccount.st",produces="aplication/json; charset=utf-8")
+	public String selectStockAccount(String userNo) {
+		
+		ArrayList<Stock> list = sService.selectStockAccount(Integer.parseInt(userNo));
+		
+		
+		
+		return new Gson().toJson(list);
+	}
 	
 	
-//	@ResponseBody
-//	@RequestMapping(value="", produces="")
-//	public String category() throws IOException {
-//		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-category-price";
-//		url += "?FID_COND_MRKT_DIV_CODE=U";
-//		url += "&FID_INPUT_ISCD=0001";
-//		url += "&FID_COND_SCR_DIV_CODE=20214";
-//		url += "&FID_MRKT_CLS_CODE=K";
-//		url += "&FID_BLNG_CLS_CODE=0";
-//		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-//		
-//		conn.setRequestMethod("GET");
-//		conn.setRequestProperty("content-type", "application/json");
-//		conn.setRequestProperty("authorization","Bearer "+token);
-//		conn.setRequestProperty("appkey", appkey	);
-//		conn.setRequestProperty("appsecret", appsecret);
-//		conn.setRequestProperty("tr_id", "FHPUP02140000");
-//		conn.setRequestProperty("custtype", "P");
-//		
-//		conn.connect();
-//		
-//		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//		
-//		String responseText ="";
-//		
-//		String line ="";
-//		
-//		while((line=br.readLine())!=null) {
-////			responseText += line;
+	
+	@ResponseBody
+	@RequestMapping(value="selectChooseList.st",produces="aplication/json; charset=utf-8")
+	public String selectChooseList(String userNo) throws IOException {
+		
+		ArrayList<Stock> list = sService.selectChooseList(Integer.parseInt(userNo));
+		
+		ArrayList<String> slist = new ArrayList<String>();
+		
+		for(Stock s : list) {
+
+			String resoponseText = selectListStock(s.getStockNo());
+			
+			JsonObject jo = JsonParser.parseString(resoponseText).getAsJsonObject().get("output1").getAsJsonObject();
+			jo.addProperty("stock_no", s.getStockNo());
+			
+			slist.add(jo.toString());
+			
+	
+
+		}
+
+		
+		return new Gson().toJson(slist);
+	}
+	
+	
+	
+	
+	public String selectListStock(String code) throws IOException {
+		
+		String url ="https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice";
+		
+		String time =new SimpleDateFormat("hhmmss").format(new Date());
+		
+		
+		url += "?FID_COND_MRKT_DIV_CODE=J";
+		url += "&FID_INPUT_ISCD="+code;
+		url += "&FID_ETC_CLS_CODE=";
+		url += "&FID_INPUT_HOUR_1="+time;
+		url += "&FID_PW_DATA_INCU_YN=Y";
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		//System.out.println(authorization);
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHKST03010200");
+		conn.setRequestProperty("tr_cont", "P");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		Stock s = new Stock();
+		String resoponseText = "";
+		String line = "";
+		
+		while((line=br.readLine())!= null) {
+			resoponseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+//		System.out.println(resoponseText);
+		
+		
+		
+		return resoponseText;
+		
+		
+	}
+
+	
+	@ResponseBody
+	@RequestMapping(value="investOpinion.st", produces="aplication/json; charset=utf-8")
+	public String investOpinion(String code) throws IOException {
+		String url ="https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/invest-opinion";
+		
+		String year = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		
+//		System.out.println();
+		
+		Date d = new Date();
+		d.setMonth(Integer.parseInt(year.substring(4, 6))-1-3);
+		
+		String beforeYear = new SimpleDateFormat("yyyyMMdd").format(d);
+//		System.out.println(beforeYear);
+		
+		url +="?FID_COND_MRKT_DIV_CODE=J";
+		url +="&FID_COND_SCR_DIV_CODE=16633";
+		url +="&FID_INPUT_ISCD="+code;
+		url +="&FID_INPUT_DATE_2=00"+year;
+		url +="&FID_INPUT_DATE_1=00"+beforeYear;
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+ token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHKST663300C0");
+		conn.setRequestProperty("tr_cont", "P");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+	
+		String resoponseText = "";
+		String line = "";
+		
+		while((line=br.readLine())!= null) {
+			resoponseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return resoponseText;
+		
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="category.st",  produces="aplication/json; charset=utf-8")
+	public String category() throws IOException {
+		String url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-category-price";
+		url += "?FID_COND_MRKT_DIV_CODE=U";
+		url += "&FID_INPUT_ISCD=0001";
+		url += "&FID_COND_SCR_DIV_CODE=20214";
+		url += "&FID_MRKT_CLS_CODE=K";
+		url += "&FID_BLNG_CLS_CODE=3";
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("content-type", "application/json");
+		conn.setRequestProperty("authorization","Bearer "+token);
+		conn.setRequestProperty("appkey", appkey);
+		conn.setRequestProperty("appsecret", appsecret);
+		conn.setRequestProperty("tr_id", "FHPUP02140000");
+		conn.setRequestProperty("custtype", "P");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText ="";
+		
+		String line ="";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
 //			System.out.println(line);
-//		}
-//		
-//		br.close();
-//		
-//		conn.disconnect();
-//		
-//		return "";
-//	}
+		}
+		
+		br.close();
+		
+		conn.disconnect();
+		
+		return responseText;
+	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value="buyStoct.st", produces="aplication/json; charset=utf-8")
+	public String orderCash(String code,String division,String orderCount,String orderPrice, String firstAccount, String secondAccount ) throws IOException {
+		
+		if(testToken.equals("")) {
+			testToeknP();
+		}
+		
+		String url = "https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/order-cash";
+		
+		JSONObject body = new JSONObject();
+		body.put("CANO", firstAccount);
+		body.put("ACNT_PRDT_CD", secondAccount);
+		body.put("PDNO", code);
+		body.put("ORD_DVSN", division);
+		body.put("ORD_QTY", orderCount);
+		body.put("ORD_UNPR", orderPrice);
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+	
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("authorization","Bearer "+ testToken);
+		conn.setRequestProperty("appkey", tAppkey);
+		conn.setRequestProperty("appsecret", tAppsecret);
+		conn.setRequestProperty("tr_id", "VTTC0802U");
+		
+		conn.setDoOutput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(body.toJSONString().getBytes("UTF-8"));
+		os.close();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return responseText;
+		
+	}
 	
 	
+	public void testToeknP() throws IOException {
+		
+		String url = "https://openapivts.koreainvestment.com:29443/oauth2/tokenP";
+		
+		
+		JSONObject body = new JSONObject();
+		body.put("grant_type", "client_credentials");
+		body.put("appkey", tAppkey);
+		body.put("appsecret", tAppsecret);
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("POST");
+		conn.setDoOutput(true);
+		
+		OutputStream os = conn.getOutputStream();
+		os.write(body.toJSONString().getBytes("UTF-8"));
+		os.close();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		testToken= JsonParser.parseString(responseText).getAsJsonObject().get("access_token").getAsString();
+	
+		
+	}
+	
+	
+	@RequestMapping("addAccount.st")
+	public ModelAndView addAccount(String memNo,String firstAccount, String secondAccount,ModelAndView mv) {
+		
+		Stock s = new Stock();
+		s.setMemNo(Integer.parseInt(memNo));
+		s.setStockAccount(firstAccount+"-"+secondAccount);
+		
+		int result = sService.insertAddAccount(s);
+		
+		
+		if(result>0) {
+			mv.addObject("alertMsg", "성공적으로 등록되었습니다.");
+		}else {
+			mv.addObject("alertMsg", "계좌등록에 실패했습니다.");
+		}
+		
+		mv.setViewName("redirect:stock.st");
+		
+		return mv;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="selectbuyStockList.st", produces="aplication/json; charset=utf-8")
+	public String selectbuyStockList(String firstAccount, String secondAccount) throws IOException {
+		
+		if(testToken.equals("")) {
+			testToeknP();
+		}
+		
+
+		
+		
+		String url ="https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance";
+		url += "?CANO="+firstAccount; // 계좌 앞
+		url += "&ACNT_PRDT_CD="+secondAccount; //계좌 뒤
+		url += "&AFHR_FLPR_YN=N";
+		url += "&OFL_YN=";
+		url += "&INQR_DVSN=01";
+		url += "&UNPR_DVSN=01";
+		url += "&FUND_STTL_ICLD_YN=Y";
+		url += "&FNCG_AMT_AUTO_RDPT_YN=N";
+		url += "&PRCS_DVSN=00";
+		url += "&CTX_AREA_FK100=";
+		url += "&CTX_AREA_NK100=";
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("authorization","Bearer "+ testToken);
+		conn.setRequestProperty("appkey", tAppkey);
+		conn.setRequestProperty("appsecret", tAppsecret);
+		conn.setRequestProperty("tr_id", "VTTC8434R");
+		
+		conn.connect();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return responseText;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="searchStock.st", produces="aplication/json; charset=utf-8")
+	public String searchStock(String search) throws IOException {
+		
+		String url ="https://apis.data.go.kr/1160100/service/GetKrxListedInfoService/getItemInfo";
+		url += "?serviceKey="+apiKey;
+		url += "&likeItmsNm="+URLEncoder.encode(search, "utf-8");
+		url += "&resultType=json";
+		
+//		System.out.println(url);
+		
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		
+		conn.setRequestMethod("GET");
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		
+		
+		String responseText = "";
+		String line= "";
+		
+		while((line=br.readLine())!=null) {
+			responseText += line;
+		}
+		
+		br.close();
+		conn.disconnect();
+		
+		return responseText;
+	}
+
+	
+	
+	@ResponseBody
+	@RequestMapping(value="categoryList.st" , produces="aplication/json; charset=utf-8")
+	public String categoryList(String category) {
+		
+		String[] categoryArr = category.split(",");
+		
+		ArrayList<String> categoryList = new ArrayList<String>(Arrays.asList(categoryArr));
+		
+//		System.out.println(categoryList);
+		
+		ArrayList<StockCategory> list = sService.selectCategoryList(categoryList);
+		
+		return new Gson().toJson(list);
+	}
+
 	
 	
 	

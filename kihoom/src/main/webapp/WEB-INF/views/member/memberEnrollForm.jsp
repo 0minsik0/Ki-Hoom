@@ -50,44 +50,40 @@ pageEncoding="UTF-8"%>
       <div class="page-wrap">
         <jsp:include page="../common/menubar.jsp"/>
         <div class="main-content">
-        
-        
         			<div class="card-header"><h3>회원가입</h3></div>
-                                    <div class="card-body">
-                                        <form action="insert.me" method="post">
-                                            <div class="form-group">
-                                                <label for="exampleInputUsername">아이디</label>
-                                                <input type="text" class="form-control" id="name" name="memId" placeholder="아이디를 입력해 주세요.">
-                                            </div>
-                                        
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">비밀번호</label>
-                                                <input type="password" class="form-control" id="password" name="memPwd" placeholder="비밀번호를 입력해 주세요.">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword2">비밀번호 확인</label>
-                                                <input type="password" class="form-control" id="checkPassword"  placeholder="비밀번호를 입력해 주세요.">
-                                            </div>
-                                                <div class="form-group">
-                                                <label for="exampleInputName">이름</label>
-                                                <input type="text" class="form-control" id="name" name="memName" placeholder="이름을 입력해 주세요.">
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail">이메일</label>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해 주세요.">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPhone">전화번호</label>
-                                                <input type="phone" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력해 주세요.">
-                                            </div>
-                                          
-                                            <button type="submit" class="btn btn-primary mr-2">확인<button>
-                                            <button class="btn btn-light">돌아가기</button>
-                                          </form>
-                                    </div>
-               
-        
+                        <div class="card-body">
+                            <form action="insert.me" method="post">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername">아이디</label>
+                                    <input type="text" class="form-control" id="name" name="memId" placeholder="아이디를 입력해 주세요.">
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">비밀번호</label>
+                                    <input type="password" class="form-control" id="password" name="memPwd" placeholder="비밀번호를 입력해 주세요.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword2">비밀번호 확인</label>
+                                    <input type="password" class="form-control" id="checkPassword"  placeholder="비밀번호를 입력해 주세요.">
+                                </div>
+                                    <div class="form-group">
+                                    <label for="exampleInputName">이름</label>
+                                    <input type="text" class="form-control" id="name" name="memName" placeholder="이름을 입력해 주세요.">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputEmail">이메일</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해 주세요.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPhone">전화번호</label>
+                                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력해 주세요.">
+                                </div>
+                              
+                                <button type="submit" class="btn btn-primary mr-2">확인<button>
+                                <button class="btn btn-light">돌아가기</button>
+                              </form>
+                        </div>
         </div>
       </div>
     </div>
