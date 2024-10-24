@@ -6,3 +6,23 @@
     box-shadow: 0px 1px 3px 0px #444;
     min-height: 550px;
 }
+
+
+.table_area .container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+}
+
+.table_area .table {
+    width: 1600px;
+}
+
+.table_area .table tr {
+    cursor: pointer;
+}
+
+.pdf_area {
+    display: none;
+}

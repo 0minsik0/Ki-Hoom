@@ -57,7 +57,7 @@
                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="certificateMain.ce"><i class="ik ik-box"></i><span>증명서 발급</span></a>
+                                    <a href="certificateMain.ce"><i class="ik ik-box"></i><span>보조금 24</span></a>
                                    
                                 </div>
                                 <div class="nav-item has-sub">
