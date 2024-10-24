@@ -1,28 +1,36 @@
 package com.kh.kihoom.aichat.controller;
 
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.kihoom.member.model.service.MemberServiceImpl;
-import com.kh.kihoom.member.model.vo.Member;
+import com.kh.kihoom.aichat.model.service.OpenAIService;
 
 @Controller
 public class aichatController {
-		
-	    // 회원가입 페이지 이동
-		@RequestMapping("aichat.ac")
-		public String aichat() {
-		    return "aichat/aichat";  // 회원가입 폼으로 이동
-		}
-		
-		
-		
+
+    @Autowired
+    private OpenAIService openAIService;
+    
+    @RequestMapping("AIChat.ai")
+	public String AIChatMain() {
+		return "aichat/aichat";
+	}
+    
+    @PostMapping("/askQuestion")
+    public ResponseEntity<String> askQuestion(@RequestParam String question) {
+        // OpenAI에서 받은 응답
+        String aiResponse = openAIService.getAIResponse(question);
+        
+        // 응답 인코딩을 UTF-8로 설정
+        return ResponseEntity.ok()
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE + ";charset=UTF-8")
+            .body(aiResponse);
+    }
 }

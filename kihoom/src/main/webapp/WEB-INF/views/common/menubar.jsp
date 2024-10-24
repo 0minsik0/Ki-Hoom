@@ -64,17 +64,11 @@
                                     <a href="stock.st"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
                                    
                                 </div>
-                                <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-package"></i><span>포인트</span></a>
-                                    <div class="submenu-content">
-                                        <a href="" class="menu-item">Session Timeout</a>
-                                    </div>
-                                </div>
                                 <div class="nav-item">
                                     <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="aichat.ac"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
+                                    <a href="AIChat.ai"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
                                 </div>
                             </nav>
                         </div>
