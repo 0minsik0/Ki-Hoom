@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
 
   <configuration>
@@ -18,6 +17,8 @@
   			<typeAlias type="com.kh.kihoom.stock.stockChatWebsocket.model.vo.StockChat" alias="StockChat"/>
   			<typeAlias type="com.kh.kihoom.board.model.vo.Board" alias="Board"/>
   			<typeAlias type="com.kh.kihoom.board.model.vo.BoardLike" alias="BoardLike"/>
+			<typeAlias type="com.kh.kihoom.acountBook.model.vo.Acount" alias="Acount"/>
+			<typeAlias type="com.kh.kihoom.acountBook.model.vo.TotalList" alias="TotalList"/>
   		</typeAliases>
   		
   		
@@ -28,6 +29,7 @@
   			<mapper resource="/mappers/member-mapper.xml" />
 			<mapper resource="/mappers/board-mapper.xml"/>
 			<mapper resource="/mappers/stock-mapper.xml"/>
+			<mapper resource="/mappers/acount-mapper.xml"/>
   		</mappers>
   		<!-- 미리 등록해두려면 해당 mapper파일이 진짜 존재해야 등록 가능,
   		또한 namespace도 지정되있는 상태여야함 -->

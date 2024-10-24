@@ -5,6 +5,7 @@
 <html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
+        <title>ThemeKit - Admin Template</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Ki-Hoom</title>
         <meta name="description" content="">
