@@ -12,15 +12,12 @@
 		<typeAlias type="com.kh.kihoom.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="com.kh.kihoom.acountBook.model.vo.Acount" alias="Acount"/>
 		<typeAlias type="com.kh.kihoom.acountBook.model.vo.TotalList" alias="TotalList"/>
-		<typeAlias type="com.kh.kihoom.target.model.vo.Target" alias="Target"/>
-		<typeAlias type="com.kh.kihoom.target.model.vo.InTarget" alias="InTarget"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/stock-mapper.xml"/>
 		<mapper resource="/mappers/acount-mapper.xml"/>
-		<mapper resource="/mappers/target-mapper.xml"/>
 	</mappers>
 	
 	

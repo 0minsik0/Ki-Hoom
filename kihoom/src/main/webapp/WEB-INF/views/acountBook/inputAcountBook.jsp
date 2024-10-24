@@ -34,7 +34,7 @@ pageEncoding="UTF-8"%>
             type="date"
             id="paymentDate"
             name="paymentDate"
-            placeholder="거래날짜를 입력해주세요"
+            placeholder="거래날짜를 입력해주세요" required
           />
         </div>
         <div class="acountInput">
@@ -43,7 +43,7 @@ pageEncoding="UTF-8"%>
             type="text"
             id="compendiums"
             name="compendiums"
-            placeholder="거래명을 입력해주세요"
+            placeholder="거래명을 입력해주세요" required
           />
         </div>
         <div class="acountInput">
@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
             type="text"
             id="amount"
             name="amount"
-            placeholder="거래금액을 입력해주세요"
+            placeholder="거래금액을 입력해주세요" required
           />
           원
         </div>

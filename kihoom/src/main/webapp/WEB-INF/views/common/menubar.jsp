@@ -90,12 +90,8 @@ pageEncoding="UTF-8"%>
       <div class="sidebar-content">
         <div class="nav-container">
           <nav id="main-menu-navigation" class="navigation-main">
-            <div class="nav-item has-sub">
-              <a href="#"><i class="ik ik-bar-chart-2"></i><span>가계부</span></a>
-              <div class="submenu-content">
-              	<a href="acountBook.ac">가게부</a>
-              	<a href="target.ta">목표금액</a>
-              </div>
+            <div class="nav-item">
+              <a href="acountBook.ac"><i class="ik ik-menu"></i><span>가계부</span></a>
             </div>
             <div class="nav-item">
               <a href="list.bo"
