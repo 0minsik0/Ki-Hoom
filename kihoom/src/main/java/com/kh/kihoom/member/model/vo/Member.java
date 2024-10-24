@@ -24,7 +24,7 @@ public class Member {
 	private String birth;
 	private Date enrollDate;
 	private String status;
-	
+	private String snsId;
 
 	
 }

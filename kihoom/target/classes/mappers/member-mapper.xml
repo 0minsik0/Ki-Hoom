@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
-
 	<resultMap id="memberResult" type="Member">
 		<result column="mem_no" property="memNo" />
 		<result column="mem_id" property="memId"/>
@@ -12,9 +13,8 @@
 		<result column="birth" property="birth"/>
 		<result column="enroll_date" property="enrollDate"/>
 		<result column="status" property="status"/>
+		<result column="snsId" property="snsId"/>
 	</resultMap>
-
-	
 	
 	<!-- 정보 가져오기 -->
 	<select id="loginMember" resultMap="memberResult">
@@ -46,33 +46,79 @@
 		      ) VALUES 
 		      ( 
 			          SEQ_MEMBER.NEXTVAL
-			       , '#{memId}'
-			       , '#{memPwd}'
-			       , '#{memName}'
-			       , '#{email}'
-			       , '#{phone}'
+			       , #{memId}
+			       , #{memPwd}
+			       , #{memName}
+			       , #{email}
+			       , #{phone}
 		       )
 	</insert>
 	 
 	<!-- 아이디중복확인 -->
-	<select id="idCheck" resultType="_int">
+	<select id="idDup" resultType="_int">
 		SELECT COUNT(*)
 		  FROM MEMBER
-		  WHERE #{memId}
+		  WHERE MEM_ID = #{memId}
 		
 	</select>
 	
+	<select id="KakaoLogin" resultMap="memberResult">
+    select MEM_NO
+          , MEM_NAME
+          , EMAIL
+          , PHONE
+          , ENROLL_DATE
+          , STATUS
+    from MEMBER
+    where MEM_ID = #{memId} 
+      and STATUS = 'Y'
+	</select>
+	<!-- 카카오 회원가입 -->
+	<insert id="kakaoInsertMember">
+	INSERT INTO 
+        MEMBER ( 
+			     MEM_NO
+		       , MEM_NAME
+	     	   , EMAIL
+			   , PHONE
+			   , KAKAO_ID
+		       )VALUES 
+		       ( 
+			     SEQ_MEMBER.NEXTVAL
+	           , #{memName}
+     	       , #{email}
+			   , #{phone}
+			   , #{kakaoId}
+		       )
+	</insert>
+	
+	
+	
+	
+	
 	<!-- 아이디 찾기 -->
-	<select id="findId" resultType="string">
-	SELECT MEM_ID
+	<select id="findId" resultMap="memberResult">
+	SELECT MEM_ID, ENROLL_DATE
 	  FROM MEMBER
 	  WHERE EMAIL=#{email}
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
-	<select id="findPwd" resultType="string">
+	<select id="findPwd" resultMap="memberResult">
 	SELECT MEM_PWD
 	    FROM MEMBER
-	    WHERE MEM_ID='#{memId}
+	    WHERE MEM_ID=#{memId}
 	</select>
+	
+	<!--  -->
+	<!-- resultmap 따로 추가해야함 -->
+	<!-- 비밀번호 변경 -->
+	<update id="updatePwd">
+		  UPDATE MEMBER
+		    SET MEM_PWD = #{memPwd}
+		    WHERE EMAIL = #{email} 
+		      AND MEM_ID = #{memId}
+	</update>
+	
+	
 </mapper>

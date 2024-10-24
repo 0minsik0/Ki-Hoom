@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	
+
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <link
@@ -40,7 +40,10 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="resources/dist/css/theme.min.css" />
     <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
     <style>
-    	
+    .authentication-form mx-auto{
+    	border: 1 solid black
+    }
+    
     </style>
   </head>
 
@@ -61,7 +64,7 @@ pageEncoding="UTF-8"%>
           >
             <div
               class="lavalite-bg"
-              style="background-image: url('resources/img/auth/login-bg.jpg')"
+              style="background-image: url('resources/img/auth/login-bg2.png')"
             >
               <div class="lavalite-overlay"></div>
             </div>
@@ -69,12 +72,14 @@ pageEncoding="UTF-8"%>
           <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
             <div class="authentication-form mx-auto">
               <div class="logo-centered">
-                <a href="index.html"
-                  ><img src="resources/src/img/brand.svg" alt=""
+                <a href="./index.jsp"
+                  ><img
+                    src="resources/img/profile/kihoom.png"
+                    width="200"
+                    height="200"
+                    alt=""
                 /></a>
               </div>
-              <h3>Sign In to ThemeKit</h3>
-              <p>Happy to see you again!</p>
               <form action="login.lo">
                 <div class="form-group">
                   <input
@@ -99,14 +104,12 @@ pageEncoding="UTF-8"%>
                   <i class="ik ik-lock"></i>
                 </div>
                 <div class="row">
-                  <div class="col text-left">
-                   
-                  </div>
+                  <div class="col text-left"></div>
                   <div class="col text-right">
-                    <a href="forgot-password.html">아이디 찾기</a>
+                    <a href="findId.1">아이디 찾기</a>
                     <!--§ 4. 아이디 찾기("가입하실때 사용한 이메일을 입력해 주세요!" - )  -->
                     <span>/</span>
-                    <a href="forgot-password.html">비밀번호 찾기</a>
+                    <a href="findPwd.1">비밀번호 찾기</a>
                     <!--§ 6. 비밀번호 찾기("비밀번호를 찾고자 하는 아이디 입력) -->
                   </div>
                 </div>
@@ -119,56 +122,30 @@ pageEncoding="UTF-8"%>
                 <p><a href="memberEnrollForm.me">회원가입</a></p>
                 <!--§ 6번  -->
 
-                <ul>
-                  <li onclick="kakaoLogin();">
-                    <a href="javascript:void(0)">
-                      <span>카카오 로그인</span>
-                    </a>
-                  </li>
-                  <li onclick="kakaoLogout();">
-                    <a href="javascript:void(0)">
-                      <span>카카오 로그아웃</span>
-                    </a>
-                  </li>
-                </ul>
-                <!-- 카카오 스크립트 -->
-                <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-                <script>
-                  Kakao.init("380af2edeb82dfbf591425877a112ec6"); //발급받은 키 중 javascript키를 사용해준다.
-                  console.log(Kakao.isInitialized()); // sdk초기화여부판단
-                  //카카오로그인
-                  function kakaoLogin() {
-                    Kakao.Auth.login({
-                      success: function (response) {
-                        Kakao.API.request({
-                          url: "/v2/user/me",
-                          success: function (response) {
-                            console.log(response);
-                          },
-                          fail: function (error) {
-                            console.log(error);
-                          },
-                        });
-                      },
-                      fail: function (error) {
-                        console.log(error);
-                      },
-                    });
-                  }
-                  //카카오로그아웃
-                  function kakaoLogout() {
-                    if (Kakao.Auth.getAccessToken()) {
-                      Kakao.API.request({
-                        url: "/v1/user/unlink",
-                        success: function (response) {
-                          console.log(response);
-                        },
-                        fail: function (error) {
-                          console.log(error);
-                        },
-                      });
-                      Kakao.Auth.setAccessToken(undefined);
-                    }
+                <div class="col-lg-12 text-center mt-3">
+                  <img
+                    alt="카카오로그인"
+                    src="${pageContext.request.contextPath}/resources/img/kakao/kakao_login_medium_wide.png"
+                    onclick="loginWithKakao()"
+                  />
+                </div>
+
+                <!-- 카카오 로그인 -->
+                <script
+                  type="text/javascript"
+                  src="https://developers.kakao.com/sdk/js/kakao.min.js"
+                  charset="utf-8"
+                ></script>
+                <script type="text/javascript">
+                  $(document).ready(function () {
+                    Kakao.init("4b8515a0d3871dfac2164752c3e4a98e"); //script 앱키 입력
+                    Kakao.isInitialized();
+                  });
+
+                  function loginWithKakao() {
+                    Kakao.Auth.authorize({
+                      redirectUri: "http://localhost:8888/kakao_callback",
+                    }); // 등록한 리다이렉트uri 입력
                   }
                 </script>
               </div>
@@ -206,6 +183,11 @@ pageEncoding="UTF-8"%>
       })(window, document, "script", "ga");
       ga("create", "UA-XXXXX-X", "auto");
       ga("send", "pageview");
+      
+      
+      
+      
+      
     </script>
   </body>
 </html>

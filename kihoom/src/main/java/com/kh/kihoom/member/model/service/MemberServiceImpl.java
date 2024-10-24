@@ -1,5 +1,7 @@
 package com.kh.kihoom.member.model.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,43 +41,51 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	@Override //로그인(카카오)
+	public Member KakaoLogin(Member m) {
+
+		return mDao.kakaoLogin(sqlSession, m);
+	}
+	
+	
+
 	@Override //아이디 중복확인
-	public int idCheck(String checkId) {
-		return mDao.idCheck(sqlSession, checkId);
+	public int idCheck(Member m) {
+		return mDao.idCheck(sqlSession, m);
 	}
 
+
 	@Override //아이디 찾기
-	public Member findId(Member m) {
+	public List<Member> findId(Member m) {
 
 		return mDao.findId(sqlSession, m);
 	}
+	
 
 	@Override //비밀번호 찾기
-	public Member findPwd(Member m) {
+	public Member findPwd1(Member m) {
 
-		return mDao.findPwd(sqlSession, m);
+		return mDao.findPwd1(sqlSession, m);
+	}
+
+	
+	public Member findKakaoId(String memId) {
+		
+		return mDao.findKakaoId;
+	}
+
+	
+	@Override
+	public int KakaoJoin(Member m) {
+		return 0;
+	}
+
+	
+	@Override
+	public int updatePassword(Member m) {
+		
+	    return mDao.updatePassword(sqlSession, m);
 	}
 	
-	/*
-	@Getter
-	@NoArgsConstructor //역직렬화를 위한 기본 생성자
-	@JsonIgnoreProperties(ignoreUnknown = true)
-	public class KakaoTokenResponseDto {
-
-	    @JsonProperty("token_type")
-	    public String tokenType;
-	    @JsonProperty("access_token")
-	    public String accessToken;
-	    @JsonProperty("id_token")
-	    public String idToken;
-	    @JsonProperty("expires_in")
-	    public Integer expiresIn;
-	    @JsonProperty("refresh_token")
-	    public String refreshToken;
-	    @JsonProperty("refresh_token_expires_in")
-	    public Integer refreshTokenExpiresIn;
-	    @JsonProperty("scope")
-	    public String scope;
-	}
-	*/
+	
 }

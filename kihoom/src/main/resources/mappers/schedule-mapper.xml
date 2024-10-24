@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scheduleMapper">
+  <!-- 일반 메모 -->
+  <resultMap id="CalendarResult" type="CalendarMemo">
+	    <result property="memoNo" column="MEMO_NO" />
+	    <result property="memoTitle" column="MEMO_TITLE" />
+	    <result property="memoContent" column="MEMO_CONTENT" />
+	    <result property="createDate" column="CREATE_DATE" />
+	    <result property="status" column="STATUS" />
+	    <result property="memNo" column="MEM_NO" />
+	    <result property="memoDate" column="MEMO_DATE"/>
+  </resultMap>
+  	
+
+	<!-- 캘린더(일반)메모 가져오기 -->
+	<select id="getCalendarMemo" resultMap="CalendarResult">
+	     SELECT  MEMO_NO
+	     	  ,  MEMO_TITLE
+	     	  ,  MEMO_CONTENT
+	     	  ,	 CREATE_DATE
+	     	  ,  MEM_NO
+	     	  ,  MEMO_DATE
+	    FROM CALENDAR_MEMO
+	    WHERE MEM_NO= #{memNo} AND STATUS='Y'  
+	</select>
+	
+	
+	<!-- 캘린더(일반) 메모 추가 -->
+	<insert id="insertCalendarMemo">
+		INSERT INTO 
+		    CALENDAR_MEMO ( 
+			        MEMO_NO
+			      , MEMO_TITLE
+			      , MEMO_CONTENT
+			      , MEM_NO
+			      , MEMO_DATE
+		      ) VALUES 
+		      ( 
+			          SCHEDULE_MEMO_SEQ.NEXTVAL
+			       , #{memoTitle}
+			       , #{memoContent}
+			       , #{memNo}
+			       , #{memoDate}
+		       )
+	</insert>
+	 
+	 
+	 <!-- 캘린더(일반) 메모 수정 -->
+	 <update id="modifyCalendarMemo">
+	 	UPDATE CALENDAR_MEMO
+	 	  SET MEMO_TITLE = #{memoTitle}
+	 	  	  MEMO_CONTENT =#{memoContent}
+	 	  WHERE MEM_NO =#{memoNo} 
+	 </update>
+	
+	
+	<!-- 캘린더(일반) 메모 삭제 -->
+	 <update id="deleteCalendarMemo">
+	 	UPDATE CALENDAR_MEMO
+	 	  SET STATUS ='N'
+	 	  WHERE MEM_NO =#{memoNo}	  
+	 </update>
+	
+
+	
+</mapper>

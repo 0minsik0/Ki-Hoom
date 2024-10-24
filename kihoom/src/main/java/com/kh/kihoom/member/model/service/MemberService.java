@@ -1,5 +1,7 @@
 package com.kh.kihoom.member.model.service;
 
+import java.util.List;
+
 import com.kh.kihoom.member.model.vo.Member;
 
 public interface MemberService {
@@ -12,15 +14,24 @@ public interface MemberService {
 	int insertMember(Member m);
 	
 	//아이디 중복 체크 (select)
-	int idCheck(String checkId);
+	int idDup(String checkId);
 	
-	//아이디찾기
-	Member findId(Member m);
+	
 	
 	//비밀번호찾기
-	Member findPwd(Member m);
+	Member findPwd1(Member m);
 	
+	//아이디찾기
+	List<Member> findId(Member m);
 	
+	//로그인(카카오톡)
+	Member KakaoLogin(Member m);
+
+	//회원가입(카카오톡)
+	int KakaoJoin(Member m);
+
+	int idCheck(Member m);
 	
-	
+	//비밀번호 변경
+	int updatePassword(Member m);
 }

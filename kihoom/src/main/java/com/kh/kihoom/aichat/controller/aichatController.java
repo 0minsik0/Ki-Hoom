@@ -1,28 +1,48 @@
 package com.kh.kihoom.aichat.controller;
 
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+//import com.example.demo.dto.GPTRequest;
+//import com.example.demo.dto.GPTResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-import com.kh.kihoom.member.model.service.MemberServiceImpl;
-import com.kh.kihoom.member.model.vo.Member;
+import com.kh.kihoom.aichat.dto.GPTRequest;
+import com.kh.kihoom.aichat.dto.GPTResponse;
 
-@Controller
+@RestController
+@RequestMapping("/gpt")
+@RequiredArgsConstructor
 public class aichatController {
-		
-	    // 회원가입 페이지 이동
-		@RequestMapping("aichat.ac")
-		public String aichat() {
-		    return "aichat/aichat";  // 회원가입 폼으로 이동
-		}
-		
-		
-		
+
+    @Value("${gpt.model}")
+    private String model;
+
+    @Value("${gpt.api.url}")
+    private String apiUrl;
+    private final RestTemplate restTemplate;
+
+    
+    @GetMapping("/aichat.ac")
+    public String chat(@RequestParam("prompt") String prompt){
+
+        GPTRequest request = new GPTRequest(
+                model,prompt,1,256,1,2,2);
+
+        GPTResponse gptResponse = restTemplate.postForObject(
+                apiUrl
+                , request
+                , GPTResponse.class
+        );
+
+
+        return gptResponse.getChoices().get(0).getMessage().getContent();
+
+
+    }
+    
 }

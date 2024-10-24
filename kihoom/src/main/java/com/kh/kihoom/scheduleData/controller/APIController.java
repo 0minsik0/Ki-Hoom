@@ -18,10 +18,10 @@ public class APIController {
 	
 	@ResponseBody
 	@RequestMapping(value = " 예비 ", produces = "application/json; charset=utf-8")
-	public String airPollution(String location) throws IOException{
+	public String HousingSub(String location) throws IOException{
 		
-		String url = "사이트 주소";
-		url += "?serviceKey=" + serviceKey;
+		String url = "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/getUrbtyOfctlLttotPblancDetail?page=1&perPage=10"; //page, perPage 삭제
+		url += "&serviceKey=" + serviceKey;
 		url += "&returnType=json"; 
 		url += "&numOfRows=10000000";
 		
