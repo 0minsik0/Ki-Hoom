@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="acountMapper">
+
+	<resultMap type="Acount" id="acountResult">
+		<result column="mem_no" property="memNo" />
+		<result column="payment_date" property="paymentDate" />
+		<result column="deal_divide" property="dealDivide" />
+		<result column="deal_type" property="dealType" />
+		<result column="compendiums" property="compendiums" />
+		<result column="amount" property="amount" />
+	</resultMap>
+
+	<select id="selectListCount" resultType="_int">
+		select count(*)
+		  from acountBook
+		 where mem_no = #{memNo}
+	</select>
+	
+	<select id="selectList" resultMap="acountResult">
+		select
+		       mem_no
+		     , to_char(payment_date, 'YYYY-MM-DD') payment_date
+		     , deal_divide
+		     , deal_type
+		     , compendiums
+		     , amount
+		  from acountBook
+		 where mem_no = #{memNo}
+		 order 
+    		by payment_date desc
+	</select>
+	
+	<insert id="insertAcountBook">
+		insert
+		  into acountbook
+		    (
+		      mem_no
+		    , payment_date
+		    , deal_divide
+		    , deal_type
+		    , compendiums
+		    , amount
+		    )
+		    values
+		    (
+		      #{memNo}
+		    , #{paymentDate}
+		    , #{dealDivide}
+		    , #{dealType}
+		    , #{compendiums}
+		    , #{amount}
+		    )
+	</insert>
+	
+	<select id="totalList" resultMap="acountResult">
+		select
+		       to_char(payment_date, 'MM') payment_date,
+               deal_type,
+		       sum(amount) amount
+		  from acountBook
+		 where mem_no = #{memNo}
+		 group
+		    by to_char(payment_date, 'MM'), deal_type
+		 order
+            by payment_date
+	</select>
+	
+	<select id="mOutList" resultMap="acountResult">
+		select to_char(payment_date, 'MM') payment_date
+		     , sum(amount) amount
+		     , deal_divide
+		  from acountbook
+		 where deal_type = '출금'
+		   and mem_no = #{memNo}
+		   and to_char(payment_date, 'MM') = #{paymentDate}
+		 group
+		    by deal_divide, to_char(payment_date, 'MM')
+	</select>
+	
+	<select id="mInList" resultMap="acountResult">
+		select 
+			   to_char(payment_date, 'MM') payment_date
+		     , sum(amount) amount
+		     , deal_divide
+		  from acountbook
+		 where deal_type = '입금'
+		   and mem_no = #{memNo}
+		   and to_char(payment_date, 'MM') = #{paymentDate}
+		 group
+		    by deal_divide, to_char(payment_date, 'MM')
+	</select>
+	
+	<select id="monthList" resultMap="acountResult">
+	    select to_char(payment_date, 'MM') payment_date
+          from acountbook
+         where mem_no = #{memNo}
+         group
+            by to_char(payment_date, 'MM')
+         order
+            by payment_date desc
+	</select>
+	
+	<select id="weekTotalListOut" resultMap="acountResult">
+		select to_char(payment_date, 'MM') payment_date, 
+	           to_char(payment_date, 'W') deal_divide, 
+	           deal_type, 
+	           sum(amount) amount 
+	      from acountbook
+	     where mem_no = #{memNo}
+	       and EXTRACT(MONTH FROM payment_DATE) = #{paymentDate}
+	       and deal_type = '출금'
+	     group
+	        by to_char(payment_date, 'W'), to_char(payment_date, 'MM'), deal_type
+	     order
+	        by 1,2
+	</select>
+	
+	<select id="weekTotalListIn" resultMap="acountResult">
+		select to_char(payment_date, 'MM') payment_date, 
+	           to_char(payment_date, 'W') deal_divide, 
+	           deal_type, 
+	           sum(amount) amount 
+	      from acountbook
+	     where mem_no = #{memNo}
+	       and EXTRACT(MONTH FROM payment_DATE) = #{paymentDate}
+	       and deal_type = '입금'
+	     group
+	        by to_char(payment_date, 'W'), to_char(payment_date, 'MM'), deal_type
+	     order
+	        by 1,2
+	</select>
+	
+	
+	
+	
+</mapper>
