@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.kihoom.aichat.model.service.OpenAIService;
 
 @Controller
-public class AIChatController {
+public class aichatController {
 
     @Autowired
     private OpenAIService openAIService;

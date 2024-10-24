@@ -139,9 +139,24 @@ pageEncoding="UTF-8"%>
 			</div>
     <script>
     $(document).ready(function(){
+        // 전송 버튼 클릭 시
         $("#sendBtn").click(function(){
+            sendMessage();
+        });
+
+        // 엔터 키를 누를 때 전송 버튼 클릭 이벤트 트리거
+        $("#userInput").keydown(function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();  // 엔터 키로 줄 바꿈을 막음
+                $("#sendBtn").click();  // 전송 버튼 클릭 이벤트 트리거
+            }
+        });
+
+        // 메시지 전송 함수
+        function sendMessage() {
             var userQuestion = $("#userInput").val();
             if(userQuestion.trim() === "") return;
+
             // 사용자 질문을 채팅 창에 추가 (누적)
             $("#chatBox").append("<p><b>회원:</b> " + userQuestion + "</p>");
             
@@ -173,9 +188,9 @@ pageEncoding="UTF-8"%>
                     $("#chatBox").append("<p><b>AI:</b> 서버 응답 중 오류가 발생했습니다.</p>");
                 }
             });
-        });
+        }
     });
-	</script>
+</script>
         
         </div>
       </div>
