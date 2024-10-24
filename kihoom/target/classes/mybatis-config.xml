@@ -18,7 +18,7 @@
   			<typeAlias type="com.kh.kihoom.board.model.vo.Board" alias="Board"/>
   			<typeAlias type="com.kh.kihoom.board.model.vo.BoardLike" alias="BoardLike"/>
 			<typeAlias type="com.kh.kihoom.acountBook.model.vo.Acount" alias="Acount"/>
-			<typeAlias type="com.kh.kihoom.acountBook.model.vo.TotalList" alias="TotalList"/>
+			<typeAlias type="com.kh.kihoom.acountBook.model.vo.TotalList" alias="TotalList"/>	
   		</typeAliases>
   		
   		

@@ -228,7 +228,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                             paymentDate: wMonth,
                         },
                         success: function (wArray) {
-                        	console.log(wArray)
                         	
                         	
                         	
@@ -268,14 +267,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 									
 		                       	   // inWList 처리
 		                           wArray.inWList.forEach(item => {
-		                        	   console.log(item)
+		                        	 
 		                               data.push({
 		                                   week: item.dealDivide + "주", // dealDivide를 week으로 사용
 		                                   입금: item.amount, // 입금 amount
 		                                   출금: 0,
 		                               });
 		                           });
-		                       	   console.log(data)
+		                       	  
 
 		                           // outList 처리
 		                            wArray.outList.forEach(item => {

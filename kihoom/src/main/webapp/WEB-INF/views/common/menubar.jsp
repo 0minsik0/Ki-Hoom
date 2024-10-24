@@ -91,7 +91,7 @@ pageEncoding="UTF-8"%>
         <div class="nav-container">
           <nav id="main-menu-navigation" class="navigation-main">
             <div class="nav-item">
-              <a href="./index.jsp"
+              <a href="acountBook.ac"
                 ><i class="ik ik-bar-chart-2"></i><span>가계부</span></a
               >
             </div>
@@ -101,7 +101,7 @@ pageEncoding="UTF-8"%>
               >
             </div>
             <div class="nav-item">
-              <a href="resources/pages/navbar.html"
+              <a href="searchView.ne"
                 ><i class="ik ik-menu"></i><span>뉴스</span>
               </a>
             </div>
