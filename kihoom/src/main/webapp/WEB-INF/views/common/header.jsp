@@ -33,15 +33,14 @@
 					<div class="dropdown">
 						<a class="dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <img class="avatar"
-							src="" alt="">
+							aria-expanded="false"> <img class="avatar" src="resources/src/img/profile.png" alt="">
 						</a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="userDropdown">
 							<c:choose>
 								<c:when test="${ empty loginUser }">
 									<a class="dropdown-item" href="login.lo"><i class="ik ik-user dropdown-icon"></i> 로그인</a>
-									<a class="dropdown-item" href="memberEnrollForm.me">회원가입</a>
+									<a class="dropdown-item" href="memberEnrollForm.me"><i class="ik ik-user-plus dropdown-icon"></i>회원가입</a>
 								</c:when>
 								<c:when
 									test="${ !empty loginUser and loginUser.memId eq 'admin' }">

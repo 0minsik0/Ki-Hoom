@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="resources/dist/css/theme.min.css">
         <script src="resources/src/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        
 </head>
 <body>
 	
@@ -32,7 +34,7 @@
                     <div class="sidebar-header">
                         <a class="header-brand" href="./index.jsp">
                             <div class="logo-img">
-                               <img src="resources/src/img/kihoom.png" class="header-brand-img" alt="lavalite" width="60px"> 
+                               <img src="resources/src/img/kihoom.png" class="header-brand-img" alt="Ki-Hoom" width="60px"> 
                             </div>
                             <span class="text" style="margin-left: 20px;">Ki-Hoom</span>
                         </a>
@@ -56,11 +58,11 @@
                                     <a href="schedule.sc"><i class="ik ik-layers"></i><span>스케줄</span> </a>
                                   
                                 </div>
-                                <div class="nav-item has-sub">
+                                <div class="nav-item">
                                     <a href="certificateMain.ce"><i class="ik ik-box"></i><span>증명서 발급</span></a>
                                    
                                 </div>
-                                <div class="nav-item has-sub">
+                                <div class="nav-item">
                                     <a href="stock.st"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
                                    
                                 </div>
@@ -68,7 +70,7 @@
                                     <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="AIChat.ai"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
+                                    <a href="AIChat.ai"><i class="ik ik-aperture"></i><span>AI 문의</span> </a>
                                 </div>
                             </nav>
                         </div>
