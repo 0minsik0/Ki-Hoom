@@ -57,23 +57,12 @@
                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-box"></i><span>증명서 발급</span></a>
-                                    <div class="submenu-content">
-                                        <a href="resources/pages/ui/alerts.html" class="menu-item">Alerts</a>
-                                        <a href="resources/pages/ui/badges.html" class="menu-item">Badges</a>
-                                        <a href="resources/pages/ui/buttons.html" class="menu-item">Buttons</a>
-                                        <a href="resources/pages/ui/navigation.html" class="menu-item">Navigation</a>
-                                    </div>
+                                    <a href="certificateMain.ce"><i class="ik ik-box"></i><span>증명서 발급</span></a>
+                                   
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
-                                    <div class="submenu-content">
-                                        <a href="stock.st" class="menu-item">Modals</a>
-                                        <a href="resources/pages/ui/notifications.html" class="menu-item">Notifications</a>
-                                        <a href="resources/pages/ui/carousel.html" class="menu-item">Slider</a>
-                                        <a href="resources/pages/ui/range-slider.html" class="menu-item">Range Slider</a>
-                                        <a href="resources/pages/ui/rating.html" class="menu-item">Rating</a>
-                                    </div>
+                                    <a href="stock.st"><i class="ik ik-gitlab"></i><span>투자/주식</span> </a>
+                                   
                                 </div>
                                 <div class="nav-item">
                                     <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>

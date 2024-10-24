@@ -13,6 +13,9 @@
   		<!-- typeAlias : VO/DTO 클래스들의 풀 클래스 명을 단순한 클래스명으로 사용하기 위해서 별칭을 등록할 수 있는 영역 -->
   		<typeAliases>
   			<typeAlias type="com.kh.kihoom.member.model.vo.Member" alias="Member"/>
+  			<typeAlias type="com.kh.kihoom.stock.model.vo.Stock" alias="Stock"/>
+  			<typeAlias type="com.kh.kihoom.stock.model.vo.StockCategory" alias="StockCategory"/>
+  			<typeAlias type="com.kh.kihoom.stock.stockChatWebsocket.model.vo.StockChat" alias="StockChat"/>
   			<typeAlias type="com.kh.kihoom.board.model.vo.Board" alias="Board"/>
   			<typeAlias type="com.kh.kihoom.board.model.vo.BoardLike" alias="BoardLike"/>
   		</typeAliases>
@@ -24,6 +27,7 @@
   		<mappers>
   			<mapper resource="/mappers/member-mapper.xml" />
 			<mapper resource="/mappers/board-mapper.xml"/>
+			<mapper resource="/mappers/stock-mapper.xml"/>
   		</mappers>
   		<!-- 미리 등록해두려면 해당 mapper파일이 진짜 존재해야 등록 가능,
   		또한 namespace도 지정되있는 상태여야함 -->

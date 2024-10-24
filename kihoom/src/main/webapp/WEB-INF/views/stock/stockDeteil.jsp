@@ -23,6 +23,10 @@
             <div class="page-wrap">
                 <jsp:include page="../common/menubar.jsp" />
                 <div class="main-content">
+
+                    <button id="addAccount_btn" data-toggle="modal" data-target="#addAccount"
+                        style="display: none;"></button>
+
                     <div class="deteil_session main_box">
                         <div class="header ">
                             <div class="header_stock">
@@ -43,12 +47,13 @@
 
 
                             <div class="stock_search">
-                                <form action="">
-                                    <input type="search" name="stockName">
-                                    <button type="submit" class="material-icons">
-                                        search
-                                    </button>
-                                </form>
+                                <input type="search" name="stockName">
+                                <button type="submit" class="material-icons">
+                                    search
+                                </button>
+
+                                <button id="searchModal_btn" data-toggle="modal" , data-target="#searchModal"
+                                    style="display: none;"></button>
                             </div>
                         </div>
 
@@ -235,16 +240,165 @@
                             </div>
 
                             <div class="chat_area main_box">
-                                <div class="title">실시간 채팅</div>
+                                <div class="title">종목투자 현황</div>
                                 <br>
                                 <div class="content_area">
-                                    <div class="chat_view">
-
+                                    <div class="contnet_box head">
+                                        <div>일자</div>
+                                        <div>회원사명</div>
+                                        <div>투자의견</div>
+                                        <div>목표주가</div>
+                                        <div>직전투자의견</div>
+                                        <div>직전목표주가</div>
                                     </div>
-                                    <br>
-                                    <div class="chat_input">
-                                        <textarea name="" id=""></textarea>
-                                        <div class="material-icons">send</div>
+
+                                    <div class="content_view">
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+                                        <div class="contnet_box">
+                                            <div>일자</div>
+                                            <div>회원사명</div>
+                                            <div>투자의견</div>
+                                            <div>목표주가</div>
+                                            <div>직전투자의견</div>
+                                            <div>직전목표주가</div>
+                                        </div>
+
+
                                     </div>
 
                                 </div>
@@ -289,14 +443,76 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div>
-
+                            <div class="name">구매할 종목명</div>
+                            <div class="result">${codeName}</div>
                         </div>
+
+                        <div>
+                            <div class="name">내계좌</div>
+                            <div class="result">
+                                <select name="myAccount_list" id="">
+                                    <option>dd</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="name">구매 금액</div>
+                            <div class="result">
+                                <input type="radio" name="checkPrice" id="currentPrice">
+                                <label for="currentPrice">지정가</label>
+
+
+
+                                <input type="radio" name="checkPrice" id="marketPrice">
+                                <label for="marketPrice">시장가</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="name">수량</div>
+                            <div class="result"><input type="number" min="0" class="week" value="0">주</div>
+                        </div>
+                        <div>
+                            <div class="name">예상 가격</div>
+                            <input type="hidden" class="buy_price">
+                            <input type="hidden" class="result_prcie">
+                            <div class="result price"><span></span>원</div>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" align="center"
+                            onclick="return buyStock()">구매</button>
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal" id="addAccount">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">한국 투자 증권 계좌 추가</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="addAccount.st" method="post" align="center">
+                            <input type="hidden" name="memNo" value="${loginUser.memNo}">
+                            <input type="number" placeholder="계좌 - 앞 8자리" max="99999999" required pattern="\d*"
+                                maxlength="8" name="firstAccount">-<input type="number" placeholder="계좌 - 뒤 2자리"
+                                max="99" required name="secondAccount" pattern="\d*" maxlength="2">
+
+                            <br><br>
+                            <input type="submit" onclick="return accountsubmit()" class="btn btn-secondary">
+                        </form>
+                    </div>
+
 
                 </div>
             </div>
@@ -306,9 +522,53 @@
 
 
 
+        <div class="modal" id="searchModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">검색</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="container">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>종목코드</th>
+                                        <th>종목명</th>
+                                        <th>시장</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mary</td>
+                                        <td>Moe</td>
+                                        <td>mary@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>July</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
 
-
+                </div>
+            </div>
+        </div>
 
 
 
@@ -332,11 +592,10 @@
                 naverNew()
                 dailyPrice("D")
                 dailyPrice("M")
-
-
-
+                select_stock_choose()
+                investOpinion()
+                storage()
                 websokect()
-
 
 
 
@@ -348,6 +607,145 @@
             document.addEventListener("DOMContentLoaded", function () {
 
             })
+
+
+            $("#addAccount form input[name=firstAccount]").on("input", function () {
+                if (this.value.length > 8) {
+                    this.value = this.value.slice(0, 8);
+                }
+            })
+
+            $("#addAccount form input[name=secondAccount]").on("input", function () {
+                if (this.value.length > 2) {
+                    this.value = this.value.slice(0, 2);
+                }
+            })
+
+
+            function accountsubmit() {
+                let first = $("#addAccount form input[name=firstAccount]").val()
+                let second = $("#addAccount form input[name=secondAccount]").val()
+
+                if (first.length < 8) {
+                    alert("계좌 앞 8자리를 적지 않았습니다.")
+                    $("#addAccount form input[name=firstAccount]").focus()
+                    return false
+                }
+                if (second.length < 2) {
+                    alert("계좌 뒤 2자리를 적지 않았습니다.")
+                    $("#addAccount form input[name=secondAccount]").focus()
+                    return false
+                }
+            }
+
+
+            function storage() {
+                let arr = JSON.parse(localStorage.getItem("watced_stock"))
+                let stock = {
+                    no: "${code}",
+                    name: "${codeName}"
+                }
+
+                // let result = arr.find((e) => e.no === stock.no ? true : false)
+
+                let copyArr = arr.filter((e) => e.no !== stock.no)
+
+                copyArr.push(stock)
+
+
+                localStorage.setItem("watced_stock", JSON.stringify(copyArr))
+
+            }
+
+
+
+
+            $(".deteil_session .stock_search input[name=stockName]").on('keydown', function (e) {
+                // ////console.log(e.keyCode)
+                if (e.keyCode === 13) {
+                    // ////console.log("엔터")
+                    $(".deteil_session .stock_search button[type=submit]").click()
+                }
+            })
+
+
+            $(".deteil_session .stock_search button[type=submit]").on('click', function () {
+                let value = $(".deteil_session .stock_search input[name=stockName]").val()
+                // ////console.log(value)
+                if (value === "") {
+                    alert("검색어를 입력해주세요")
+                    $(".deteil_session .stock_search input[name=stockName]").focus()
+                } else {
+                    searchStock(value)
+                }
+
+            })
+
+
+            function searchStock(search) {
+                $.ajax({
+                    url: "searchStock.st",
+                    data: {
+                        search: search
+                    },
+                    success: function (data) {
+                        // ////console.log(data)
+                        const list = data.response.body.items.item
+                        // ////console.log(list)
+
+                        let value = ""
+                        // ////console.log(list.length)
+                        if (list.length === 0) {
+                            // ////console.log('0')
+                            value = "<tr><td style='text-align: center;' colspan='3'>일치하는 검색어가 없습니다. 다시 입력해주세요</td></tr>"
+                        } else {
+                            // ////console.log('ddd')
+                            for (let i in list) {
+                                value += "<tr>"
+                                    + "<td>" + list[i].srtnCd + "</td>"
+                                    + "<td>" + list[i].itmsNm + "</td>"
+                                    + "<td>" + list[i].mrktCtg + "</td>"
+                                    + "</tr>"
+                            }
+                        }
+
+                        $("#searchModal .container .table tbody").html(value)
+                        $(".deteil_session .stock_search input[name=stockName]").val("")
+                        $(".deteil_session .stock_search #searchModal_btn").click()
+
+                    },
+                    error: function () {
+                        ////console.log("55")
+                    }
+                })
+            }
+
+
+
+            $("#searchModal .container .table tbody").on("click", "tr", function () {
+                const code = $(this).children("td").eq(0).text()
+                if (code === "일치하는 검색어가 없습니다. 다시 입력해주세요") {
+                    $("#searchModal .close").click()
+
+                } else {
+                    const arr = [...code]
+                    // ////console.log(arr)
+                    arr.shift()
+                    const codeNo = arr.join("")
+                    // ////console.log(codeNo)
+                    const codeName = $(this).children("td").eq(1).text()
+                    location.href = "detail.st?code=" + codeNo + "&codeName=" + codeName
+                }
+
+            })
+
+
+
+
+
+
+
+
 
 
             $(".chart_area .chart_title .daliy").on("click", function () {
@@ -367,16 +765,204 @@
 
             //찜하기 db 연결 필요
             $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").on("click", function () {
-                const str = $(this).text()
-                if (str === "bookmark_border") {
-                    $(this).text("bookmark")
+                stock_choose()
 
-
-                } else {
-                    $(this).text("bookmark_border")
-                }
             })
 
+
+
+            function buyStock() {
+                const account = $("#buyModal .result select[name=myAccount_list]").val()
+                // ////console.log(account)
+                const accountArr = account.split("-")
+                // ////console.log(accountArr)
+                const firstAccount = accountArr[0]
+                const secondAccount = accountArr[1]
+                let division = "00"
+                let orderPrice = $("#buyModal .result.price span").text()
+
+                const orderCount = $("#buyModal .result .week").val()
+                // ////console.log(orderCount)
+
+                if (orderCount == 0) {
+                    alert("최소 1주 구매하셔야 합니다.")
+                    return false
+                } else {
+                    if ($("#buyModal .result input[name=checkPrice]:checked").attr("id") === "marketPrice") {
+                        division = "01"
+                        orderPrice = "0"
+                    }
+                    // ////console.log(division)
+                    buyStock_ajax(firstAccount, secondAccount, division, orderCount, orderPrice)
+                }
+
+            }
+
+
+            function buyStock_ajax(firstAccount, secondAccount, division, orderCount, orderPrice) {
+                $.ajax({
+                    url: "buyStoct.st",
+                    data: {
+                        code: "${code}",
+                        division: division,
+                        orderCount: orderCount,
+                        orderPrice: orderPrice,
+                        firstAccount: firstAccount,
+                        secondAccount: secondAccount
+                    },
+                    success: function (data) {
+                        // ////console.log(data)
+
+                        let value = ""
+                        if (data.rt_cd === "0") {
+                            const output = data.output
+                            const hh = output.ORD_TMD.substr(0, 2)
+                            const mm = output.ORD_TMD.substr(2, 2)
+
+                            value = "주문이 정상 처리되었습니다.\n"
+                                + "영업점코드 : " + output.KRX_FWDG_ORD_ORGNO
+                                + "\n주문번호 : " + output.ODNO
+                                + "\n주문시간 : " + hh + "시 " + mm + "분"
+
+                        } else {
+                            value = "주문에 실패했습니다.\n오류 : " + data.msg1
+                        }
+
+                        alert(value)
+
+                    },
+                    error: function () { }
+                })
+            }
+
+
+
+            function stock_choose() {
+                $.ajax({
+                    url: "chooseStock.st",
+                    data: {
+                        code: "${code}",
+                        userNo: "${loginUser.memNo}"
+                    },
+                    success: function (result) {
+                        // ////console.log(result)
+
+                        if (result === "iyyy") {
+                            alert("관심주식에 등록되었습니다.")
+                        } else if (result === "innn") {
+                            alert("관심주식에 등록 실패했습니다..")
+                        } else if (result === "dyyy") {
+                            alert("관심주식에 삭제되었습니다.")
+                        } else if (result === "dnnn") {
+                            alert("관심주식에 삭제 실패했습니다..")
+                        }
+                        select_stock_choose()
+                    },
+                    error: function () {
+                        ////console.log("통신 실패")
+                    },
+
+                })
+            }
+
+            function select_stock_choose() {
+                $.ajax({
+                    url: "selectChoose.st",
+                    data: {
+                        code: "${code}",
+                        userNo: "${loginUser.memNo}"
+                    },
+                    success: function (result) {
+                        // ////console.log(result)
+
+                        if (result === "0") {
+                            $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").text("bookmark_border")
+                        } else {
+
+                            $(".main-content .deteil_session .header .header_title .chooseAndBuy .choose_stock").text("bookmark")
+                        }
+
+
+                    },
+                    error: function () {
+                        ////console.log("통신 실패")
+                    },
+
+                })
+            }
+
+            let choosePrice = 0;;
+            let chooseWeek = 0;
+
+            $("#buyModal").on("shown.bs.modal", function () {
+                // ////console.log(500000)
+                selectAccount().then((list) => {
+                    // ////console.log(list)
+
+                    if (list.length === 0) {
+                        $("#buyModal .close").click()
+                        if (confirm("등록된 한국투자 계좌가 없습니다. 등록하시겠습니까?")) {
+                            $(".main-content #addAccount_btn").click();
+                        }
+                    } else {
+                        let value = "";
+                        for (let i in list) {
+                            value += "<option value='" + list[i].stockAccount + "'>" + list[i].stockAccount + "</option>"
+                        }
+                        $("#buyModal .modal-content .modal-body>div .result select").html(value)
+                    }
+                    $('#buyModal .result #currentPrice').click()
+
+                })
+
+
+            })
+
+
+
+
+            $('#buyModal .result input[type=radio]').on("change", function () {
+                // ////console.log($(this).val())
+                // ////console.log(choosePrice)
+
+                choosePrice = $(this).val()
+                // ////console.log(choosePrice)
+                $("#buyModal .result.price span").text(choosePrice * chooseWeek)
+
+            })
+
+            $('#buyModal .result input[type=number]').on("change", function () {
+                // ////console.log($(this).val())
+                // ////console.log(choosePrice)
+
+                chooseWeek = $(this).val()
+                // ////console.log(chooseWeek)
+                $("#buyModal .result.price span").text(choosePrice * chooseWeek)
+            })
+
+
+
+
+
+
+            function selectAccount() {
+                return new Promise((reject, resolve) => {
+                    $.ajax({
+                        url: "selectStockAccount.st",
+                        data: {
+                            userNo: "${loginUser.memNo}"
+                        },
+                        success: function (list) {
+                            // ////console.log(list.length)
+                            reject(list)
+
+                        },
+                        error: function () {
+                            ////console.log("실패")
+                        }
+                    })
+                })
+            }
 
 
 
@@ -443,7 +1029,7 @@
                         daliy: daliy
                     },
                     success: function (data) {
-                        // console.log(data.output.reverse())
+                        // //console.log(data.output.reverse())
                         const daliyArr = data.output.reverse();
                         // let daliyArr = []
 
@@ -451,7 +1037,7 @@
                         //     daliyArr.push(list[i].stck_bsop_date)
 
                         // }
-                        // console.log(daliyArr)
+                        // //console.log(daliyArr)
 
                         let label = "";
                         // chart.data.labels.push(daliyArr.stck_bsop_date);
@@ -461,19 +1047,19 @@
                             for (let i in daliyArr) {
                                 let month = daliyArr[i].stck_bsop_date.substr(4, 2)
                                 let day = daliyArr[i].stck_bsop_date.substr(6, 2)
-                                // console.log(month.substr(0, 1))
-                                // console.log(daliyArr[i].stck_bsop_date)
+                                // //console.log(month.substr(0, 1))
+                                // //console.log(daliyArr[i].stck_bsop_date)
                                 if (month.substr(0, 1) == 0) {
-                                    // console.log('dd')
+                                    // //console.log('dd')
                                     month = month.substr(1, 1)
                                 }
 
                                 if (day.substr(0, 1) == 0) {
-                                    // console.log('dd')
+                                    // //console.log('dd')
                                     day = day.substr(1, 1)
                                 }
                                 label = month + "월 " + day + "일"
-                                // console.log(label)
+                                // //console.log(label)
                                 chart.data.labels.push(label);
                                 chart.data.datasets[0].data.push(daliyArr[i].stck_clpr);
                                 chart.data.datasets[1].data.push(daliyArr[i].stck_oprc);
@@ -485,16 +1071,16 @@
                             for (let i in daliyArr) {
                                 let month = daliyArr[i].stck_bsop_date.substr(4, 2)
                                 let year = daliyArr[i].stck_bsop_date.substr(0, 4)
-                                // console.log(month.substr(0, 1))
-                                // console.log(daliyArr[i].stck_bsop_date)
+                                // //console.log(month.substr(0, 1))
+                                // //console.log(daliyArr[i].stck_bsop_date)
                                 if (month.substr(0, 1) == 0) {
-                                    // console.log('dd')
+                                    // //console.log('dd')
                                     month = month.substr(1, 1)
                                 }
 
 
                                 label = year + "년 " + month + "월 "
-                                // console.log(label)
+                                // //console.log(label)
                                 chart_month.data.labels.push(label);
                                 chart_month.data.datasets[0].data.push(daliyArr[i].stck_clpr);
                                 chart_month.data.datasets[1].data.push(daliyArr[i].stck_oprc);
@@ -520,7 +1106,7 @@
                         codeName: "${codeName}"
                     },
                     success: function (data) {
-                        // console.log(data.items)
+                        // //console.log(data.items)
                         const list = data.items
                         let value = ""
                         for (let i in list) {
@@ -528,7 +1114,7 @@
                             let date = dateArr[3] + "년 "
                             date += dateArr[2] + "  "
                             date += dateArr[1] + "일"
-                            // console.log(dateArr)
+                            // //console.log(dateArr)
                             value += "<a class='content' target='_blank' href='" + list[i].link + "'>"
                                 + "<div class='news_title'>"
                                 + "<div>" + list[i].title + "</div>"
@@ -571,7 +1157,7 @@
 
             var escapable = /[\x00-\x1f\ud800-\udfff\u200c\u2028-\u202f\u2060-\u206f\ufff0-\uffff]/g;
             function filterUnicode(quoted) {
-                // console.log(escapable)
+                // //console.log(escapable)
                 escapable.lastIndex = 0;
                 if (!escapable.test(quoted)) return quoted;
 
@@ -581,12 +1167,12 @@
             }
 
             function log(s) {
-                console.log(s);
+                //console.log(s);
                 if (document.readyState !== "complete") {
-                    console.log(log.buffer)
+                    //console.log(log.buffer)
                     log3.buffer.push(s);
                 } else {
-                    console.log(s)
+                    //console.log(s)
                 }
             }
             log.buffer = [];
@@ -599,14 +1185,15 @@
                         code: "${code}"
                     },
                     success: function (data) {
-                        // console.log(data.output)
+                        // //console.log(data.output)
                         const stock = data.output
-                        // console.log(stock.rprs_mrkt_kor_name)
+                        // //console.log(stock.rprs_mrkt_kor_name)
                         $(".header_stock .stock_price").text(stock.stck_prpr.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원")
                         $(".prev_price span").text(stock.prdy_vrss.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원(" + stock.prdy_ctrt + "%)")
-
+                        $('#buyModal .result #currentPrice').val(stock.stck_prpr)
+                        $('#buyModal .result #marketPrice').val(stock.stck_oprc)
                         if (stock.prdy_vrss < 0) {
-                            // console.log("0보다 작다")
+                            // //console.log("0보다 작다")
                             $(".prev_price span").removeClass()
                             $(".prev_price span").addClass("blue")
 
@@ -662,6 +1249,44 @@
 
 
 
+            function investOpinion() {
+                $.ajax({
+                    url: "investOpinion.st",
+                    data: {
+                        code: "${code}",
+                    },
+                    success: function (data) {
+                        //console.log(data)
+                        const list = data.output
+                        let value = ""
+                        if (data.rt_cd === "0" && list.length !== 0) {
+                            // //console.log("0")
+                            for (let i in list) {
+                                value += "<div class='contnet_box'>"
+                                    + "<div>" + list[i].stck_bsop_date + "</div>"
+                                    + "<div>" + list[i].mbcr_name + "</div>"
+                                    + "<div>" + list[i].invt_opnn + "</div>"
+                                    + "<div>" + list[i].rgbf_invt_opnn + "</div>"
+                                    + "<div>" + list[i].hts_goal_prc.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원</div>"
+                                    + "<div>" + list[i].dprt + "%</div>"
+                                    + "</div>"
+                            }
+
+
+
+
+
+                        } else {
+                            //console.log("없음")
+                            value = "<div class='contnet_box' ><h6>해당 데이터가 없습니다.</h6></div>"
+                        }
+                        //console.log("gggg")
+                        $(".main-content .content_session .footer_session .chat_area .content_area .content_view").html(value)
+                    }
+                })
+            }
+
+
 
             function websokect() {
                 const ws = new WebSocket("ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0");
@@ -669,25 +1294,25 @@
                 ws.onopen = function () {
                     ws.send(JSON.stringify(sendMssage))
                     ws.onmessage = function (event) {
-                        //console.log(event)
-                        // console.log(event.data)
+                        ////console.log(event)
+                        // //console.log(event.data)
                         let msg = filterUnicode(event.data)
-                        // console.log(msg[1])
+                        // //console.log(msg[1])
 
                         let msgArr = msg.split("|")
-                        // console.log(msgArr[0])
+                        // //console.log(msgArr[0])
                         if (msgArr[0] == 0 || msgArr[0] == 1) {
                             const stock = msgArr[3]
-                            // console.log(stock)
+                            // //console.log(stock)
 
                             const stockArr = stock.split("^")
-                            // console.log(stockArr)
+                            // //console.log(stockArr)
 
 
                             $(".prev_price span").text(stockArr[4].replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원(" + stockArr[5] + "%)")
 
                             if (stockArr[4] < 0) {
-                                // console.log("0보다 작다")
+                                // //console.log("0보다 작다")
                                 $(".prev_price span").removeClass()
                                 $(".prev_price span").addClass("blue")
 
@@ -720,17 +1345,18 @@
                             }
 
                             $(".header_stock .stock_price").text(stockArr[2].replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원")
-
+                            $('#buyModal .result #currentPrice').val(stockArr[2])
+                            $('#buyModal .result #marketPrice').val(stockArr[7])
 
 
                         } else {
                             const json = event.data;
-                            // console.log(json)
+                            // //console.log(json)
                             let obj = JSON.parse(json);
-                            // console.log(obj)
+                            // //console.log(obj)
                             let trid = obj.header.tr_id
                             let encyn = obj.header.encyn
-                            // console.log(trid)
+                            // //console.log(trid)
 
                             if (trid === "PINGPONG") {
                                 nowStock();
