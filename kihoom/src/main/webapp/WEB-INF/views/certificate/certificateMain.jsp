@@ -186,7 +186,7 @@
                                 + "<td class='anot'>" + list[i].서비스목적요약 + "</td>"
                                 + "<td class='anot'>" + list[i].지원내용 + "</td>"
                                 + "<td class='anot'>" + list[i].신청기한 + "</td>"
-                                + "<td><a href='" + list[i].상세조회URL + "' target='_blank' onclick='(event)=>{event.stopPropagation()}'>URL    </a>" + "</td>"
+                                + "<td><a href='" + list[i].상세조회URL + "' target='_blank' onClick='(aClick(event))'>URL    </a>" + "</td>"
                                 + "<td class='anot'>" + list[i].부서명 + "</td>"
                                 + "<td class='anot'>" + list[i].조회수 + "</td>"
                                 + "<td class='anot'>" + list[i].전화문의 + "</td>"
@@ -202,11 +202,17 @@
             $(".table_area .container .table tbody").on("click", "tr", function () {
                 let Id = $(this).children("input").val()
                 // console.log(Id)
-                subsidyDetail(Id)
+                if (confirm("해당 상세 내용을 PDF로 다운하시겠습니까?")) {
+
+                    subsidyDetail(Id)
+                }
             })
 
 
-
+            function aClick(event) {
+                event.stopPropagation()
+                console.log('dd')
+            }
 
 
             function subsidyDetail(id) {
