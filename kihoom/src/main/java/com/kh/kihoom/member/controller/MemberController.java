@@ -56,7 +56,7 @@ public class MemberController {
 				// 아이디가 비지 않고 비밀번호가 일치했을경우. 로그인 성공
 				
 				session.setAttribute("loginUser", loginUser);
-				mv.setViewName("redirect:/");
+				mv.setViewName("redirect:acountBook.ac");
 			}else {
 				//로그인 실패
 				mv.addObject("errorMsg","로그인 실패");

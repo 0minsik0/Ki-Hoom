@@ -70,7 +70,7 @@ pageEncoding="UTF-8"%>
   <body>
     <div class="app-sidebar colored">
       <div class="sidebar-header">
-        <a class="header-brand" href="./index.jsp">
+        <a class="header-brand" href="acountBook.ac">
           <div class="logo-img">
             <img
               src="resources/src/img/kihoom.png"
@@ -112,7 +112,7 @@ pageEncoding="UTF-8"%>
                 ><i class="ik ik-layers"></i><span>스케줄</span>
               </a>
             </div>
-            <div class="nav-item has-sub">
+            <div class="nav-item">
               <a href="certificateMain.ce"
                 ><i class="ik ik-box"></i><span>보조금 24</span></a
               >

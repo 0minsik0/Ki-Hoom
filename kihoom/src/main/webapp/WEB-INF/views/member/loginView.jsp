@@ -76,13 +76,10 @@ pageEncoding="UTF-8"%>
           </div>
           <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
             <div class="authentication-form mx-auto">
-              <div class="logo-centered">
-                <a href="index.html"
-                  ><img src="resources/src/img/brand.svg" alt=""
-                /></a>
+              <div class="logo-centered" style="width:150px">
+                <a href="login.lo"
+                  ><img src="resources/src/img/kihoom.png" style="width:150px; height:150px;" alt=""/></a>
               </div>
-              <h3>Sign In to ThemeKit</h3>
-              <p>Happy to see you again!</p>
               <form action="login.lo">
                 <div class="form-group">
                   <input
