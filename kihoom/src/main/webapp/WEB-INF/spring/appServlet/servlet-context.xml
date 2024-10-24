@@ -23,6 +23,7 @@
 	
 	<context:component-scan base-package="com.kh.kihoom" />
 	
+	
 	<!-- 
 		* 사용자가 어떤 url로 요청 시 해당 이 문서가 읽혀진다고 보면 됨!!
 	 	  HandlerMapping을 통해서 어떤 url로 요청 시 어떤 Controller를 구동시킬건지 알아내야됨
@@ -71,6 +72,7 @@
 				<beans:bean class="com.kh.kihoom.member.controller.LoginInterceptor" id="loginInterceptor"/>
 			</interceptor>
 		</interceptors>
+		
 		
 	
 </beans:beans>

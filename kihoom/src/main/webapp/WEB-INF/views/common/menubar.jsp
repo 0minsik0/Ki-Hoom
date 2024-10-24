@@ -85,7 +85,7 @@
                                     <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="aichat.ac"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
+                                    <a href="AIChat.ai"><i class="ik ik-menu"></i><span>AI 문의</span> </a>
                                 </div>
                             </nav>
                         </div>
