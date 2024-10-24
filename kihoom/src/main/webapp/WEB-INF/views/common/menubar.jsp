@@ -75,12 +75,6 @@
                                         <a href="resources/pages/ui/rating.html" class="menu-item">Rating</a>
                                     </div>
                                 </div>
-                                <div class="nav-item has-sub">
-                                    <a href="#"><i class="ik ik-package"></i><span>포인트</span></a>
-                                    <div class="submenu-content">
-                                        <a href="" class="menu-item">Session Timeout</a>
-                                    </div>
-                                </div>
                                 <div class="nav-item">
                                     <a href="foreign.fo"><i class="ik ik-dollar-sign"></i><span>환율</span></a>
                                 </div>
