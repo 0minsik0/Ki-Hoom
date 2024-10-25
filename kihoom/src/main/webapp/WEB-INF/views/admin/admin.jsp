@@ -45,9 +45,6 @@
                         <div class="nav-container">
                             <nav id="main-menu-navigation" class="navigation-main">
                                 <div class="nav-item">
-                                    <a href="admin.ad"><i class="ik ik-bar-chart-line-"></i><span>사이트 통계</span> </a>
-                                </div>
-                                <div class="nav-item">
                                     <a href="adminMember.ad"><i class="ik ik-users"></i><span>회원관리</span></a>
                                 </div>
                                 <div class="nav-item">
