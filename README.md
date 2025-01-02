@@ -1,7 +1,5 @@
 ## 키훔 (KI-HOOM)
----
 ![4 (1)](https://github.com/user-attachments/assets/8cc7d1ef-3278-4ae0-a0cf-44fed656897d)
-
 
 ### 🧑🏻‍🏫 프로젝트 소개
 ---
@@ -20,11 +18,9 @@
 <br /><br />
 
 ### 🙋🏻 팀 소개
-**팀명 : 겆빠**
+**팀명 : 겆빠** <br/>
 **팀원 : 정민식(조장), 김서경, 김지영, 김희섭, 오명식**
-
 <br /><br />
-
 
 ### 💻 개발 환경
 > * Languages : Java, HTML5, CSS3, JavaScript, JSON
@@ -53,7 +49,7 @@
 <details>
   <summary>정민식</summary>
 </details>
-<br/><br/>
+<br/>
 
 <details>
   <summary>김서경</summary>
@@ -64,22 +60,22 @@
     파이널 프로젝트 다들 고생 많으셨습니다!
   </div>
 </details>
-<br/><br/>
+<br/>
 
 <details>
   <summary>김지영</summary>
 </details>
-<br/><br/>
+<br/>
 
 <details>
   <summary>김희섭</summary>
 </details>
-<br/><br/>
+<br/>
 
 <details>
   <summary>오명식</summary>
 </details>
-<br/><br/>
+<br/>
 
 ### 최종 보고서
 ---
